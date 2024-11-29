@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-18971.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Shell基础 — 6、Bash基本功能（输入输出重定向）</title>
+        <meta name="description" content="目录  1、Bash的标准输入输出 2、输出重定向  （1）标准输出重定向 （2）标准错误输出重定向 （3）正确输出和错误输出同时保存   3、输入重定向   1、Bash的标准输入输出 我们前边一直" />
+        <link rel="icon" href="__ADDON__/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                                <li>
+                                    <a href="#">关于</a>
+                                </li>
+                                <li>
+                                    <a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">Shell基础 — 6、Bash基本功能（输入输出重定向）</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                          				  				  				<div class="toc"> <div class="toc-container-header">目录</div> <ul> <li><a href="#1bash%E7%9A%84%E6%A0%87%E5%87%86%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA" rel="nofollow">1、Bash的标准输入输出</a></li> <li><a href="#2%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91" rel="nofollow">2、输出重定向</a> <ul> <li><a href="#1%E6%A0%87%E5%87%86%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91" rel="nofollow">（1）标准输出重定向</a></li> <li><a href="#2%E6%A0%87%E5%87%86%E9%94%99%E8%AF%AF%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91" rel="nofollow">（2）标准错误输出重定向</a></li> <li><a href="#3%E6%AD%A3%E7%A1%AE%E8%BE%93%E5%87%BA%E5%92%8C%E9%94%99%E8%AF%AF%E8%BE%93%E5%87%BA%E5%90%8C%E6%97%B6%E4%BF%9D%E5%AD%98" rel="nofollow">（3）正确输出和错误输出同时保存</a></li> </ul> </li> <li><a href="#3%E8%BE%93%E5%85%A5%E9%87%8D%E5%AE%9A%E5%90%91" rel="nofollow">3、输入重定向</a></li> </ul> </div> <h2 id="1bash的标准输入输出">1、Bash的标准输入输出</h2> <p>我们前边一直在说，在Linux系统下，一切皆是文件，键盘和显示器等硬件都是文件，如下图：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/70eacc2dcce17fa839ecd6e147898b32.jpg" alt="Shell基础 — 6、Bash基本功能（输入输出重定向）"></p> <p>从上图中可以看出，键盘的设备文件名为<code>/dev/stdin</code>，显示器标准正确输入的设备文件名为<code>/dev/stdout</code>，显示器标准错误输入的设备文件名为<code>/dev/stderr</code>。</p> <p>这些设备文件名非常不好记忆，Shell允许我们用文件描述符来描述对应的设备，也就是用0、1、2，分别对应键盘、正确显示器，错误显示器。</p> <h2 id="2输出重定向">2、输出重定向</h2> <p>什么叫输出重定向？</p> <p>命令的输出，是输出给标准输出的，也就是输出到显示器上。而输出重定向就是命令的输出，不输出给标准输出，而是把输出的内容，输出到文件中。</p> <h3 id="1标准输出重定向">（1）标准输出重定向</h3> <ul> <li><code>命令  &gt;  文件</code>：以覆盖的方式，把命令的正确输出，输出到指定的文件或设备当中。</li> <li><code>命令  &gt;&gt;  文件</code>：以追加的方式，把命令的正确输出，输出到指定的文件或设备当中。</li> </ul> <p>示例如下：</p> <pre><code class="language-shell"># 覆盖的方式 [root@localhost ~]# pwd	&gt; abc [root@localhost ~]# cat abc /root  # 追加的方式 [root@localhost ~]# pwd	&gt;&gt; abc [root@localhost ~]# cat abc /root /root</code></pre> <p>只要该命令有结果，都能够输进行输出重定向。</p> <h3 id="2标准错误输出重定向">（2）标准错误输出重定向</h3> <p>如果执行的命令出现报错，用上边的方式是不能够进行输出内容重定向的，错误信息会直接输出到标准错误输出，如下：</p> <pre><code class="language-shell">[root@localhost ~]# lsdgagsa &gt;&gt; abc -bash: lsdgagsa: command not found</code></pre> <ul> <li><code>错误命令 2&gt;文件</code>：以覆盖的方式，把命令的错误输出，输出到指定的文件或设备当中。</li> <li><code>错误命令 2&gt;&gt;文件</code>：以追加的方式，把命令的错误输出，输出到指定的文件或设备当中。</li> </ul> <p>这个<code>2</code>是文件描述符，表示标准错误输出，看上表。</p> <p>示例如下：</p> <pre><code class="language-shell">[root@localhost ~]# lsdgagsa 2&gt;&gt; abc [root@localhost ~]# cat abc /root /root -bash: lsdgagsa: command not found</code></pre> <blockquote> <p>这里需要注意的是，上边的标准正确输出和标准错误输出的重定向有一些小问题，就是我要事先知道这条命令是否报错，才能选择是使用标准正确输出还是使用标准错误输出。</p> <p>这样十分不合理，我明知道命令会报错，那我直接写对不就完了。所以我们在工作中写脚本的时候，常用的输出重定向的方式是下面的方式。</p> </blockquote> <h3 id="3正确输出和错误输出同时保存">（3）正确输出和错误输出同时保存</h3> <p><strong>方式一</strong></p> <ul> <li><code>命令 &gt; 文件 2&gt;&amp;1</code>：以覆盖的方式，把正确输出和错误输出都保存到同一个文件当中。</li> <li><code>命令 &gt;&gt; 文件 2&gt;&amp;1</code>：以追加的方式，把正确输出和错误输出都保存到同一个文件当中。（常用）</li> </ul> <p>示例如下：</p> <pre><code class="language-shell"># 把ls命令的查询结果覆盖存储到abc文件中 [root@localhost ~]# ls &gt; abc  2&gt;&amp;1 [root@localhost ~]# cat abc anaconda-ks.cfg install.log install.log.syslog  # 把错误信息追加存储到abc文件中 [root@localhost ~]# lsadfgag &gt;&gt; abc  2&gt;&amp;1 [root@localhost ~]# cat abc anaconda-ks.cfg install.log install.log.syslog -bash: lsadfgag: command not found</code></pre> <blockquote> <p><code>命令 &gt;&gt; 文件 2&gt;&amp;1</code>的意思是，把命令的正确输出，输出到文件中，然后把命令的错误输出，输出到正确输出的文件中。</p> </blockquote> <p><strong>方式二</strong></p> <ul> <li><code>命令 &amp;&gt;文件</code>：以覆盖的方式，把正确输出和错误输出都保存到同一个文件当中。</li> <li><code>命令 &amp;&gt;&gt;文件</code>：以追加的方式，把正确输出和错误输出都保存到同一个文件当中。（常用）</li> </ul> <p>示例如下：</p> <pre><code class="language-shell"># 把pwd命令的结果覆盖存储到abc文件中 [root@localhost ~]# pwd &amp;&gt; abc [root@localhost ~]# cat abc /root  # 把错误信息追加存储到abc文件中 [root@localhost ~]# lsadfgag &amp;&gt;&gt; abc [root@localhost ~]# cat abc /root -bash: lsadfgag: command not found</code></pre> <p><strong>方式三</strong></p> <p><code>命令&gt;&gt;文件1  2&gt;&gt;文件2</code>：把正确的输出追加到文件1中，把错误的输出追加到文件2中。（常用）</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/001a28aebece8127330b2cb4834c6174.jpg" alt="Shell基础 — 6、Bash基本功能（输入输出重定向）"></p> <p>统一保存和分开保存看你习惯。</p> <blockquote> <p>注意，在正确输出的时候<code>&gt;</code>或者<code>&gt;&gt;</code>两边是可以有空格的，如果是错误输出的时候，2和<code>&gt;</code>或者<code>&gt;&gt;</code>之间是不能有空格的。</p> <p>如下，提示语法错误。</p> <pre><code class="language-shell">[root@localhost ~]# lsgdagasasd &gt;&gt; abc 2 &gt; &amp;1 -bash: syntax error near unexpected token `&amp;’</code></pre> </blockquote> <h2 id="3输入重定向">3、输入重定向</h2> <p>输入重定向就是<code>&lt;</code>。意思是命令的输入是由标准输入输入的，也就是由键盘输入的。输入重定向就是改变输入方向，不在由键盘作为输入，而拿文件作为命令的输入。（输入重定向比较少见）</p> <p>我们只在之前给源码包打补丁的<code>patch</code>命令（文章<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/liuyuelinfighting/p/15574188.html"  target="_blank" rel="nofollow">https://www.cnblogs.com/liuyuelinfighting/p/15574188.html</a>），和RPM源码包文件提取中的<code>cpio</code>命令用到过。</p> <p>双<code>&lt;&lt;</code>号用的就更少了，基本没有实际的应用。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/5484c405e9ef0ac80022f610b37970f8.jpg" alt="Shell基础 — 6、Bash基本功能（输入输出重定向）"></p> <p><code>uio</code>就相当于一个分界符，在两个<code>uio</code>中间的内容，输入给<code>wc</code>命令，进行统计。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-18969.htm">Spring Boot教程 | 第八篇：Spring Boot整合knife4j（swagger-bootstrap-ui）实现自动API文档</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-27-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新18.2M/S免费节点订阅链接">V2ray Free节点订阅每天更新18.2M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-16-free-subscribe-node.htm" title="V2ray Free节点订阅每天更新22.1M/S免费节点订阅链接">V2ray Free节点订阅每天更新22.1M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-9-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新22.2M/S免费节点订阅链接">V2ray Free节点订阅每天更新22.2M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-10-free-subscribe-node.htm" title="V2ray Free节点订阅每天更新19.7M/S免费节点订阅链接">V2ray Free节点订阅每天更新19.7M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-18969.htm" title="Spring Boot教程 | 第八篇：Spring Boot整合knife4j（swagger-bootstrap-ui）实现自动API文档">Spring Boot教程 | 第八篇：Spring Boot整合knife4j（swagger-bootstrap-ui）实现自动API文档</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-12-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新19.5M/S免费节点订阅链接">V2ray Free节点订阅每天更新19.5M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-17-free-subscribe-node.htm" title="V2ray Free节点订阅每天更新22.2M/S免费节点订阅链接">V2ray Free节点订阅每天更新22.2M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-19-free-high-speed-nodes.htm" title="V2ray Free节点订阅每天更新18.5M/S免费节点订阅链接">V2ray Free节点订阅每天更新18.5M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-20-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新19.3M/S免费节点订阅链接">V2ray Free节点订阅每天更新19.3M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-8-node-share-links.htm" title="V2ray Free节点订阅每天更新18.7M/S免费节点订阅链接">V2ray Free节点订阅每天更新18.7M/S免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                    <a href="/">V2ray Free免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>
