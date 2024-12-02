@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-20363.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>vue-cli4.5.13按需引入vant，解决vant样式失效问题</title>
+        <meta name="description" content="1.使用vue-cli4.5.13新建vue项目 ①先全局安装最新版本的vue-cli,如果安装了旧版本的，最好先卸载 npm install-g @vue/cli #OR yarn global a" />
+        <link rel="icon" href="__ADDON__/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                                <li>
+                                    <a href="#">关于</a>
+                                </li>
+                                <li>
+                                    <a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">vue-cli4.5.13按需引入vant，解决vant样式失效问题</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                          				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>1.使用vue-cli4.5.13新建vue项目<br /> ①先全局安装最新版本的vue-cli,如果安装了旧版本的，最好先卸载</p> <pre><code class="prism language-javascript">npm install<span class="token operator">-</span>g @vue<span class="token operator">/</span>cli #<span class="token constant">OR</span> yarn global add @vue<span class="token operator">/</span>cli</code></pre> <p>@创建项目</p> <pre><code class="prism language-javascript">vue create 自己项目的名称</code></pre> <p>2，下载vant</p> <pre><code class="prism language-javascript">npm i vant<span class="token operator">-</span><span class="token constant">S</span></code></pre> <p>3.下载babel-plugin-import并在babel.config.js中修改配置如下（babel-plugin-import文档上有详细说明如何配置）</p> <pre><code class="prism language-javascript">module<span class="token punctuation">.</span>exports<span class="token operator">=</span><span class="token punctuation">{<!-- --></span>   presets<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token string">'@vue/cli-plugin-babel/preset'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>   plugins<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'import'</span><span class="token punctuation">,</span><span class="token punctuation">{<!-- --></span>       libraryName<span class="token punctuation">:</span><span class="token string">'vant'</span><span class="token punctuation">,</span>       libraryDirectory<span class="token punctuation">:</span><span class="token string">'es'</span><span class="token punctuation">,</span>       style<span class="token punctuation">:</span><span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">'vant'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">}</span></code></pre> <p>4;使用</p> <pre><code class="prism language-javascript"><span class="token keyword">import</span><span class="token punctuation">{<!-- --></span> Button<span class="token punctuation">}</span><span class="token keyword">from</span><span class="token string">'vant'</span><span class="token punctuation">;</span> Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Button<span class="token punctuation">)</span></code></pre> <p>注：可在当前页面引入，也可新建一个文件，把需要的组件引入后再在main.js中引入即可</p> <p><strong>问题：按需引入后，vant样式不生效，改为全局引入也不生效</strong><br /><strong>发现问题如下：</strong></p> <pre><code class="prism language-javascript">发现vue<span class="token punctuation">.</span>config<span class="token punctuation">.</span>js中的css配置如下   css<span class="token punctuation">:</span><span class="token punctuation">{<!-- --></span>     extract<span class="token punctuation">:</span><span class="token boolean">true</span><span class="token punctuation">,</span><span class="token comment">// 是否使用css分离插件 ExtractTextPlugin</span>     sourceMap<span class="token punctuation">:</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token comment">// 开启 CSS source maps?</span>     loaderOptions<span class="token punctuation">:</span><span class="token punctuation">{<!-- --></span>       less<span class="token punctuation">:</span><span class="token punctuation">{<!-- --></span>         lessOptions<span class="token punctuation">:</span><span class="token punctuation">{<!-- --></span>           javascriptEnabled<span class="token punctuation">:</span><span class="token boolean">true</span><span class="token punctuation">,</span>           modifyVars<span class="token punctuation">:</span><span class="token punctuation">{<!-- --></span><span class="token comment">/* less 变量覆盖，用于自定义主题 */</span><span class="token string">'primary-color'</span><span class="token punctuation">:</span><span class="token string">'#1890FF'</span><span class="token punctuation">,</span><span class="token string">'link-color'</span><span class="token punctuation">:</span><span class="token string">'#1890FF'</span><span class="token punctuation">,</span><span class="token string">'border-radius-base'</span><span class="token punctuation">:</span><span class="token string">'4px'</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span>     requireModuleExtension<span class="token punctuation">:</span><span class="token boolean">false</span><span class="token operator">**</span><span class="token comment">//这一项被设置成了false，导致组件库样式不生效，改为true         	就好了**</span><span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre> <p><strong>最终配置改为：</strong></p> <pre><code class="Bash"><xmp>css: { extract: true, // 是否使用css分离插件 ExtractTextPlugin sourceMap: false, // 开启 CSS source maps? loaderOptions: { less: { lessOptions: { javascriptEnabled: true, modifyVars: { /* less 变量覆盖，用于自定义主题 */ ‘primary-color’: ‘#1890FF’, ‘link-color’: ‘#1890FF’, ‘border-radius-base’: ‘4px’ } } } }, requireModuleExtension: true }</xmp></code></pre> <p> 重新编译启动项目后，发现样式生效了，特意记录一下！</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-20362.htm">vue组件间传值详解</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-20362.htm" title="vue组件间传值详解">vue组件间传值详解</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-11-free-node-subscribe.htm" title="V2ray Free节点订阅每天更新20.5M/S免费节点订阅链接">V2ray Free节点订阅每天更新20.5M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-16-free-subscribe-node.htm" title="V2ray Free节点订阅每天更新22.1M/S免费节点订阅链接">V2ray Free节点订阅每天更新22.1M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-18971.htm" title="Shell基础 — 6、Bash基本功能（输入输出重定向）">Shell基础 — 6、Bash基本功能（输入输出重定向）</a></li>
+                        <li class="py-2"><a href="/news/article-19906.htm" title="动物防疫相关管理制度范本（动物防疫管理条例）">动物防疫相关管理制度范本（动物防疫管理条例）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-18-node-share.htm" title="V2ray Free节点订阅每天更新22.1M/S免费节点订阅链接">V2ray Free节点订阅每天更新22.1M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-30-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新22.1M/S免费节点订阅链接">V2ray Free节点订阅每天更新22.1M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-10-free-subscribe-node.htm" title="V2ray Free节点订阅每天更新19.7M/S免费节点订阅链接">V2ray Free节点订阅每天更新19.7M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-20-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新19.3M/S免费节点订阅链接">V2ray Free节点订阅每天更新19.3M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-12-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新19.5M/S免费节点订阅链接">V2ray Free节点订阅每天更新19.5M/S免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                    <a href="/">V2ray Free免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>
