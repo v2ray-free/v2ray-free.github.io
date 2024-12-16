@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-26819.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>特殊线性表&#8212;&#8212;&#8212;-栈（1）</title>
+        <meta name="description" content="栈是先进后出的特殊线性表，只允许在表的末端进行插入和删除，后面将介绍两种实现栈的方式，分别是基于数组的实现、基于链表的实现。  栈的抽象定义 class Mystack { public: 	Myst" />
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                                <li>
+                                    <a href="#">关于</a>
+                                </li>
+                                <li>
+                                    <a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">特殊线性表&#8212;&#8212;&#8212;-栈（1）</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                          				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p><mark>栈是先进后出的特殊线性表，只允许在表的末端进行插入和删除，后面将介绍两种实现栈的方式，分别是基于数组的实现、基于链表的实现。</mark></p> <h2> <a id="_1" rel="nofollow"></a>栈的抽象定义</h2> <pre><code class="prism language-cpp"><span class="token keyword">class</span> <span class="token class-name">Mystack</span> <span class="token punctuation">{<!-- --></span> <span class="token keyword">public</span><span class="token operator">:</span> 	<span class="token function">Mystack</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span> 	<span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">&amp;</span>x<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 	<span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">pop</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">&amp;</span>x<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 	<span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">Top</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">&amp;</span>x<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 	<span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token keyword">const</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 	<span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">IsFull</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token keyword">const</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 	<span class="token keyword">virtual</span> <span class="token keyword">int</span> <span class="token function">getSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token keyword">const</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>   </code></pre> <h2> <a id="_19" rel="nofollow"></a>顺序栈-----------使用数组表示栈空间</h2> <p>定义：</p> <pre><code class="prism language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">pragma</span> <span class="token expression">once</span></span> <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"Mystack.h"</span></span> <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span> <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;assert.h&gt;</span></span> <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>  <span class="token keyword">const</span> <span class="token keyword">int</span> stackIncreament <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>   <span class="token keyword">class</span> <span class="token class-name">SeqStack</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">Mystack</span></span> <span class="token punctuation">{<!-- --></span> <span class="token keyword">public</span><span class="token operator">:</span> 	<span class="token function">SeqStack</span><span class="token punctuation">(</span><span class="token keyword">int</span> sz <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token comment">//建立一个空栈</span> 	<span class="token operator">~</span><span class="token function">SeqStack</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> <span class="token keyword">delete</span><span class="token punctuation">[</span><span class="token punctuation">]</span>elements<span class="token punctuation">;</span> <span class="token punctuation">}</span>      <span class="token comment">//析构函数</span>  	<span class="token comment">//如果栈满，则溢出程序处理，否则插入x</span> 	<span class="token keyword">void</span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">&amp;</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>                   	<span class="token comment">//如果栈空，则返回FALSE，否则使用x传递栈顶的值，top-1</span> 	<span class="token keyword">bool</span> <span class="token function">pop</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">&amp;</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>  	<span class="token comment">//如果栈空，则返回FALSE，否则使用x传递栈顶的值</span> 	<span class="token keyword">bool</span> <span class="token function">Top</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">&amp;</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>  	<span class="token comment">//判断栈是否为空</span> 	<span class="token keyword">bool</span> <span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token keyword">const</span> <span class="token punctuation">{<!-- --></span> 		<span class="token keyword">return</span> <span class="token punctuation">(</span>top <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token boolean">true</span> <span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">;</span> 	<span class="token punctuation">}</span>  	<span class="token comment">//判断栈是都为满</span> 	<span class="token keyword">bool</span> <span class="token function">IsFull</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token keyword">const</span> <span class="token punctuation">{<!-- --></span> 		<span class="token keyword">return</span> <span class="token punctuation">(</span>top <span class="token operator">==</span> maxSize <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token boolean">true</span> <span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">;</span> 	<span class="token punctuation">}</span>  	<span class="token comment">//获取栈当前的size</span> 	<span class="token keyword">int</span> <span class="token function">getSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token keyword">const</span> <span class="token punctuation">{<!-- --></span> 		<span class="token keyword">return</span> top <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> 	<span class="token punctuation">}</span>  	<span class="token comment">//将栈置空</span> 	<span class="token keyword">void</span> <span class="token function">MakeEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 		top <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> 	<span class="token punctuation">}</span>  	<span class="token comment">//重载 操作 &lt;&lt;</span> 	<span class="token keyword">friend</span> ostream<span class="token operator">&amp;</span> <span class="token keyword">operator</span><span class="token operator">&lt;&lt;</span><span class="token punctuation">(</span>ostream<span class="token operator">&amp;</span> os<span class="token punctuation">,</span> SeqStack<span class="token operator">&amp;</span> s<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token keyword">private</span><span class="token operator">:</span> 	<span class="token keyword">int</span> <span class="token operator">*</span>elements<span class="token punctuation">;</span>				<span class="token comment">//栈数组指针</span> 	<span class="token keyword">int</span> top<span class="token punctuation">;</span>					<span class="token comment">//栈顶指针</span> 	<span class="token keyword">int</span> maxSize<span class="token punctuation">;</span>				<span class="token comment">//栈的最大容量</span> 	<span class="token keyword">void</span> <span class="token function">overflowProcess</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>		<span class="token comment">//溢出处理程序</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>   </code></pre> <p>实现：</p> <pre><code class="prism language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"SeqStack.h"</span></span>   <span class="token class-name">SeqStack</span><span class="token operator">::</span><span class="token function">SeqStack</span><span class="token punctuation">(</span><span class="token keyword">int</span> sz<span class="token punctuation">)</span><span class="token operator">:</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">maxSize</span><span class="token punctuation">(</span>sz<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	elements <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>maxSize<span class="token punctuation">]</span><span class="token punctuation">;</span>		<span class="token comment">//创建栈的数组空间</span> 	<span class="token function">assert</span><span class="token punctuation">(</span>elements <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">//断言：动态分配是否成功</span>  <span class="token punctuation">}</span>  <span class="token keyword">void</span> <span class="token class-name">SeqStack</span><span class="token operator">::</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">&amp;</span> x<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	<span class="token comment">//首先判断栈是否已满，满则转入溢出处理</span> 	<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">IsFull</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span> 		<span class="token function">overflowProcess</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 	<span class="token punctuation">}</span>  	elements<span class="token punctuation">[</span><span class="token operator">++</span>top<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">;</span>    <span class="token comment">//将top+1，再插入值x</span> <span class="token punctuation">}</span>  <span class="token keyword">bool</span> <span class="token class-name">SeqStack</span><span class="token operator">::</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">&amp;</span> x<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	<span class="token comment">//先判断是否为空，为空则返回FALSE</span> 	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 		<span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span> 	<span class="token punctuation">}</span>  	x <span class="token operator">=</span> elements<span class="token punctuation">[</span>top<span class="token operator">--</span><span class="token punctuation">]</span><span class="token punctuation">;</span>     <span class="token comment">//使用x返回top所指，再讲top-1</span> 	<span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>  <span class="token keyword">bool</span> <span class="token class-name">SeqStack</span><span class="token operator">::</span><span class="token function">Top</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">&amp;</span> x<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	<span class="token comment">//空栈则为FALSE</span> 	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 		<span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span> 	<span class="token punctuation">}</span>  	<span class="token comment">//栈不为空，则返回栈顶元素的值</span> 	x <span class="token operator">=</span> elements<span class="token punctuation">[</span>top<span class="token punctuation">]</span><span class="token punctuation">;</span> 	<span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>  ostream<span class="token operator">&amp;</span> <span class="token keyword">operator</span><span class="token operator">&lt;&lt;</span><span class="token punctuation">(</span>ostream<span class="token operator">&amp;</span> os<span class="token punctuation">,</span> SeqStack<span class="token operator">&amp;</span> s<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	<span class="token comment">//输出栈中元素</span> 	os <span class="token operator">&lt;&lt;</span> <span class="token string">"top = "</span> <span class="token operator">&lt;&lt;</span> s<span class="token punctuation">.</span>top <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> 	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> s<span class="token punctuation">.</span>top<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 		os <span class="token operator">&lt;&lt;</span> i <span class="token operator">&lt;&lt;</span> <span class="token string">": "</span> <span class="token operator">&lt;&lt;</span> s<span class="token punctuation">.</span>elements<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> 	<span class="token punctuation">}</span> 	<span class="token keyword">return</span> os<span class="token punctuation">;</span> <span class="token punctuation">}</span>   <span class="token keyword">void</span> <span class="token class-name">SeqStack</span><span class="token operator">::</span><span class="token function">overflowProcess</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	<span class="token comment">//栈溢出时，扩充栈的存储空间</span> 	<span class="token keyword">int</span> <span class="token operator">*</span>Newelement <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>maxSize <span class="token operator">+</span> stackIncreament<span class="token punctuation">]</span><span class="token punctuation">;</span> 	<span class="token keyword">if</span> <span class="token punctuation">(</span>Newelement <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 		cout <span class="token operator">&lt;&lt;</span> <span class="token string">"分配内存失败"</span><span class="token punctuation">;</span> 		<span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 	<span class="token punctuation">}</span> 	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> top<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 		Newelement<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> elements<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> 	<span class="token punctuation">}</span> 	<span class="token keyword">delete</span><span class="token punctuation">[</span><span class="token punctuation">]</span> elements<span class="token punctuation">;</span> 	elements <span class="token operator">=</span> Newelement<span class="token punctuation">;</span> <span class="token punctuation">}</span>  </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-26373.htm">哈尔滨农大宠物医院的地址和电话号码（哈尔滨农大动物医院地址）</a></p>
+                                        <p>下一个：<a href="/news/article-26820.htm">动物疫苗的了解和认识 动物疫苗的了解和认识怎么写</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-22186.htm" title="被猫咬了怎么办出血了（被猫咬了怎么办出血了,用酒精洗可以吗）">被猫咬了怎么办出血了（被猫咬了怎么办出血了,用酒精洗可以吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-27-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新18.2M/S免费节点订阅链接">V2ray Free节点订阅每天更新18.2M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-19-free-high-speed-nodes.htm" title="V2ray Free节点订阅每天更新18.5M/S免费节点订阅链接">V2ray Free节点订阅每天更新18.5M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-25888.htm" title="想开宠物店但是没经验（开宠物店累不累）">想开宠物店但是没经验（开宠物店累不累）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-12-free-subscribe-node.htm" title="V2ray Free节点订阅每天更新21.7M/S免费节点订阅链接">V2ray Free节点订阅每天更新21.7M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-7-free-node-subscribe.htm" title="V2ray Free节点订阅每天更新22.7M/S免费节点订阅链接">V2ray Free节点订阅每天更新22.7M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-6-node-share.htm" title="V2ray Free节点订阅每天更新19.1M/S免费节点订阅链接">V2ray Free节点订阅每天更新19.1M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-30-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新22.1M/S免费节点订阅链接">V2ray Free节点订阅每天更新22.1M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-21768.htm" title="宠物粮食商标（宠物粮食商标怎么注册）">宠物粮食商标（宠物粮食商标怎么注册）</a></li>
+                        <li class="py-2"><a href="/news/article-26819.htm" title="特殊线性表&#8212;&#8212;&#8212;-栈（1）">特殊线性表&#8212;&#8212;&#8212;-栈（1）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                    <a href="/">V2ray Free免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>
