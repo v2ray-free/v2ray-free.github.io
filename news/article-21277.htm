@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>springboot之依赖版本管理</title>
         <meta name="description" content="&nbsp; &nbsp; &nbsp; &nbsp;我们在使用springboot项目的时候，在我们的pom文件中，我们引入的依赖通常不需要制定依赖的版本,但是maven却能够给我们下载正常的jar" />
-        <link rel="icon" href="__ADDON__/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
     <!-- All CSS files -->
     <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
     <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
@@ -16,8 +16,7 @@
     <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
     <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
     <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
-    
-<!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -118,7 +117,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
-                                          				  				  				<div id="content_views" class="htmledit_views"> <p>&nbsp; &nbsp; &nbsp; &nbsp;我们在使用springboot项目的时候，在我们的pom文件中，我们引入的依赖通常不需要制定依赖的版本,但是maven却能够给我们下载正常的jar包。</p> <p>&nbsp; &nbsp; &nbsp; 在普通的spring项目的中我们需要自己去定义依赖的版本，经常会遇到jar包冲突的情况，springboot自动的帮我们管理这些依赖的版本，给我们的开发省去了不必要的麻烦，提高我们的开发效率!</p> <p>&nbsp; &nbsp; &nbsp; &nbsp;那么它是怎么做到的呢。</p> <p>&nbsp; &nbsp; &nbsp; 下面我们以一个简单的例子来说明一下springboot是怎么做到的依赖版本的自动管理。</p> <blockquote> <pre class="has"><code class="language-html">&lt;parent&gt;     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;     &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;     &lt;version&gt;2.1.6.RELEASE&lt;/version&gt;     &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt; &lt;/parent&gt;</code></pre> </blockquote> <p>所有的springboot项目都会依赖这个父pom，在这个父pom我们可以都看到，它又依赖了一个的pom，</p> <blockquote> <pre class="has"><code class="language-html">&lt;parent&gt;   &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;   &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;   &lt;version&gt;2.1.6.RELEASE&lt;/version&gt;   &lt;relativePath&gt;../../spring-boot-dependencies&lt;/relativePath&gt; &lt;/parent&gt; &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</code></pre> </blockquote> <p>再看一下spring-boot-dependencies这个pom</p> <blockquote> <pre class="has"><code class="language-html">&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt; &lt;version&gt;2.1.6.RELEASE&lt;/version&gt; &lt;packaging&gt;pom&lt;/packaging&gt; &lt;properties&gt;   &lt;activemq.version&gt;5.15.9&lt;/activemq.version&gt;   &lt;antlr2.version&gt;2.7.7&lt;/antlr2.version&gt;   &lt;appengine-sdk.version&gt;1.9.75&lt;/appengine-sdk.version&gt;   &lt;artemis.version&gt;2.6.4&lt;/artemis.version&gt;   &lt;aspectj.version&gt;1.9.4&lt;/aspectj.version&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 。。。 &lt;/properties&gt;</code></pre> </blockquote> <blockquote> <pre class="has"><code class="language-html">&lt;dependencyManagement&gt; &nbsp; &lt;dependencies&gt; &nbsp; &nbsp;&lt;dependency&gt; &nbsp; &nbsp; &lt;groupId&gt;org.apache.activemq&lt;/groupId&gt; &nbsp; &nbsp; &lt;artifactId&gt;activemq-amqp&lt;/artifactId&gt; &nbsp; &nbsp; &lt;version&gt;${activemq.version}&lt;/version&gt; &nbsp; &nbsp;&lt;/dependency&gt; &nbsp;          。。。 &nbsp; &lt;dependencies&gt; &lt;dependencyManagement&gt; </code></pre> </blockquote> <p>在这个顶级的pom文件中，&lt;properties&gt;标签中主要是管理了各个依赖的版本号，而&lt;dependencyManagement&gt;里面声明了常用的依赖并在&lt;version&gt;中使用了上面&lt;properties&gt;的属性值，定义依赖的版本。而我们在自己的项目中如果需要使用某个依赖，只需要声明&lt;groupId&gt;和&lt;artifacted&gt;就可以引用到这个pom里面声明的依赖和对应的版本。</p> <p>如果要引入一个在spring-boot-dependencies没有定义的依赖，那么则需要在自己的pom中定义依赖的版本。</p> <p>PS:maven的&lt;dependencyManagement&gt;标签里面定义的依赖只起到一个声明的作用,只有在项目中显式的声明依赖，maven才会真正的去给项目下载这个依赖的jar。</p> </p></div> 			                <div class="clearfix"></div>
+                                        <input type="hidden" id="share-website-info" data-name="V2ray X节点订阅官网" data-url="https://v2rayx.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>&nbsp; &nbsp; &nbsp; &nbsp;我们在使用springboot项目的时候，在我们的pom文件中，我们引入的依赖通常不需要制定依赖的版本,但是maven却能够给我们下载正常的jar包。</p> <p>&nbsp; &nbsp; &nbsp; 在普通的spring项目的中我们需要自己去定义依赖的版本，经常会遇到jar包冲突的情况，springboot自动的帮我们管理这些依赖的版本，给我们的开发省去了不必要的麻烦，提高我们的开发效率!</p> <p>&nbsp; &nbsp; &nbsp; &nbsp;那么它是怎么做到的呢。</p> <p>&nbsp; &nbsp; &nbsp; 下面我们以一个简单的例子来说明一下springboot是怎么做到的依赖版本的自动管理。</p> <blockquote> <pre class="has"><code class="language-html">&lt;parent&gt;     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;     &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;     &lt;version&gt;2.1.6.RELEASE&lt;/version&gt;     &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt; &lt;/parent&gt;</code></pre> </blockquote> <p>所有的springboot项目都会依赖这个父pom，在这个父pom我们可以都看到，它又依赖了一个的pom，</p> <blockquote> <pre class="has"><code class="language-html">&lt;parent&gt;   &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;   &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;   &lt;version&gt;2.1.6.RELEASE&lt;/version&gt;   &lt;relativePath&gt;../../spring-boot-dependencies&lt;/relativePath&gt; &lt;/parent&gt; &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</code></pre> </blockquote> <p>再看一下spring-boot-dependencies这个pom</p> <blockquote> <pre class="has"><code class="language-html">&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt; &lt;version&gt;2.1.6.RELEASE&lt;/version&gt; &lt;packaging&gt;pom&lt;/packaging&gt; &lt;properties&gt;   &lt;activemq.version&gt;5.15.9&lt;/activemq.version&gt;   &lt;antlr2.version&gt;2.7.7&lt;/antlr2.version&gt;   &lt;appengine-sdk.version&gt;1.9.75&lt;/appengine-sdk.version&gt;   &lt;artemis.version&gt;2.6.4&lt;/artemis.version&gt;   &lt;aspectj.version&gt;1.9.4&lt;/aspectj.version&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 。。。 &lt;/properties&gt;</code></pre> </blockquote> <blockquote> <pre class="has"><code class="language-html">&lt;dependencyManagement&gt; &nbsp; &lt;dependencies&gt; &nbsp; &nbsp;&lt;dependency&gt; &nbsp; &nbsp; &lt;groupId&gt;org.apache.activemq&lt;/groupId&gt; &nbsp; &nbsp; &lt;artifactId&gt;activemq-amqp&lt;/artifactId&gt; &nbsp; &nbsp; &lt;version&gt;${activemq.version}&lt;/version&gt; &nbsp; &nbsp;&lt;/dependency&gt; &nbsp;          。。。 &nbsp; &lt;dependencies&gt; &lt;dependencyManagement&gt; </code></pre> </blockquote> <p>在这个顶级的pom文件中，&lt;properties&gt;标签中主要是管理了各个依赖的版本号，而&lt;dependencyManagement&gt;里面声明了常用的依赖并在&lt;version&gt;中使用了上面&lt;properties&gt;的属性值，定义依赖的版本。而我们在自己的项目中如果需要使用某个依赖，只需要声明&lt;groupId&gt;和&lt;artifacted&gt;就可以引用到这个pom里面声明的依赖和对应的版本。</p> <p>如果要引入一个在spring-boot-dependencies没有定义的依赖，那么则需要在自己的pom中定义依赖的版本。</p> <p>PS:maven的&lt;dependencyManagement&gt;标签里面定义的依赖只起到一个声明的作用,只有在项目中显式的声明依赖，maven才会真正的去给项目下载这个依赖的jar。</p> </p></div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-20820.htm">宠物粮加工厂总投资 宠物粮加工厂总投资多少钱</a></p>
                                         <p>下一个：<a href="/news/article-21278.htm">青岛哪家动物医院好一点（青岛哪家宠物医院好）</a></p>
@@ -131,16 +131,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-11-13-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新22.2M/S免费节点订阅链接">V2ray Free节点订阅每天更新22.2M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-10-free-subscribe-node.htm" title="V2ray Free节点订阅每天更新19.7M/S免费节点订阅链接">V2ray Free节点订阅每天更新19.7M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-27285.htm" title="猫科医院好评评语（宠物医院写好评题材）">猫科医院好评评语（宠物医院写好评题材）</a></li>
+                        <li class="py-2"><a href="/news/article-21768.htm" title="宠物粮食商标（宠物粮食商标怎么注册）">宠物粮食商标（宠物粮食商标怎么注册）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-16-free-high-speed-nodes.htm" title="V2ray Free节点订阅每天更新18.8M/S免费节点订阅链接">V2ray Free节点订阅每天更新18.8M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-20362.htm" title="vue组件间传值详解">vue组件间传值详解</a></li>
+                        <li class="py-2"><a href="/news/article-28223.htm" title="宠物粮食加工厂设备有哪些厂家生产的呢（宠物粮食加工厂需要投资多少钱）">宠物粮食加工厂设备有哪些厂家生产的呢（宠物粮食加工厂需要投资多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-21767.htm" title="青浦二中分数线2021级多少人（2021青浦二中录取分数线）">青浦二中分数线2021级多少人（2021青浦二中录取分数线）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-23-node-share-links.htm" title="V2ray Free节点订阅每天更新22.1M/S免费节点订阅链接">V2ray Free节点订阅每天更新22.1M/S免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-11-9-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新22.2M/S免费节点订阅链接">V2ray Free节点订阅每天更新22.2M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-8-node-share-links.htm" title="V2ray Free节点订阅每天更新18.7M/S免费节点订阅链接">V2ray Free节点订阅每天更新18.7M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-6-node-share.htm" title="V2ray Free节点订阅每天更新19.1M/S免费节点订阅链接">V2ray Free节点订阅每天更新19.1M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-1-free-high-speed-nodes.htm" title="V2ray Free节点订阅每天更新21.7M/S免费节点订阅链接">V2ray Free节点订阅每天更新21.7M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-5-free-node-subscribe.htm" title="V2ray Free节点订阅每天更新22.2M/S免费节点订阅链接">V2ray Free节点订阅每天更新22.2M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-19445.htm" title="广州宠物领养平台官网电话（广州市宠物领养平台）">广州宠物领养平台官网电话（广州市宠物领养平台）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-28-free-high-speed-nodes.htm" title="V2ray Free节点订阅每天更新21.7M/S免费节点订阅链接">V2ray Free节点订阅每天更新21.7M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-24-free-subscribe-node.htm" title="V2ray Free节点订阅每天更新22.2M/S免费节点订阅链接">V2ray Free节点订阅每天更新22.2M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-24963.htm" title="权威分析@RequestParam和@RequestPart 的区别（官方文档）">权威分析@RequestParam和@RequestPart 的区别（官方文档）</a></li>
+                        <li class="py-2"><a href="/news/article-24023.htm" title="动物疫苗厂家查询系统官网（动物疫苗厂家查询系统官网入口）">动物疫苗厂家查询系统官网（动物疫苗厂家查询系统官网入口）</a></li>
                     </ul>
     </div>
 </div>
@@ -152,7 +152,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -171,6 +171,15 @@
             <div class="container-fluid">
                 <div class="hr-line mb-24 bg-light-gray"></div>
                 <p class="bottom-bar light-white text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
                     <a href="/">V2ray Free免费机场订阅节点官网</a> 版权所有 Powered by WordPress
                 </p>
             </div>
