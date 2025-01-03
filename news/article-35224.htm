@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-35224.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ajax URL路径的写法</title>
+        <meta name="description" content="Ajax URL路径的写法 在前后端使用ajax进行数据交互的时候，需要在前端代码中编写URL路径进入后端代码的controller中，从而获取数据。初次尝试前后端交互也许会遇到困难，在此，我列举了几" />
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                                <li>
+                                    <a href="#">关于</a>
+                                </li>
+                                <li>
+                                    <a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">Ajax URL路径的写法</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="V2ray X节点订阅官网" data-url="https://v2rayx.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h2> <a id="Ajax_URL_0" rel="nofollow"></a>Ajax URL路径的写法</h2> <p>在前后端使用ajax进行数据交互的时候，需要在前端代码中编写URL路径进入后端代码的controller中，从而获取数据。初次尝试前后端交互也许会遇到困难，在此，我列举了几种URL的写法供大家分享。</p> <h5> <a id="__2" rel="nofollow"></a>相对于网站根目录可以用"/"开始 (根目录是指服务器的根目录，不是你项目的根目录)</h5> <pre><code>$ajax({ 	url:"/getData.do"; }) </code></pre> <p><strong>该方式请求的路径为</strong>：http://localhost:8080/getData.do</p> <h5> <a id="_11" rel="nofollow"></a>“…/”表示页面目录的上一级目录</h5> <pre><code>$ajax({ 	url:"../getData.do; }) </code></pre> <p><strong>该方法请求的路径是</strong>：http://localhost:8080/projectname/getData.do</p> <h5> <a id="_19" rel="nofollow"></a>项目的根路径</h5> <pre><code>$ajax({ 	url:"getData.do"; })	 </code></pre> <p><strong>该方式的请求路径</strong>：http://localhost:8080/projectname/getData.do</p> <h5> <a id="_26" rel="nofollow"></a>全路径</h5> <pre><code>$ajax({ 	url:"http://localhost:8080/projectname/getdata.do"; })	 </code></pre> <p><strong>该方式的请求路径</strong>：http://localhost:8080/projectname/getdata.do</p> <p><strong>.do的含义</strong><br /> 比如你的页面路径是：http://localhost:8080/projectname/resource/index.html</p> <p>url请求最后加.do是为了服务器区分这个请求是静态资源还是servlet请求（后边有.do就是servlet请求）</p> <h2> <a id="springMVC_39" rel="nofollow"></a>springMVC如果是这样写的请求映射</h2> <pre><code>@RequestMapping("/user") @Controller public  class UserController{ @RequestMapping("/register") public @ResponseBody JsonMessageObject register(@RequestBody UserInfoPo userInfoPo){ </code></pre> <p>如果我们要请求register这个方法，url：…/user/register.do这样写<br /> 因为页面路径是这样http://localhost:8080/projectname/resource/index.html<br /> 让servlet映射请求跟在项目路径http://localhost:8080/projectname后面就可以了<br /> 最终请求的路径是http://localhost:8080/projectname/user/register.do</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-34847.htm">001 Linux下编译开发环境和日常使用环境打造（以centos7为例）</a></p>
+                                        <p>下一个：<a href="/news/article-35225.htm">宠物粮食加工厂设备生产厂家排名第一名 宠物粮食加工厂设备生产厂家排名第一名</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-21767.htm" title="青浦二中分数线2021级多少人（2021青浦二中录取分数线）">青浦二中分数线2021级多少人（2021青浦二中录取分数线）</a></li>
+                        <li class="py-2"><a href="/news/article-22186.htm" title="被猫咬了怎么办出血了（被猫咬了怎么办出血了,用酒精洗可以吗）">被猫咬了怎么办出血了（被猫咬了怎么办出血了,用酒精洗可以吗）</a></li>
+                        <li class="py-2"><a href="/news/article-23561.htm" title="动物医院等级划分标准表（动物医院等级划分标准表格）">动物医院等级划分标准表（动物医院等级划分标准表格）</a></li>
+                        <li class="py-2"><a href="/news/article-31415.htm" title="东北农业大学动物医院挂号（东北农业大学动物医学院官网）">东北农业大学动物医院挂号（东北农业大学动物医学院官网）</a></li>
+                        <li class="py-2"><a href="/news/article-29612.htm" title="被猫抓伤了需要打几针（被猫抓伤了需要打几针免疫球蛋白）">被猫抓伤了需要打几针（被猫抓伤了需要打几针免疫球蛋白）</a></li>
+                        <li class="py-2"><a href="/news/article-25427.htm" title="Vue3项目中的骨架屏">Vue3项目中的骨架屏</a></li>
+                        <li class="py-2"><a href="/news/article-21277.htm" title="springboot之依赖版本管理">springboot之依赖版本管理</a></li>
+                        <li class="py-2"><a href="/news/article-18971.htm" title="Shell基础 — 6、Bash基本功能（输入输出重定向）">Shell基础 — 6、Bash基本功能（输入输出重定向）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-14-node-share-links.htm" title="V2ray Free节点订阅每天更新22.6M/S免费节点订阅链接">V2ray Free节点订阅每天更新22.6M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-21768.htm" title="宠物粮食商标（宠物粮食商标怎么注册）">宠物粮食商标（宠物粮食商标怎么注册）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <a href="/">V2ray Free免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>

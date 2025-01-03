@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-34846.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>PyQt5 在qtdesigner中使用自定义的控件</title>
+        <meta name="description" content="文章目录  前言 1 提升控件 2 转化.ui文件为.py文件    奇奇怪怪!,虽然和我想象不一样但是还是记录一下吧！本来我以为是在QDesigner左边能显示控件可以实时拖拽，但是谁知道实际是在." />
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                                <li>
+                                    <a href="#">关于</a>
+                                </li>
+                                <li>
+                                    <a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">PyQt5 在qtdesigner中使用自定义的控件</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="V2ray X节点订阅官网" data-url="https://v2rayx.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <div class="toc"> <h3>文章目录</h3> <ul> <li><a href="#_2" rel="nofollow">前言</a></li> <li><a href="#1___7" rel="nofollow">1 提升控件</a></li> <li><a href="#2__uipy_63" rel="nofollow">2 转化.ui文件为.py文件</a></li> </ul> </div> </h1> <p><strong><font color="red">奇奇怪怪!</font></strong>,虽然和我想象不一样但是还是记录一下吧！本来我以为是在QDesigner左边能显示控件可以实时拖拽，但是谁知道实际是<strong><font color="red">在.ui文件中相当于一个占位符一样理解! 转化为.py文件加载了自定义的控件类（就是类似占位替换的感觉）</font></strong>，果然python 用QDesigner太鸡肋，有这个时间拖来拖去，代码码UI都完了！！！</p> </h1> <p>打开QDesigner，创建一个QWidget，在上面拖2个QFrame,给QWidget创建一个水平布局，如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230119/10550dae07ecdff43161f35b2d93af03.jpg" alt="PyQt5 在qtdesigner中使用自定义的控件"></p> <p>选择一个frame右击提升窗口部件，最后点击提升，如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230119/78d723b371eabe4ac3fb82e65c0ae4d4.jpg" alt="PyQt5 在qtdesigner中使用自定义的控件"><br /> 提升为自定义类：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230119/2eedbcd53e9ca97cb6585502071aec04.jpg" alt="PyQt5 在qtdesigner中使用自定义的控件"><br /><img decoding="async" src="http://img.555519.xyz/uploads/20230119/74029a7721bfd65fe75bec2ea404dc79.jpg" alt="PyQt5 在qtdesigner中使用自定义的控件"><br /> 其中BoardFrame为自定义的一个控件，BoardFrame继承于QFrame.<br /> BoardFrame.py代码如下：</p> <pre><code class="prism language-python"><span class="token comment">#!/usr/bin/env python</span> <span class="token comment"># -*- coding:utf-8 -*-</span> <span class="token keyword">from</span> PyQt5<span class="token punctuation">.</span>QtWidgets <span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">from</span> PyQt5<span class="token punctuation">.</span>QtCore <span class="token keyword">import</span> pyqtSignal<span class="token punctuation">,</span>Qt<span class="token punctuation">,</span>QRegExp <span class="token keyword">from</span> PyQt5<span class="token punctuation">.</span>QtGui <span class="token keyword">import</span> QRegExpValidator <span class="token keyword">import</span> sys  <span class="token keyword">class</span> <span class="token class-name">BoardFrame</span><span class="token punctuation">(</span>QFrame<span class="token punctuation">)</span><span class="token punctuation">:</span>     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> <span class="token operator">*</span>argc<span class="token punctuation">,</span> <span class="token operator">**</span>argv<span class="token punctuation">)</span><span class="token punctuation">:</span>         <span class="token builtin">super</span><span class="token punctuation">(</span>BoardFrame<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token operator">*</span>argc<span class="token punctuation">,</span> <span class="token operator">**</span>argv<span class="token punctuation">)</span>         self<span class="token punctuation">.</span>setFixedSize<span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span><span class="token number">500</span><span class="token punctuation">)</span>         self<span class="token punctuation">.</span>mainlayout <span class="token operator">=</span> QVBoxLayout<span class="token punctuation">(</span>self<span class="token punctuation">)</span>         self<span class="token punctuation">.</span>name <span class="token operator">=</span> QLabel<span class="token punctuation">(</span><span class="token string">"名字"</span><span class="token punctuation">)</span>         self<span class="token punctuation">.</span>name<span class="token punctuation">.</span>setFrameStyle<span class="token punctuation">(</span>QFrame<span class="token punctuation">.</span>Box <span class="token operator">|</span> QFrame<span class="token punctuation">.</span>Plain<span class="token punctuation">)</span>         self<span class="token punctuation">.</span>name<span class="token punctuation">.</span>setAlignment<span class="token punctuation">(</span>Qt<span class="token punctuation">.</span>AlignCenter<span class="token punctuation">)</span>         self<span class="token punctuation">.</span>mainlayout<span class="token punctuation">.</span>addWidget<span class="token punctuation">(</span>self<span class="token punctuation">.</span>name <span class="token punctuation">)</span>         self<span class="token punctuation">.</span>frame <span class="token operator">=</span> QFrame<span class="token punctuation">(</span>self<span class="token punctuation">)</span>         self<span class="token punctuation">.</span>mainlayout<span class="token punctuation">.</span>addWidget<span class="token punctuation">(</span>self<span class="token punctuation">.</span>frame<span class="token punctuation">)</span>         frame_layout <span class="token operator">=</span> QVBoxLayout<span class="token punctuation">(</span>self<span class="token punctuation">.</span>frame<span class="token punctuation">)</span>         <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">:</span>             btn <span class="token operator">=</span> QCheckBox<span class="token punctuation">(</span><span class="token string">"按钮%d "</span> <span class="token operator">%</span> <span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span>             frame_layout<span class="token punctuation">.</span>addWidget<span class="token punctuation">(</span>btn<span class="token punctuation">)</span>             frame_layout<span class="token punctuation">.</span>setContentsMargins<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span>             <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">8</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>                 frame01 <span class="token operator">=</span> QFrame<span class="token punctuation">(</span>self<span class="token punctuation">.</span>frame<span class="token punctuation">)</span>                 frame01<span class="token punctuation">.</span>setFrameStyle<span class="token punctuation">(</span>QFrame<span class="token punctuation">.</span>HLine <span class="token operator">|</span> QFrame<span class="token punctuation">.</span>Plain<span class="token punctuation">)</span>                 frame_layout<span class="token punctuation">.</span>addWidget<span class="token punctuation">(</span>frame01<span class="token punctuation">)</span>         <span class="token comment">#</span>         childlayout <span class="token operator">=</span> QHBoxLayout<span class="token punctuation">(</span><span class="token punctuation">)</span>         clear_btn <span class="token operator">=</span> QPushButton<span class="token punctuation">(</span><span class="token string">"全部取消"</span><span class="token punctuation">)</span>         set_btn <span class="token operator">=</span> QPushButton<span class="token punctuation">(</span><span class="token string">"全部勾选"</span><span class="token punctuation">)</span>         childlayout<span class="token punctuation">.</span>addWidget<span class="token punctuation">(</span>clear_btn<span class="token punctuation">)</span>         childlayout<span class="token punctuation">.</span>addWidget<span class="token punctuation">(</span>set_btn<span class="token punctuation">)</span>         self<span class="token punctuation">.</span>mainlayout<span class="token punctuation">.</span>addLayout<span class="token punctuation">(</span>childlayout<span class="token punctuation">)</span>         <span class="token comment">##边框</span>         self<span class="token punctuation">.</span>frame<span class="token punctuation">.</span>setFrameStyle<span class="token punctuation">(</span>QFrame<span class="token punctuation">.</span>Box <span class="token operator">|</span> QFrame<span class="token punctuation">.</span>Plain<span class="token punctuation">)</span>          <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>     app <span class="token operator">=</span> QApplication<span class="token punctuation">(</span>sys<span class="token punctuation">.</span>argv<span class="token punctuation">)</span>     win <span class="token operator">=</span> BoardFrame<span class="token punctuation">(</span><span class="token punctuation">)</span>     win<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>     sys<span class="token punctuation">.</span>exit<span class="token punctuation">(</span>app<span class="token punctuation">.</span>exec_<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> </code></pre> </h1> <p>保存ui文件为test.ui,然后转化为.py文件 <font color="red" size="6">pyuic5 -o test.py test.ui</font><br /> 将BoardFrame.py 和 test.py文件放到同级目录。</p> <pre><code class="prism language-python"><span class="token comment"># -*- coding: utf-8 -*-</span>  <span class="token comment"># Form implementation generated from reading ui file 'test.ui'</span> <span class="token comment">#</span> <span class="token comment"># Created by: PyQt5 UI code generator 5.15.2</span> <span class="token comment">#</span> <span class="token comment"># WARNING: Any manual changes made to this file will be lost when pyuic5 is</span> <span class="token comment"># run again.  Do not edit this file unless you know what you are doing.</span>   <span class="token keyword">from</span> PyQt5 <span class="token keyword">import</span> QtCore<span class="token punctuation">,</span> QtGui<span class="token punctuation">,</span> QtWidgets <span class="token keyword">from</span> BoardFrame <span class="token keyword">import</span> BoardFrame   <span class="token keyword">class</span> <span class="token class-name">Ui_Form</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span>     <span class="token keyword">def</span> <span class="token function">setupUi</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> Form<span class="token punctuation">)</span><span class="token punctuation">:</span>         Form<span class="token punctuation">.</span>setObjectName<span class="token punctuation">(</span><span class="token string">"Form"</span><span class="token punctuation">)</span>         Form<span class="token punctuation">.</span>resize<span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token number">600</span><span class="token punctuation">)</span>         self<span class="token punctuation">.</span>horizontalLayout <span class="token operator">=</span> QtWidgets<span class="token punctuation">.</span>QHBoxLayout<span class="token punctuation">(</span>Form<span class="token punctuation">)</span>         self<span class="token punctuation">.</span>horizontalLayout<span class="token punctuation">.</span>setObjectName<span class="token punctuation">(</span><span class="token string">"horizontalLayout"</span><span class="token punctuation">)</span>         self<span class="token punctuation">.</span>frame <span class="token operator">=</span> BoardFrame<span class="token punctuation">(</span>Form<span class="token punctuation">)</span>         self<span class="token punctuation">.</span>frame<span class="token punctuation">.</span>setFrameShape<span class="token punctuation">(</span>QtWidgets<span class="token punctuation">.</span>QFrame<span class="token punctuation">.</span>StyledPanel<span class="token punctuation">)</span>         self<span class="token punctuation">.</span>frame<span class="token punctuation">.</span>setFrameShadow<span class="token punctuation">(</span>QtWidgets<span class="token punctuation">.</span>QFrame<span class="token punctuation">.</span>Raised<span class="token punctuation">)</span>         self<span class="token punctuation">.</span>frame<span class="token punctuation">.</span>setObjectName<span class="token punctuation">(</span><span class="token string">"frame"</span><span class="token punctuation">)</span>         self<span class="token punctuation">.</span>horizontalLayout<span class="token punctuation">.</span>addWidget<span class="token punctuation">(</span>self<span class="token punctuation">.</span>frame<span class="token punctuation">)</span>         self<span class="token punctuation">.</span>frame_2 <span class="token operator">=</span> BoardFrame<span class="token punctuation">(</span>Form<span class="token punctuation">)</span>         self<span class="token punctuation">.</span>frame_2<span class="token punctuation">.</span>setFrameShape<span class="token punctuation">(</span>QtWidgets<span class="token punctuation">.</span>QFrame<span class="token punctuation">.</span>StyledPanel<span class="token punctuation">)</span>         self<span class="token punctuation">.</span>frame_2<span class="token punctuation">.</span>setFrameShadow<span class="token punctuation">(</span>QtWidgets<span class="token punctuation">.</span>QFrame<span class="token punctuation">.</span>Raised<span class="token punctuation">)</span>         self<span class="token punctuation">.</span>frame_2<span class="token punctuation">.</span>setObjectName<span class="token punctuation">(</span><span class="token string">"frame_2"</span><span class="token punctuation">)</span>         self<span class="token punctuation">.</span>horizontalLayout<span class="token punctuation">.</span>addWidget<span class="token punctuation">(</span>self<span class="token punctuation">.</span>frame_2<span class="token punctuation">)</span>          self<span class="token punctuation">.</span>retranslateUi<span class="token punctuation">(</span>Form<span class="token punctuation">)</span>         QtCore<span class="token punctuation">.</span>QMetaObject<span class="token punctuation">.</span>connectSlotsByName<span class="token punctuation">(</span>Form<span class="token punctuation">)</span>      <span class="token keyword">def</span> <span class="token function">retranslateUi</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> Form<span class="token punctuation">)</span><span class="token punctuation">:</span>         _translate <span class="token operator">=</span> QtCore<span class="token punctuation">.</span>QCoreApplication<span class="token punctuation">.</span>translate         Form<span class="token punctuation">.</span>setWindowTitle<span class="token punctuation">(</span>_translate<span class="token punctuation">(</span><span class="token string">"Form"</span><span class="token punctuation">,</span> <span class="token string">"Form"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">#上面为工具转化的代码，下面为我们自己添加的测试</span> <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>     <span class="token keyword">import</span> sys     app <span class="token operator">=</span> QtWidgets<span class="token punctuation">.</span>QApplication<span class="token punctuation">(</span>sys<span class="token punctuation">.</span>argv<span class="token punctuation">)</span>     widget <span class="token operator">=</span> QtWidgets<span class="token punctuation">.</span>QWidget<span class="token punctuation">(</span><span class="token punctuation">)</span>     <span class="token comment">#widget.setStyleSheet("background-color:red;")</span>     widget<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>     test <span class="token operator">=</span> Ui_Form<span class="token punctuation">(</span><span class="token punctuation">)</span>     test<span class="token punctuation">.</span>setupUi<span class="token punctuation">(</span>widget<span class="token punctuation">)</span>     sys<span class="token punctuation">.</span>exit<span class="token punctuation">(</span>app<span class="token punctuation">.</span>exec_<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  </code></pre> <p>效果如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230119/7abd8abf31077cf62443d6f4ef6d0ab8.jpg" alt="PyQt5 在qtdesigner中使用自定义的控件"></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-34372.htm">动物疫苗的使用方法及注意事项视频教程下载 动物疫苗接种方法有哪些</a></p>
+                                        <p>下一个：<a href="/news/article-34847.htm">001 Linux下编译开发环境和日常使用环境打造（以centos7为例）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-1-free-high-speed-nodes.htm" title="V2ray Free节点订阅每天更新19.5M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新19.5M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-28676.htm" title="狗狗领养平台有哪些软件（狗狗领养免费平台）">狗狗领养平台有哪些软件（狗狗领养免费平台）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-17-node-share.htm" title="V2ray Free节点订阅每天更新21.2M/S免费节点订阅链接">V2ray Free节点订阅每天更新21.2M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-24963.htm" title="权威分析@RequestParam和@RequestPart 的区别（官方文档）">权威分析@RequestParam和@RequestPart 的区别（官方文档）</a></li>
+                        <li class="py-2"><a href="/news/article-24024.htm" title="58同城领养宠物可信吗（五八同城领养宠物）">58同城领养宠物可信吗（五八同城领养宠物）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-2-free-high-speed-nodes.htm" title="V2ray Free节点订阅每天更新18.9M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新18.9M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-35225.htm" title="宠物粮食加工厂设备生产厂家排名第一名 宠物粮食加工厂设备生产厂家排名第一名">宠物粮食加工厂设备生产厂家排名第一名 宠物粮食加工厂设备生产厂家排名第一名</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-26-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新21.6M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新21.6M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-20363.htm" title="vue-cli4.5.13按需引入vant，解决vant样式失效问题">vue-cli4.5.13按需引入vant，解决vant样式失效问题</a></li>
+                        <li class="py-2"><a href="/news/article-19906.htm" title="动物防疫相关管理制度范本（动物防疫管理条例）">动物防疫相关管理制度范本（动物防疫管理条例）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <a href="/">V2ray Free免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>
