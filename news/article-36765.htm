@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-36765.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>如何使用正则表达式验证IP地址</title>
+        <meta name="description" content="IP地址正则表达式模式  ^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\. ([01]?\\d\\d?|2" />
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                                <li>
+                                    <a href="#">关于</a>
+                                </li>
+                                <li>
+                                    <a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">如何使用正则表达式验证IP地址</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="V2ray X节点订阅官网" data-url="https://v2rayx.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <article id="main-content" style="font-size: 16px;" rel="nofollow"> <p> IP地址正则表达式模式 </p> <pre class="has"><code class="language-java">^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\. ([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])$</code></pre> <p> 描述 </p> <pre class="has"><code class="language-java">^		#start of the line  (		#  start of group #1    [01]?\\d\\d? #    Can be one or two digits. If three digits appear, it must start either 0 or 1 		#    e.g ([0-9], [0-9][0-9],[0-1][0-9][0-9])     |		#    ...or    2[0-4]\\d	#    start with 2, follow by 0-4 and end with any digit (2[0-4][0-9])      |           #    ...or    25[0-5]      #    start with 2, follow by 5 and ends with 0-5 (25[0-5])   )		#  end of group #2   \.            #  follow by a dot "." ....            # repeat with 3 times (3x) $		#end of the line</code></pre> <p> 整个组合表示从0到255的数字，后跟点“。”，重复4次并以点“。”结尾。 有效的IP地址格式为“ 0-255.0-255.0-255.0-255”。 </p> <h2> 1. Java正则表达式示例 </h2> <div class="notranslate">   IPAddressValidator.java  </div> <pre class="has"><code class="language-java">package com.mkyong.regex;  import java.util.regex.Matcher; import java.util.regex.Pattern;   public class IPAddressValidator{ 	     private Pattern pattern;     private Matcher matcher;       private static final String IPADDRESS_PATTERN =  		"^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." + 		"([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." + 		"([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." + 		"([01]?\\d\\d?|2[0-4]\\d|25[0-5])$"; 	       public IPAddressValidator(){ 	  pattern = Pattern.compile(IPADDRESS_PATTERN);     } 	      /**     * Validate ip address with regular expression     * @param ip ip address for validation     * @return true valid ip address, false invalid ip address     */     public boolean validate(final String ip){		   	  matcher = pattern.matcher(ip); 	  return matcher.matches();	    	         } }</code></pre> <div class="ads-container"> <div class="d-none d-lg-block"> <div></div> </p></div> </p></div> <h2> 2.符合的IP地址： </h2> <p> 1.“ 1.1.1.1”，“ 255.255.255.255”，“ 192.168.1.1”， <br /> 2.“ 10.10.1.1”，“ 132.254.111.10”，“ 26.10.2.10”， <br /> 3.“ 127.0.0.1” </p> <h2> 3. IP地址不匹配： </h2> <p> 1.“ 10.10.10” –必须为4“。” <br /> 2.“ 10.10” –必须为4“。” <br /> 3.“ 10” –必须为4“。” <br /> 4.“ aaaa” –仅允许数字 <br /> 5.“ 10.0.0.a” –仅允许数字 <br /> 6.“ 10.10.10.256” –数字必须介于[0-255]之间 <br /> 7.“ 222.222.2.999” –数字必须介于[0-255]之间 <br /> 8.“ 999.10.10.20” –数字必须介于[0-255]之间 <br /> 9.“ 2222.22.22.22” –数字必须介于[0-255]之间 <br /> 10.“ 22.2222.22.2” –数字必须介于[0-255]之间 </p> <h2> 4.单元测试 </h2> <div class="notranslate">   IPAddressValidatorTest.java  </div> <pre class="has"><code class="language-java">package com.mkyong.regex;  import org.testng.Assert; import org.testng.annotations.*;   /**  * IPAddress validator Testing  * @author mkyong  *  */ public class IPAddressValidatorTest {   	private IPAddressValidator ipAddressValidator;      	@BeforeClass         public void initData(){ 		ipAddressValidator = new IPAddressValidator();         }      	@DataProvider 	public Object[][] ValidIPAddressProvider() { 		return new Object[][]{ 		   new Object[] {"1.1.1.1"},new Object[] {"255.255.255.255"},                    new Object[] {"192.168.1.1"},new Object[] {"10.10.1.1"},                    new Object[] {"132.254.111.10"},new Object[] {"26.10.2.10"}, 		   new Object[] {"127.0.0.1"} 		}; 	} 	 	@DataProvider 	public Object[][] InvalidIPAddressProvider() { 		return new Object[][]{ 		   new Object[] {"10.10.10"},new Object[] {"10.10"},                    new Object[] {"10"},new Object[] {"a.a.a.a"},                    new Object[] {"10.0.0.a"},new Object[] {"10.10.10.256"}, 		   new Object[] {"222.222.2.999"},new Object[] {"999.10.10.20"},                    new Object[] {"2222.22.22.22"},new Object[] {"22.2222.22.2"},                    new Object[] {"10.10.10"},new Object[] {"10.10.10"},	 		}; 	} 	 	@Test(dataProvider = "ValidIPAddressProvider") 	public void ValidIPAddressTest(String ip) { 		   boolean valid = ipAddressValidator.validate(ip); 		   System.out.println("IPAddress is valid : " + ip + " , " + valid); 		   Assert.assertEquals(true, valid); 	} 	 	@Test(dataProvider = "InvalidIPAddressProvider",                  dependsOnMethods="ValidIPAddressTest") 	public void InValidIPAddressTest(String ip) { 		   boolean valid = ipAddressValidator.validate(ip); 		   System.out.println("IPAddress is valid : " + ip + " , " + valid); 		   Assert.assertEquals(false, valid);  	}	 }</code></pre> <h2> 5.单元测试–结果 </h2> <pre class="has"><code class="language-markup">IPAddress is valid : 1.1.1.1 , true IPAddress is valid : 255.255.255.255 , true IPAddress is valid : 192.168.1.1 , true IPAddress is valid : 10.10.1.1 , true IPAddress is valid : 132.254.111.10 , true IPAddress is valid : 26.10.2.10 , true IPAddress is valid : 127.0.0.1 , true IPAddress is valid : 10.10.10 , false IPAddress is valid : 10.10 , false IPAddress is valid : 10 , false IPAddress is valid : a.a.a.a , false IPAddress is valid : 10.0.0.a , false IPAddress is valid : 10.10.10.256 , false IPAddress is valid : 222.222.2.999 , false IPAddress is valid : 999.10.10.20 , false IPAddress is valid : 2222.22.22.22 , false IPAddress is valid : 22.2222.22.2 , false PASSED: ValidIPAddressTest([Ljava.lang.String;@1d4c61c) PASSED: InValidIPAddressTest([Ljava.lang.String;@116471f)  ===============================================     com.mkyong.regex.IPAddressValidatorTest     Tests run: 2, Failures: 0, Skips: 0 ===============================================  =============================================== mkyong Total tests run: 2, Failures: 0, Skips: 0 ===============================================</code></pre> <h2> 参考 </h2> <ol> <li> <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://en.wikipedia.org/wiki/IP_address"  target="_blank" rel="nofollow">http://en.wikipedia.org/wiki/IP_address</a> </li> </ol> <div class="post-tag d-none d-xl-block">   标签： <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mkyong.com/tag/ip-address/"  rel="nofollow">IP地址</a> <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mkyong.com/tag/regex/"  rel="nofollow">正则表达式</a>  </div> <p> <input type="hidden" id="mkyong-current-postId" value="1986"/></p> <div id="mk-afterpost-related"></div> <div class="container"> <div class="row"> <div class="col"> <div class="col-centered ads-width-300"> <div></div> </p></div> </p></div> </p></div> </p></div> <blockquote> <p>翻译自: <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mkyong.com/regular-expressions/how-to-validate-ip-address-with-regular-expression/"  rel="nofollow">https://mkyong.com/regular-expressions/how-to-validate-ip-address-with-regular-expression/</a></p> </blockquote> </article> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-36288.htm">设计模式学习笔记状态模式及其实现</a></p>
+                                        <p>下一个：<a href="/news/article-36767.htm">2021公务员国考报名要求是什么（公务员国考报考指南）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-28676.htm" title="狗狗领养平台有哪些软件（狗狗领养免费平台）">狗狗领养平台有哪些软件（狗狗领养免费平台）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-14-node-share-links.htm" title="V2ray Free节点订阅每天更新22.6M/S免费节点订阅链接">V2ray Free节点订阅每天更新22.6M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-27-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新18.2M/S免费节点订阅链接">V2ray Free节点订阅每天更新18.2M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-23559.htm" title="动物疫苗种类及优缺点（动物疫苗种类及优缺点图片）">动物疫苗种类及优缺点（动物疫苗种类及优缺点图片）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-13-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新22.2M/S免费节点订阅链接">V2ray Free节点订阅每天更新22.2M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-23110.htm" title="领养宠物要钱合理吗（领养宠物需要花钱吗?）">领养宠物要钱合理吗（领养宠物需要花钱吗?）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-28-free-subscribe-node.htm" title="V2ray Free节点订阅每天更新18.9M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新18.9M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-27285.htm" title="猫科医院好评评语（宠物医院写好评题材）">猫科医院好评评语（宠物医院写好评题材）</a></li>
+                        <li class="py-2"><a href="/news/article-20363.htm" title="vue-cli4.5.13按需引入vant，解决vant样式失效问题">vue-cli4.5.13按需引入vant，解决vant样式失效问题</a></li>
+                        <li class="py-2"><a href="/news/article-18969.htm" title="Spring Boot教程 | 第八篇：Spring Boot整合knife4j（swagger-bootstrap-ui）实现自动API文档">Spring Boot教程 | 第八篇：Spring Boot整合knife4j（swagger-bootstrap-ui）实现自动API文档</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <a href="/">V2ray Free免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-36288.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>设计模式学习笔记状态模式及其实现</title>
+        <meta name="description" content="状态模式（State Pattern）指允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。 一般用来实现状态机，而状态机常用在游戏、工作流引擎等系统的开发中：  有限状态机（Fi" />
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                                <li>
+                                    <a href="#">关于</a>
+                                </li>
+                                <li>
+                                    <a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">设计模式学习笔记状态模式及其实现</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="V2ray X节点订阅官网" data-url="https://v2rayx.github.io">
+                  				  				  				<p>状态模式（State Pattern）指允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。</p> <p>一般用来实现状态机，而状态机常用在游戏、工作流引擎等系统的开发中：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/f4cad716ebc75b30c47ae89e8f385ed6.jpg" alt="设计模式学习笔记状态模式及其实现"></p> <p>有限状态机（Finite State Machine，FSM），状态机有三个组成部分：状态（State）、事件（Event）和动作（Action）。其中事件也叫作转移条件（Transition Condition）,事件主要用于触发状态的转移及动作的执行，动作不是必须的，也可能只转移状态，不执行任何动作。</p> <h2 id="一状态模式的介绍">一、状态模式的介绍</h2> <p>状态模式又名状态对象（Objects for States），它是一种对象行为型模式。它的解决思想是当控制一个对象状态转换的条件表达式过于复杂时，把相关“判断逻辑”提取出来，用各个不同的类进行表示，系统处于哪种情况、直接使用相应的状态类对象进行处理。</p> <h3 id="11-状态模式的结构">1.1 状态模式的结构</h3> <p>在状态模式的结构中，通过实现抽象状态类的具体状态类来定义多个状态，每个状态类仅实现自己的逻辑，上下文类负责切换状态。其结构类图如下所示：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/b802cab023d82d6a2dfd652f064cfc90.jpg" alt="设计模式学习笔记状态模式及其实现"></p> <ul> <li><code>State</code>：抽象状态类，提供一个方法封装上下文对象的状态</li> <li><code>ConcreteState1、ConcreteState2</code>：具体状态类，继承抽象状态类，实现状态下的行为</li> <li><code>Context</code>：上下文类，负责对具体状态进行切换</li> <li><code>Client</code>：客户端，调用具体状态和上下文</li> </ul> <h3 id="12-状态模式的实现">1.2 状态模式的实现</h3> <p>首先是<strong>抽象状态类</strong>，具体代码如下：</p> <pre><code class="language-java">public abstract class State {     /**抽象业务方法，不同的具体状态可以有不同的实现*/     public abstract void handle(); }</code></pre> <p>其次是实现抽象状态类的<strong>具体状态类</strong>：</p> <pre><code class="language-java">public class ConcreteState1 extends State{      @Override     public void handle(Context context) {         System.out.println("进入ConcreteState1中~");         context.setState(this);     }      @Override     public String toString() {         return "concreteState1";     } } public class ConcreteState2 extends State{      @Override     public void handle(Context context) {         System.out.println("进入ConcreteState2中~");         context.setState(this);     }      @Override     public String toString() {         return "ConcreteState2";     } }</code></pre> <p>接下来是<strong>上下文类</strong>，维护当前状态，并负责具体状态的切换</p> <pre><code class="language-java">public class Context {      private State state;      //设置初始状态为null     public Context() {         state = null;     } 	//实现状态转换     public void setState(State state) {         this.state = state;     }      public State getState() {         return state;     } }</code></pre> <p><strong>客户端</strong>测试类</p> <pre><code class="language-java">public class Client {     public static void main(String[] args) {         Context context = new Context();         System.out.println("现在的状态是：" + context.getState());         System.out.println("---------------------------------");         State concreteState1 = new ConcreteState1();         concreteState1.handle(context);         System.out.println("现在的状态是：" + context.getState());         System.out.println("---------------------------------");         State concreteState2 = new ConcreteState2();         concreteState2.handle(context);         System.out.println("现在的状态是：" + context.getState());      } }</code></pre> <p>测试结果：</p> <pre><code>现在的状态是：null --------------------------------- 进入ConcreteState1中~ 现在的状态是：concreteState1 --------------------------------- 进入ConcreteState2中~ 现在的状态是：ConcreteState2</code></pre> <h2 id="二状态模式的应用场景">二、状态模式的应用场景</h2> <p>状态模式的应用比较广泛，比如游戏中角色状态的转换、公文审批中的流转等等。</p> <p>以下情况可以考虑使用状态模式：</p> <ul> <li>对象的行为依赖于它的某些属性值（状态），而且状态的改变将导致行为的变化</li> <li>代码中包含大量与对象状态有关的条件语句（if-else）,这些条件语句的出现会导致代码的可维护性和灵活性变差。</li> </ul> <h2 id="三状态模式实战">三、状态模式实战</h2> <p>本案例中模拟营销活动审核状态流转场景，在一个活动的上线中是需要多个层级进行审核才能上线的(案例来源于《重学Java设计模式》)。如下图中可以看到流程节点中包括各个状态到下一个状态扭转的关联条件：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/4f01017212e09b6116c0fcca2466393d.jpg" alt="设计模式学习笔记状态模式及其实现"></p> <p>因此在审批过程中就难免会包含很多条件语句的判断，长此以往，随着状态数量的增加，会增加代码的可维护性和可读性。下面就利用状态模式来实现多状态的审批过程，先来看看状态模式模型的结构：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/798a1f04f1e8899359429bd8510e6829.jpg" alt="设计模式学习笔记状态模式及其实现"></p> <ul> <li><code>State</code>：状态抽象类，定义所有状态的操作接口</li> <li><code>CheckState、CloseState、DoingState...</code>：具体状态类，各种状态的具体逻辑实现</li> <li><code>StateHandler</code>：状态处理类，相当于之前结构中提到的上下文类，负责对状态流程进行统一处理</li> </ul> <h3 id="具体代码">具体代码</h3> <ol> <li><strong>基本活动信息</strong>和<strong>活动枚举状态</strong></li> </ol> <pre><code class="language-java">public class ActivityInfo {      private String activityId;     private String activityName;     private Enum&lt;Status&gt; status;     private Date beginTime;     private Date endTime;      //get\set\Constructor } public enum Status {     Editing,     Check,     Pass,     Refuse,     Doing,     Close,     Open }</code></pre> <ol start="2"> <li><strong>活动业务处理</strong></li> </ol> <pre><code class="language-java">public class ActivityService {      private static Map&lt;String, Enum&lt;Status&gt;&gt; statusMap = new ConcurrentHashMap&lt;&gt;();      public static void init(String activityId, Enum&lt;Status&gt; initStatus) {         ActivityInfo activityInfo = new ActivityInfo();         activityInfo.setActivityId(activityId);         activityInfo.setActivityName("测试活动");         activityInfo.setStatus(initStatus);         activityInfo.setBeginTime(new Date());         activityInfo.setEndTime(new Date());         statusMap.put(activityId, initStatus);     }      /**      * 查询活动信息      * @param activityId 活动ID      * @return 查询后的活动信息      */     public static ActivityInfo queryActivityInfo(String activityId) {         ActivityInfo activityInfo = new ActivityInfo();         activityInfo.setActivityId(activityId);         activityInfo.setActivityName("测试活动");         activityInfo.setStatus(statusMap.get(activityId));         activityInfo.setBeginTime(new Date());         activityInfo.setEndTime(new Date());         return activityInfo;     }      /**      * 查询活动状态      * @param activityId 活动ID      * @return 查询后的活动状态      */     public static Enum&lt;Status&gt; queryActivityStatus(String activityId) {         return statusMap.get(activityId);     }      public static synchronized void execStatus(String activityId, Enum&lt;Status&gt; beforeStatus, Enum&lt;Status&gt; afterStatus) {         /*如果前后两个状态相同，直接返回*/         if (!beforeStatus.equals(statusMap.get(activityId))) {             return;         }         /*反之更新statusMap*/         statusMap.put(activityId, afterStatus);     } }</code></pre> <p>2.<strong>活动返回格式</strong></p> <pre><code class="language-java">public class Result {      private String code;     private String info;          //get/set }</code></pre> <ol start="3"> <li><strong>抽象状态类</strong>和<strong>具体状态实现</strong></li> </ol> <pre><code class="language-java">public abstract class State {      /**提审*/     public abstract Result arraignment(String activityId, Enum&lt;Status&gt; currentStatus);     /**撤审*/     public abstract Result checkRevoke(String activityId, Enum&lt;Status&gt; currentStatus);     /**审核通过*/     public abstract Result checkPass(String activityId, Enum&lt;Status&gt; currentStatus);     /**拒审*/     public abstract Result checkRefuse(String activityId, Enum&lt;Status&gt; currentStatus);     /**关闭*/     public abstract Result close(String activityId, Enum&lt;Status&gt; currentStatus);     /**开启活动*/     public abstract Result open(String activityId, Enum&lt;Status&gt; currentStatus);     /**活动中*/     public abstract Result doing(String activityId, Enum&lt;Status&gt; currentStatus);  } public class CheckState extends State {     @Override     public Result arraignment(String activityId, Enum&lt;Status&gt; currentStatus) {         return new Result("0001", "提审后不能重复提审");     }      @Override     public Result checkRevoke(String activityId, Enum&lt;Status&gt; currentStatus) {         ActivityService.execStatus(activityId, Status.Check, Status.Editing);         return new Result("0000", "活动审核撤销回编辑");     }      @Override     public Result checkPass(String activityId, Enum&lt;Status&gt; currentStatus) {         ActivityService.execStatus(activityId, Status.Check, Status.Pass);         return new Result("0000", "活动审核通过");     }      @Override     public Result checkRefuse(String activityId, Enum&lt;Status&gt; currentStatus) {         ActivityService.execStatus(activityId, Status.Check, Status.Refuse);         return new Result("0000", "活动审核被拒绝");     }      @Override     public Result close(String activityId, Enum&lt;Status&gt; currentStatus) {         return new Result("0001", "活动审核后不能直接关闭");     }      @Override     public Result open(String activityId, Enum&lt;Status&gt; currentStatus) {         return new Result("0001", "活动审核后不能再开启");     }      @Override     public Result doing(String activityId, Enum&lt;Status&gt; currentStatus) {         return new Result("0001", "活动审核不通过无法进入活动中");     } } //下面依次是其他几个状态，较多省略</code></pre> <ol start="4"> <li><strong>状态处理类</strong>，相当于前面的上下文，负责进行状态转移</li> </ol> <pre><code class="language-java">public class StateHandler {      private Map&lt;Enum&lt;Status&gt;, State&gt; stateMap = new ConcurrentHashMap&lt;&gt;();      public StateHandler() {         stateMap.put(Status.Check, new CheckState());         stateMap.put(Status.Close, new CloseState());         stateMap.put(Status.Doing, new DoingState());         stateMap.put(Status.Refuse, new RefuseState());         stateMap.put(Status.Pass, new PassState());         stateMap.put(Status.Open, new OpenState());         stateMap.put(Status.Editing, new EditingState());     }      public Result arraignment(String activityId, Enum&lt;Status&gt; currentStatus) {         return stateMap.get(currentStatus).arraignment(activityId, currentStatus);     }      public Result checkPass(String activityId, Enum&lt;Status&gt; currentStatus) {         return stateMap.get(currentStatus).checkPass(activityId, currentStatus);     }      public Result checkRefuse(String activityId, Enum&lt;Status&gt; currentStatus) {         return stateMap.get(currentStatus).checkRefuse(activityId, currentStatus);     }      public Result checkRevoke(String activityId, Enum&lt;Status&gt; currentStatus) {         return stateMap.get(currentStatus).checkRevoke(activityId, currentStatus);     }      public Result close(String activityId, Enum&lt;Status&gt; currentStatus) {         return stateMap.get(currentStatus).close(activityId, currentStatus);     }      public Result open(String activityId, Enum&lt;Status&gt; currentStatus) {         return stateMap.get(currentStatus).open(activityId, currentStatus);     }      public Result doing(String activityId, Enum&lt;Status&gt; currentStatus) {         return stateMap.get(currentStatus).doing(activityId, currentStatus);     } }</code></pre> <p>5.<strong>测试类</strong></p> <pre><code class="language-java">public class ApiTest {      private Logger logger = LoggerFactory.getLogger(ApiTest.class);      @Test     public void test_Check2Close() {         String activityId = "100001";         ActivityService.init(activityId, Status.Check);         StateHandler stateHandler = new StateHandler();         Result result = stateHandler.close(activityId, Status.Check);         logger.info("测试结果（提审到关闭）：{}", JSON.toJSONString(result));         logger.info("活动信息：{} 状态：{}", JSON.toJSONString(ActivityService.queryActivityInfo(activityId)), JSON.toJSONString(ActivityService.queryActivityStatus(activityId)));     }      @Test     public void test_Refuse2Revoke() {         String activityId = "100001";         ActivityService.init(activityId, Status.Refuse);          StateHandler stateHandler = new StateHandler();         Result result = stateHandler.checkRevoke(activityId, Status.Refuse);          logger.info("测试结果(拒绝To撤审)：{}", JSON.toJSONString(result));         logger.info("活动信息：{} 状态：{}", JSON.toJSONString(ActivityService.queryActivityInfo(activityId)), JSON.toJSONString(ActivityService.queryActivityInfo(activityId).getStatus()));     } }</code></pre> <p>测试结果：</p> <pre><code>19:49:48.755 [main] INFO  ApiTest - 测试结果(拒绝To撤审)：{"code":"0000","info":"拒绝后返回编辑状态"} 19:49:48.768 [main] INFO  ApiTest - 活动信息：{"activityId":"100001","activityName":"测试活动","beginTime":1649591388759,"endTime":1649591388759,"status":"Editing"} 状态："Editing"</code></pre> <h2 id="参考资料">参考资料</h2> <p>《重学Java设计模式》</p> <p>《设计模式》</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://c.biancheng.net/view/1388.html"  target="_blank" rel="nofollow">http://c.biancheng.net/view/1388.html</a></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-36287.htm">python 中yield的使用</a></p>
+                                        <p>下一个：<a href="/news/article-36765.htm">如何使用正则表达式验证IP地址</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-27741.htm" title="猫咪三针疫苗多久过期（猫咪的三针疫苗要相隔多久）">猫咪三针疫苗多久过期（猫咪的三针疫苗要相隔多久）</a></li>
+                        <li class="py-2"><a href="/news/article-33388.htm" title="动物疫苗品牌顿宝（动物疫苗龙头股排名）">动物疫苗品牌顿宝（动物疫苗龙头股排名）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-18-free-high-speed-nodes.htm" title="V2ray Free节点订阅每天更新19.1M/S免费节点订阅链接">V2ray Free节点订阅每天更新19.1M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-23561.htm" title="动物医院等级划分标准表（动物医院等级划分标准表格）">动物医院等级划分标准表（动物医院等级划分标准表格）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-13-free-subscribe-node.htm" title="V2ray Free节点订阅每天更新19.6M/S免费节点订阅链接">V2ray Free节点订阅每天更新19.6M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-30038.htm" title="java基础面试题">java基础面试题</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-15-free-node-subscribe.htm" title="V2ray Free节点订阅每天更新22.7M/S免费节点订阅链接">V2ray Free节点订阅每天更新22.7M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-33901.htm" title="国内前十名的兽药厂家 中国最好的兽药厂家">国内前十名的兽药厂家 中国最好的兽药厂家</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-5-free-node-subscribe.htm" title="V2ray Free节点订阅每天更新22.2M/S免费节点订阅链接">V2ray Free节点订阅每天更新22.2M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-30039.htm" title="宠物领养协议是啥意思啊怎么写（宠物领养协议是啥意思啊怎么写呀）">宠物领养协议是啥意思啊怎么写（宠物领养协议是啥意思啊怎么写呀）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <a href="/">V2ray Free免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>
