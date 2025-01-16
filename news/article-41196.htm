@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-41196.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>springcloudalibaba架构(12):Feign整合Sentinel实现服务容错</title>
+        <meta name="description" content="文章目录  前言 第一节 Feign如何整合Sentinel实现服务容错 第二节 使用FallbackFactory容错获取异常    Feign远程调用，Sentinel限流。 如何将Feign整合" />
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                                <li>
+                                    <a href="#">关于</a>
+                                </li>
+                                <li>
+                                    <a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">springcloudalibaba架构(12):Feign整合Sentinel实现服务容错</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="V2ray X节点订阅官网" data-url="https://v2rayx.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <div class="toc"> <h3>文章目录</h3> <ul> <li><a href="#_1" rel="nofollow">前言</a></li> <li><a href="#_FeignSentinel_8" rel="nofollow">第一节 Feign如何整合Sentinel实现服务容错</a></li> <li><a href="#_FallbackFactory_65" rel="nofollow">第二节 使用FallbackFactory容错获取异常</a></li> </ul> </div> </h1> <p>Feign远程调用，Sentinel限流。<br /> 如何将Feign整合Sentinel实现服务容错？<br /> 如何获取Feign远程调用时的异常进行问题排查？</p> <p>本章代码已分享至Gitee:<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://gitee.com/lengcz/springcloudalibaba01.git"  rel="nofollow">https://gitee.com/lengcz/springcloudalibaba01.git</a></p> </h1> <ol> <li>引入依赖</li> </ol> <pre><code class="prism language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>com.alibaba.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-cloud-starter-alibaba-sentinel<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span></code></pre> <ol start="2"> <li>开启feign对sentinel的支持</li> </ol> <pre><code class="prism language-yml"><span class="token key atrule">feign</span><span class="token punctuation">:</span><span class="token key atrule">sentinel</span><span class="token punctuation">:</span><span class="token key atrule">enabled</span><span class="token punctuation">:</span><span class="token boolean important">true</span><span class="token comment">#开启feign对sentinel的支持</span></code></pre> <ol start="3"> <li>设置容错的类@FeignClient(value=“server-product”,fallback = ProductServiceFallback.class)</li> </ol> <pre><code class="prism language-java"><span class="token comment">/**  * value用于指定调用的nacos下哪个微服务&lt;br&gt;  * fallback用于指定当前feign接口容错类  */</span><span class="token annotation punctuation">@FeignClient</span><span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token string">"server-product"</span><span class="token punctuation">,</span>fallback<span class="token operator">=</span><span class="token class-name">ProductServiceFallback</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token keyword">public</span><span class="token keyword">interface</span><span class="token class-name">ProductService</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/product/{pid}"</span><span class="token punctuation">)</span><span class="token class-name">Product</span><span class="token function">findById</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span><span class="token class-name">Integer</span> pid<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221130/e52466232ed0c632f5a8c40298d3832c.jpg" alt="springcloudalibaba架构(12):Feign整合Sentinel实现服务容错"><br /> 4. 实现容错方法（当远程服务不可用时，进行服务容错，进入fallback指定的类的同名方法）</p> <pre><code class="prism language-java"><span class="token comment">/**  * 容错类,需要实现Feign所在的接口，并去实现接口中的所有方法,一旦Feign远程调用出现问题了，就会进入当前类的同名方法，执行容错逻辑  */</span><span class="token annotation punctuation">@Service</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">ProductServiceFallback</span><span class="token keyword">implements</span><span class="token class-name">ProductService</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token class-name">Product</span><span class="token function">findById</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> pid<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token class-name">Product</span> product<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">Product</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         product<span class="token punctuation">.</span><span class="token function">setPid</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         product<span class="token punctuation">.</span><span class="token function">setPname</span><span class="token punctuation">(</span><span class="token string">"远程调用微服务异常，进入容错"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span> product<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p>注:容错类的方法的返回值、方法名、参数必须和原来保持一致。</p> <ol start="5"> <li> <p>修改controller，当pid为-1表示下单失败。<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221130/ce1361c7b526cc5b5c42c65f02abe059.jpg" alt="springcloudalibaba架构(12):Feign整合Sentinel实现服务容错"></p> </li> <li> <p>启动order和product对应的微服务，发起请求测试，正常情况下可以查询到 Product的信息。<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221130/d80926146328625940c1545753f795a3.jpg" alt="springcloudalibaba架构(12):Feign整合Sentinel实现服务容错"><br /> 当将product微服务停止了，再次请求下单接口。<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221130/262b33a61fc825bd54d1fc160a490aac.jpg" alt="springcloudalibaba架构(12):Feign整合Sentinel实现服务容错"></p> </li> </ol> </h1> <p>从第一节的内容，我们可以看到，当调用外部微服务发生异常时，我们并不能看到发生了什么异常，这导致我们很难进行问题排查。使用FacllbackFactory接口，就可以获取到Feign远程调用时发生的异常了。如何操作呢？对第一节的demo进行小小的改动。</p> <ol> <li>实现FallbackFactory</li> </ol> <pre><code class="prism language-java"><span class="token comment">/**  * 容错类,需要实现Feign所在的接口，并去实现接口中的所有方法,一旦Feign远程调用出现问题了，就会进入当前类的同名方法，执行容错逻辑  */</span><span class="token annotation punctuation">@Service</span><span class="token annotation punctuation">@Slf4j</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">ProductServiceFallbackFactory</span><span class="token keyword">implements</span><span class="token class-name">FallbackFactory</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">ProductService</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token class-name">ProductService</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token class-name">Throwable</span> throwable<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         log<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"======"</span><span class="token operator">+</span>throwable<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span><span class="token keyword">new</span><span class="token class-name">ProductService</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token class-name">Product</span><span class="token function">findById</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> pid<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token class-name">Product</span> product<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">Product</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 product<span class="token punctuation">.</span><span class="token function">setPid</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 product<span class="token punctuation">.</span><span class="token function">setPname</span><span class="token punctuation">(</span><span class="token string">"FallbackFactory远程调用微服务异常，进入容错"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span> product<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <ol start="2"> <li>指定fallbackFactory=ProductServiceFallbackFactory</li> </ol> <pre><code class="prism language-java"><span class="token comment">/**  * value用于指定调用的nacos下哪个微服务&lt;br&gt;  * fallback用于指定当前feign接口容错类  */</span><span class="token comment">//@FeignClient(value="server-product",fallback = ProductServiceFallback.class)</span><span class="token annotation punctuation">@FeignClient</span><span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token string">"server-product"</span><span class="token punctuation">,</span>fallbackFactory<span class="token operator">=</span><span class="token class-name">ProductServiceFallbackFactory</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token keyword">public</span><span class="token keyword">interface</span><span class="token class-name">ProductService</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/product/{pid}"</span><span class="token punctuation">)</span><span class="token class-name">Product</span><span class="token function">findById</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span><span class="token class-name">Integer</span> pid<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <ol start="3"> <li>只启动order微服务进行请求测试，可以发现能看到Feign调用的异常信息。<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221130/cc799e080b3596228705177780503a81.jpg" alt="springcloudalibaba架构(12):Feign整合Sentinel实现服务容错"></li> </ol> <p>通过实现FallbackFactory&lt;要实现的接口类&gt;，我们可以捕获到发生的异常进行记录和处理，进行问题排查。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-41195.htm">@Scheduled注解用法</a></p>
+                                        <p>下一个：<a href="/news/article-41690.htm">买狗狗在哪买（买狗狗在哪儿买）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-29-node-share-links.htm" title="V2ray Free节点订阅每天更新23M/S免费节点订阅链接">V2ray Free节点订阅每天更新23M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-13-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新20.3M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新20.3M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-27284.htm" title="基于Apache组件，分析对象池原理">基于Apache组件，分析对象池原理</a></li>
+                        <li class="py-2"><a href="/news/article-24023.htm" title="动物疫苗厂家查询系统官网（动物疫苗厂家查询系统官网入口）">动物疫苗厂家查询系统官网（动物疫苗厂家查询系统官网入口）</a></li>
+                        <li class="py-2"><a href="/news/article-23110.htm" title="领养宠物要钱合理吗（领养宠物需要花钱吗?）">领养宠物要钱合理吗（领养宠物需要花钱吗?）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-7-free-high-speed-nodes.htm" title="V2ray Free节点订阅每天更新18.1M/S免费节点订阅链接">V2ray Free节点订阅每天更新18.1M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-15-node-share.htm" title="V2ray Free节点订阅每天更新23M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新23M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-18969.htm" title="Spring Boot教程 | 第八篇：Spring Boot整合knife4j（swagger-bootstrap-ui）实现自动API文档">Spring Boot教程 | 第八篇：Spring Boot整合knife4j（swagger-bootstrap-ui）实现自动API文档</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-12-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新19.5M/S免费节点订阅链接">V2ray Free节点订阅每天更新19.5M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-26370.htm" title="宠物粮加工厂总投资多少亿（宠物粮加工厂总投资多少亿元）">宠物粮加工厂总投资多少亿（宠物粮加工厂总投资多少亿元）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <a href="/">V2ray Free免费机场订阅中文站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>
