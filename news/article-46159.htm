@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-46159.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Feign实现远程接口的调用</title>
+        <meta name="description" content="目录 一.Feign介绍 二.Feign使用步骤  一.Feign介绍 在开发中，我们常用httpClient去远程调用其他系统的接口，需要我们指定调用的url，Feign 是一个声明式的 Web S" />
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray Free免费机场订阅中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2ray-free.github.io/news/article-46159.htm" />
+    <meta property="og:site_name" content="V2ray Free免费机场订阅中文站" />
+    <meta property="og:title" content="Feign实现远程接口的调用" />
+    <meta property="og:image" content="https://v2ray-free.github.io/uploads/20241107/bffbf6b9ab1ce0c835366268ef51c409.webp" />
+        <meta property="og:release_date" content="2025-01-25T09:53:52" />
+    <meta property="og:updated_time" content="2025-01-25T09:53:52" />
+        <meta property="og:description" content="目录 一.Feign介绍 二.Feign使用步骤  一.Feign介绍 在开发中，我们常用httpClient去远程调用其他系统的接口，需要我们指定调用的url，Feign 是一个声明式的 Web S" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Feign实现远程接口的调用">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                                <li>
+                                    <a href="#">关于</a>
+                                </li>
+                                <li>
+                                    <a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">Feign实现远程接口的调用</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="V2ray X节点订阅官网" data-url="https://v2rayx.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p><strong>目录</strong></p> <p id="%E4%B8%80.Feign%E4%BB%8B%E7%BB%8D-toc" style="margin-left:40px;"><a href="#%E4%B8%80.Feign%E4%BB%8B%E7%BB%8D" rel="nofollow">一.Feign介绍</a></p> <p id="%E4%BA%8C.Feign%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4-toc" style="margin-left:40px;"><a href="#%E4%BA%8C.Feign%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4" rel="nofollow">二.Feign使用步骤</a></p> <hr id="hr-toc"/> <h2 id="%E4%B8%80.Feign%E4%BB%8B%E7%BB%8D">一.Feign介绍</h2> <p>在开发中，我们常用httpClient去远程调用其他系统的接口，需要我们指定调用的url，Feign 是一个声明式的 Web Service 客户端，它实现了一套远程调用的方法，调用的方式也更为优雅。</p> <p>前提：1.被调用的模块注册到eureka中，能正常运行</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2.feign接口文件夹要和启动类在同一个目录下， 否则需指定包名，@EnableFeignClients(basePackages="com.**.***")</p> <h2 id="%E4%BA%8C.Feign%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4">二.Feign使用步骤</h2> <p>不同版本依赖可能略有区别</p> <p>2.1 添加feigh客户端依赖</p> <pre><code class="language-java">&lt;dependency&gt;     &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;     &lt;artifactId&gt;spring-cloud-starter-openfeign&lt;/artifactId&gt; &lt;/dependency&gt;</code></pre> <p>2.2 启动类上添加feign注解：@EnableFeignClients</p> <pre><code class="language-java">@SpringBootApplication @EnableDiscoveryClient @EnableFeignClients public class SIAPIApplication {     public static void main(String[] args) {         SpringApplication.run(SIAPIApplication.class, args);     }   }</code></pre> <p>2.3 application.yml配置文件添加配置信息</p> <pre><code>feign:   client:     config:       default:         connectTimeout: 10000         readTimeout: 10000</code></pre> <p>2.4 创建一个feign客户端，用于引入远程模块的接口：@FeignClient</p> <pre><code class="language-java"># 注册到eureka中的si-api模块名称 @FeignClient(value = "si-api")  public interface ApiOrderFlowService  {   &nbsp; &nbsp; &nbsp;// 这里定义了类似于SpringMVC用法的方法，就可以进行RESTful的调用了     /**      * 更新流程状态      */     @RequestMapping("flow/progressOrderFlow")     Result progressOrderFlow(@RequestParam("orderId") Long orderId);       /**      * 创建流程实例, 并关联指定订单      * @param orderId 指定订单ID      * @param  serviceOfferId 指定订单操作类型      * @return 流程数量      */     @RequestMapping("flow/createOrderFlowInst")     Result createOrderFlowInst(@RequestParam("orderId") Long orderId,                                @RequestParam("serviceOfferId") Integer serviceOfferId); }</code></pre> <p>2.5&nbsp; 在需要进行远程调用的方法里注入该接口，并调用对应的api接口方法</p> <pre><code class="language-java">    @Autowired     private ApiOrderFlowService apiOrderFlowService;</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-45687.htm">猫咪领养协议免费模板下载安装最新（猫咪领养）</a></p>
+                                        <p>下一个：<a href="/news/article-46160.htm">猫死之后千万不可埋葬的说法（猫死了不可以土葬吗）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-17-node-share.htm" title="V2ray Free节点订阅每天更新21.2M/S免费节点订阅链接">V2ray Free节点订阅每天更新21.2M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-44660.htm" title="领养宠物协议合法吗现在（领养宠物协议怎么写）">领养宠物协议合法吗现在（领养宠物协议怎么写）</a></li>
+                        <li class="py-2"><a href="/news/article-45177.htm" title="猫咪抓伤出血需要打狂犬疫苗吗（猫咪抓伤出血要打破伤风吗）">猫咪抓伤出血需要打狂犬疫苗吗（猫咪抓伤出血要打破伤风吗）</a></li>
+                        <li class="py-2"><a href="/news/article-28676.htm" title="狗狗领养平台有哪些软件（狗狗领养免费平台）">狗狗领养平台有哪些软件（狗狗领养免费平台）</a></li>
+                        <li class="py-2"><a href="/news/article-35225.htm" title="宠物粮食加工厂设备生产厂家排名第一名 宠物粮食加工厂设备生产厂家排名第一名">宠物粮食加工厂设备生产厂家排名第一名 宠物粮食加工厂设备生产厂家排名第一名</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-15-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新21.5M/S免费节点订阅链接">V2ray Free节点订阅每天更新21.5M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-19445.htm" title="广州宠物领养平台官网电话（广州市宠物领养平台）">广州宠物领养平台官网电话（广州市宠物领养平台）</a></li>
+                        <li class="py-2"><a href="/news/article-31995.htm" title="猫驱虫一共多少钱（猫驱虫一共多少钱一次）">猫驱虫一共多少钱（猫驱虫一共多少钱一次）</a></li>
+                        <li class="py-2"><a href="/news/article-35839.htm" title="动物疫苗的了解和认识论文 动物疫苗的了解和认识论文怎么写">动物疫苗的了解和认识论文 动物疫苗的了解和认识论文怎么写</a></li>
+                        <li class="py-2"><a href="/news/article-18969.htm" title="Spring Boot教程 | 第八篇：Spring Boot整合knife4j（swagger-bootstrap-ui）实现自动API文档">Spring Boot教程 | 第八篇：Spring Boot整合knife4j（swagger-bootstrap-ui）实现自动API文档</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">75</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <a href="/">V2ray Free免费机场订阅中文站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>

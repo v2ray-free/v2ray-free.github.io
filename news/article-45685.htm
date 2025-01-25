@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-45685.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Qt程序打包发布，含第三方库，详细教程。</title>
+        <meta name="description" content="1、在Qt里选择release构建。  2、点击run运行，保证程序能够成功运行出来。  3、成功能运行后，去构建成功的build release文件夹下找到刚刚编译后的.exe文件。  4、单独复制" />
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray Free免费机场订阅中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2ray-free.github.io/news/article-45685.htm" />
+    <meta property="og:site_name" content="V2ray Free免费机场订阅中文站" />
+    <meta property="og:title" content="Qt程序打包发布，含第三方库，详细教程。" />
+    <meta property="og:image" content="https://v2ray-free.github.io/uploads/20241107/e0af44cc764c051637e5f83f60ea878b.webp" />
+        <meta property="og:release_date" content="2025-01-24T09:28:46" />
+    <meta property="og:updated_time" content="2025-01-24T09:28:46" />
+        <meta property="og:description" content="1、在Qt里选择release构建。  2、点击run运行，保证程序能够成功运行出来。  3、成功能运行后，去构建成功的build release文件夹下找到刚刚编译后的.exe文件。  4、单独复制" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Qt程序打包发布，含第三方库，详细教程。">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                                <li>
+                                    <a href="#">关于</a>
+                                </li>
+                                <li>
+                                    <a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">Qt程序打包发布，含第三方库，详细教程。</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="V2ray X节点订阅官网" data-url="https://v2rayx.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p id="u6f20dad4">1、在Qt里选择release构建。</p> <p class="img-center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230108/6869cdd4b575e3960b6f5ddec10dcb0e.jpg"></p> <p id="u1fd1086f">2、点击run运行，保证程序能够成功运行出来。</p> <p class="img-center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230108/942b281eebbdabb95607c809dddf3a14.jpg"></p> <p id="u3b9da9b7">3、成功能运行后，去构建成功的build release文件夹下找到刚刚编译后的.exe文件。</p> <p class="img-center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230108/d6cbf7d1edd7b9d33bfb166aeb981009.jpg"></p> <p id="u3f7cd775">4、单独复制出来到一个新文件夹model，复制进去。</p> <p class="img-center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230108/86098ddbb333f5b7cd05651032c8b60e.jpg"></p> <p id="u3cd1e4d1">5、在qt程序找到如下，构建的时候选择64位，现在打包编译也是需要64位，一一对应，不能混32位。</p> <p class="img-center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230108/175ec720a39b1c4f76357a78638b4fbf.jpg"></p> <p id="u996b8021">6、点击，命令执行进入到刚刚创建的文件夹下。</p> <p class="img-center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230108/e07b81153b97a7fda86c32dce65535aa.jpg"></p> <p id="uee89320f">7、执行<code>windeployqt jie_mian1.exe</code>，也就是windeployqt+你自己刚刚编译后的程序名称.exe。</p> <p class="img-center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230108/ea2b4c29dabc9611ce7891d38e1537f4.jpg"></p> <p id="uf3facacd">8、此时已经在model文件下qt依赖库已经安装好了，直接点击就可以运行。<strong>但是如果含有第三库.dll，点击会提示找不到，所以这时候把.dll拷贝到model文件夹下，即可。</strong></p> <p class="img-center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230108/381dc137ab656a518709714f0a00423b.jpg"></p> <p id="u20a423ec">9、<strong>把缺少的第三方库拷贝到model文件夹下和qt依赖库放一起，即可打开</strong>，因为原来在qt上debug的时候，第三方库也是放在build debug文件夹下的，所以debug模式编译时候能找到。</p> <p id="ua27f9a00">10、打开打包软件。用<strong> Enigma Virtual Box软件</strong>。没有的同学，自己要去网上下载一个。</p> <p class="img-center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230108/6d0de04a366d79933beda4fa818f0e25.jpg"></p> <p id="uabd82c2d">11、点击浏览，选择要打包的.exe文件。</p> <p class="img-center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230108/a57cd0f8bc5b2eb43fce1fc21ce7d69f.jpg"></p> <p id="ud09ef2c3">12、点击文件选项，勾选压缩文件。</p> <p class="img-center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230108/800d6f05bb6108621a8331430d5b4be3.jpg"></p> <p id="u31586af8">13、点击左下角添加，选择按文件递归。</p> <p class="img-center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230108/adebaf7bec9fcb78e6a79bdeed7f2051.jpg"></p> <p id="u5a8221e6">14、选择刚刚的model文件夹，点击确定。</p> <p class="img-center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230108/c52c7fa4dcdda34e159a4d9682f86be2.jpg"></p> <p id="u09e31671">15、选择默认，确定即可。</p> <p class="img-center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230108/f9fb3cd864ae9367fc898711959b1173.jpg"></p> <p id="u85b7f705">16、最后看到下图，最后点击打包即可。</p> <p class="img-center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230108/dd48ca49dab0da89f34755c6d505ea2c.jpg"></p> <p class="img-center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20230108/aef03e75b8ef4477f1e5480762589dd6.jpg"></p> <p id="u42c8becc">17、打包成功之后在<strong>刚刚设置的输出目标目录</strong>会出现打包好的<strong>XXXXX_boxed.exe</strong>应用程序，这个程序就是可以直接完全打包好的，<strong>点击即用</strong>。</p> <h3 id="gHV9p">希望我的教程可以帮助到你，祝你每天开心。</h3> <p id="uf4b35329"> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-45177.htm">猫咪抓伤出血需要打狂犬疫苗吗（猫咪抓伤出血要打破伤风吗）</a></p>
+                                        <p>下一个：<a href="/news/article-45687.htm">猫咪领养协议免费模板下载安装最新（猫咪领养）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-25427.htm" title="Vue3项目中的骨架屏">Vue3项目中的骨架屏</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-24-free-subscribe-node.htm" title="V2ray Free节点订阅每天更新22.2M/S免费节点订阅链接">V2ray Free节点订阅每天更新22.2M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-32952.htm" title="宠物美容学徒有出路吗（宠物美容学徒有工资吗）">宠物美容学徒有出路吗（宠物美容学徒有工资吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-25-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新22.7M/S免费节点订阅链接">V2ray Free节点订阅每天更新22.7M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-31414.htm" title="C/C++内存申请函数总结">C/C++内存申请函数总结</a></li>
+                        <li class="py-2"><a href="/news/article-22186.htm" title="被猫咬了怎么办出血了（被猫咬了怎么办出血了,用酒精洗可以吗）">被猫咬了怎么办出血了（被猫咬了怎么办出血了,用酒精洗可以吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-12-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新19.5M/S免费节点订阅链接">V2ray Free节点订阅每天更新19.5M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-35225.htm" title="宠物粮食加工厂设备生产厂家排名第一名 宠物粮食加工厂设备生产厂家排名第一名">宠物粮食加工厂设备生产厂家排名第一名 宠物粮食加工厂设备生产厂家排名第一名</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-6-node-share.htm" title="V2ray Free节点订阅每天更新19.1M/S免费节点订阅链接">V2ray Free节点订阅每天更新19.1M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-6-node-share.htm" title="V2ray Free节点订阅每天更新22.1M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新22.1M/S免费节点订阅链接地址分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">75</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <a href="/">V2ray Free免费机场订阅中文站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>
