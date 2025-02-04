@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://v2ray-free.github.io/news/article-31414.htm" />
@@ -9,6 +9,33 @@
     <title>C/C++内存申请函数总结</title>
         <meta name="description" content="#include &lt;stdlib.h&gt; new char[size] void* malloc(unsigned size); void* realloc(void* ptr, unsig" />
         <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray Free免费机场订阅中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2ray-free.github.io/news/article-31414.htm" />
+    <meta property="og:site_name" content="V2ray Free免费机场订阅中文站" />
+    <meta property="og:title" content="C/C++内存申请函数总结" />
+    <meta property="og:image" content="https://v2ray-free.github.io/uploads/20241107/e0af44cc764c051637e5f83f60ea878b.webp" />
+        <meta property="og:release_date" content="2024-12-26T00:18:45" />
+    <meta property="og:updated_time" content="2024-12-26T00:18:45" />
+        <meta property="og:description" content="#include &lt;stdlib.h&gt; new char[size] void* malloc(unsigned size); void* realloc(void* ptr, unsig" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="C/C++内存申请函数总结">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
     <!-- All CSS files -->
     <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
     <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
@@ -131,16 +158,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-27741.htm" title="猫咪三针疫苗多久过期（猫咪的三针疫苗要相隔多久）">猫咪三针疫苗多久过期（猫咪的三针疫苗要相隔多久）</a></li>
-                        <li class="py-2"><a href="/news/article-19444.htm" title="上海宠物救助站电话号码是多少（上海宠物救助领养中心地址）">上海宠物救助站电话号码是多少（上海宠物救助领养中心地址）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-8-node-share-links.htm" title="V2ray Free节点订阅每天更新18.3M/S免费节点订阅链接">V2ray Free节点订阅每天更新18.3M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-16-free-subscribe-node.htm" title="V2ray Free节点订阅每天更新22.1M/S免费节点订阅链接">V2ray Free节点订阅每天更新22.1M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-29-free-node-subscribe.htm" title="V2ray Free节点订阅每天更新21.9M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新21.9M/S免费节点订阅链接地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-6-node-share.htm" title="V2ray Free节点订阅每天更新19.1M/S免费节点订阅链接">V2ray Free节点订阅每天更新19.1M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-33899.htm" title="考宠物医师需要什么条件才能考（想考宠物医师资格证）">考宠物医师需要什么条件才能考（想考宠物医师资格证）</a></li>
-                        <li class="py-2"><a href="/news/article-21277.htm" title="springboot之依赖版本管理">springboot之依赖版本管理</a></li>
-                        <li class="py-2"><a href="/news/article-25430.htm" title="被猫抓了一下轻微破皮要***吗多少钱一只（被猫抓了一下轻微破皮要***吗多少钱一只）">被猫抓了一下轻微破皮要***吗多少钱一只（被猫抓了一下轻微破皮要***吗多少钱一只）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-7-free-high-speed-nodes.htm" title="V2ray Free节点订阅每天更新18.1M/S免费节点订阅链接">V2ray Free节点订阅每天更新18.1M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-21278.htm" title="青岛哪家动物医院好一点（青岛哪家宠物医院好）">青岛哪家动物医院好一点（青岛哪家宠物医院好）</a></li>
+                        <li class="py-2"><a href="/news/article-37250.htm" title="南京宠物领养吧百度贴吧论坛（南京领养宠物都要做什么条件）">南京宠物领养吧百度贴吧论坛（南京领养宠物都要做什么条件）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-22-node-share.htm" title="V2ray Free节点订阅每天更新18M/S免费节点订阅链接">V2ray Free节点订阅每天更新18M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22651.htm" title="孩子10几天后才说被猫咬了,打个狂犬疫苗能喝点小酒吗（打了狂犬疫苗六个月后又被猫抓伤了能茶喝吗?）">孩子10几天后才说被猫咬了,打个狂犬疫苗能喝点小酒吗（打了狂犬疫苗六个月后又被猫抓伤了能茶喝吗?）</a></li>
+                        <li class="py-2"><a href="/news/article-29139.htm" title="一文解决浏览器跨域问题">一文解决浏览器跨域问题</a></li>
+                        <li class="py-2"><a href="/news/article-33389.htm" title="去宠物店驱虫一次多少钱（驱虫是自己弄还是去宠物店）">去宠物店驱虫一次多少钱（驱虫是自己弄还是去宠物店）</a></li>
+                        <li class="py-2"><a href="/news/article-47630.htm" title="宠物零食加工厂要投资多少钱呢（宠物零食加工厂要投资多少钱呢视频）">宠物零食加工厂要投资多少钱呢（宠物零食加工厂要投资多少钱呢视频）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-19-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新20.2M/S免费节点订阅链接">V2ray Free节点订阅每天更新20.2M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-43196.htm" title="我被猫咬了,没去打针,会不会死亡呢（被猫咬了没打针会死吗）">我被猫咬了,没去打针,会不会死亡呢（被猫咬了没打针会死吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-19-free-high-speed-nodes.htm" title="V2ray Free节点订阅每天更新18.5M/S免费节点订阅链接">V2ray Free节点订阅每天更新18.5M/S免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -152,7 +179,10 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
@@ -183,7 +213,7 @@
                         <a href="/privacy.htm">隐私申明</a> |
                         <a href="/sitemap.xml">网站地图</a>
                     </p>
-                    <a href="/">V2ray Free免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                    <a href="/">V2ray Free免费机场订阅中文站</a> 版权所有 Powered by WordPress
                 </p>
             </div>
         </footer>
