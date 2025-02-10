@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-53866.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>JavaScript获取URL参数的方法分享_javascript技巧</title>
+        <meta name="description" content="目录  一、字符串 split 方法 二、使用 URLSearchParams 方法  1、解析搜索字符串 2、生成搜索字符串 3、Node.js 代码  三、使用正则匹配方法  四、使用第三方库 q" />
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray Free免费机场订阅中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2ray-free.github.io/news/article-53866.htm" />
+    <meta property="og:site_name" content="V2ray Free免费机场订阅中文站" />
+    <meta property="og:title" content="JavaScript获取URL参数的方法分享_javascript技巧" />
+    <meta property="og:image" content="https://v2ray-free.github.io/uploads/20241107/ceae7281105646537e49785fd098313c.webp" />
+        <meta property="og:release_date" content="2025-02-09T10:06:06" />
+    <meta property="og:updated_time" content="2025-02-09T10:06:06" />
+        <meta property="og:description" content="目录  一、字符串 split 方法 二、使用 URLSearchParams 方法  1、解析搜索字符串 2、生成搜索字符串 3、Node.js 代码  三、使用正则匹配方法  四、使用第三方库 q" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="JavaScript获取URL参数的方法分享_javascript技巧">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">JavaScript获取URL参数的方法分享_javascript技巧</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="V2ray X节点订阅官网" data-url="https://v2rayx.github.io">
+                  				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">一、字符串 split 方法</a></li> <li><a href="#_label1" rel="nofollow">二、使用 URLSearchParams 方法</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_1_0" rel="nofollow">1、解析搜索字符串</a></li> <li><a href="#_lab2_1_1" rel="nofollow">2、生成搜索字符串</a></li> <li><a href="#_lab2_1_2" rel="nofollow">3、Node.js 代码</a></li> </ul> <li><a href="#_label2" rel="nofollow">三、使用正则匹配方法</a></li> <ul class="second_class_ul"></ul> <li><a href="#_label3" rel="nofollow">四、使用第三方库 qs</a></li> <ul class="second_class_ul"></ul> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>一、字符串 split 方法</h2> <p><code>url</code> 地址是字符串形式的，所以利用 <code>split</code> 方法将参数提取出来，<code>该方法比较常用</code>，而且容易理解（无关正则）</p> <div class="ay1code"> <pre class="brush:js;">let URL = "http://www.baidu.com?name=小宇&amp;age=25&amp;sex=男&amp;wife=小君";  function getUrlParams(url) {      // 通过 ? 分割获取后面的参数字符串      let urlStr = url.split('?')[1];      // 创建空对象存储参数  	let obj = {};      // 再通过 &amp; 将每一个参数单独分割出来  	let paramsArr = urlStr.split('&amp;');  	for(let i = 0,len = paramsArr.length;i &lt; len;i++){          // 再通过 = 将每一个参数分割为 key:value 的形式  		let arr = paramsArr[i].split('=');  		obj[arr[0]] = arr[1];  	}  	return obj;  }  console.log(getUrlParams(URL));</pre> </div> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220427/a067179b9df9eb63a6203fe843a7054c.jpg"></p> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>二、使用 URLSearchParams 方法</h2> <p class="maodian"><a name="_lab2_1_0" rel="nofollow"></a></p> <h3>1、解析搜索字符串</h3> <div class="ay1code"> <pre class="brush:js;">let url = 'https://www.baidu.com/s?ie=UTF-8&amp;wd=%E8%AE%B8%E5%96%84%E7%A5%A5&amp;p=1';  let urlStr = url.split('?')[1];  const params = new URLSearchParams(urlStr);  console.log(params.get('k'));   // 返回字符串“许善祥”，支持自动 UTF-8 解码  console.log(params.get('p'));   // 返回字符串“1”  console.log(params.get('xxx')); // 如果没有 xxx 这个键，则返回 null  console.log(params.has('xxx')); // 当然也可以通过 has() 方法查询是否存在指定的键  console.log(params.keys());     // 返回一个 ES6 Iterator，内含 ['k', 'p']  console.log(params.values());   // 返一个 ES6 Iterator，内含 ['许善祥', '1']  console.log(params.entries());  // 与 Map.prototype.entries() 类似</pre> </div> <p class="maodian"><a name="_lab2_1_1" rel="nofollow"></a></p> <h3>2、生成搜索字符串</h3> <div class="ay1code"> <pre class="brush:js;">const params = new URLSearchParams();  params.set('k', '许善祥');       // 设置参数  params.set('p', 1);             // 支持 Boolean、Number 等丰富类型  console.log(params.toString()); // k=%E8%AE%B8%E5%96%84%E7%A5%A5&amp;p=1</pre> </div> <p class="maodian"><a name="_lab2_1_2" rel="nofollow"></a></p> <h3>3、Node.js 代码</h3> <div class="ay1code"> <pre class="brush:js;">const { URLSearchParams } = require('url');    const urlSearchParams = new URLSearchParams();</pre> </div> <p class="maodian"><a name="_label2" rel="nofollow"></a></p> <h2>三、使用正则匹配方法</h2> <p>正则匹配功能强大，不仅可以实现在登录注册时的账号、密码、邮箱、手机号等验证（<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://xushanxiang.com/common-regular-expressions.html"   target="_blank" rel="nofollow">看这里</a>），还可以非常方便的处理一些字符串（校验、替换、提取等操作）。</p> <div class="ay1code"> <pre class="brush:js;">let URL = 'http://www.baidu.com?name=祥&amp;friend=宇';  function getUrlParams3(url){      // \w+ 表示匹配至少一个(数字、字母及下划线),      // [\u4e00-\u9fa5]+ 表示匹配至少一个中文字符      let pattern = /(\w+|[\u4e00-\u9fa5]+)=(\w+|[\u4e00-\u9fa5]+)/ig;      let result = {};      url.replace(pattern, ($, $1, $2)=&gt;{          result[$1] = $2;      });      return result;  }  console.log(getUrlParams3(URL));  // {name: '祥', friend: '宇'}</pre> </div> <p class="maodian"><a name="_label3" rel="nofollow"></a></p> <h2>四、使用第三方库 qs</h2> <p>使用第三方库 qs 也可以实现 url 中参数字符的提取，还能实现将参数对象转为 url 参数形式，需要注意的是浏览器 cdn 方式引入时是默认添加到全局对象 window 的 Qs 属性上。</p> <div class="ay1code"> <pre class="brush:js;">&lt;script src="https://cdn.bootcdn.net/ajax/libs/qs/6.10.3/qs.min.js"&gt;&lt;/script&gt;  &lt;script&gt;  let URL = 'http://www.baidu.com?name=祥&amp;friend=宇';  function getUrlParams4(url) {      // 引入 qs 库时会默认挂在到全局 window 的 Qs 属性上      // console.log(window);      let urlStr = url.split('?')[1];      let result = Qs.parse(urlStr);      // 拼接额外参数      let otherParams = {          homepage: 'xushanxiang.com'      };      let str = Qs.stringify(otherParams);      let newUrl = url + str;      return {result, newUrl};  }  console.log(getUrlParams4(URL));</pre> </div> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220427/d21a816b6d4bae21e7e8a4a89f50b9c8.jpg"></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-53327.htm">mysql从一张表更新到另一张表中_MySQL 从一张表update字段到另外一张表中</a></p>
+                                        <p>下一个：<a href="/news/article-53867.htm">属羊可以养猫带来好运吗（属羊的人能不能养猫）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-2-free-high-speed-nodes.htm" title="V2ray Free节点订阅每天更新18.9M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新18.9M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-11-free-node-subscribe.htm" title="V2ray Free节点订阅每天更新20.5M/S免费节点订阅链接">V2ray Free节点订阅每天更新20.5M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-42699.htm" title="北京动物园鹦鹉馆馆长（北京动物园鹦鹉馆图片）">北京动物园鹦鹉馆馆长（北京动物园鹦鹉馆图片）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-11-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新21.7M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新21.7M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-28-free-subscribe-node.htm" title="V2ray Free节点订阅每天更新18.9M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新18.9M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-5-free-node-subscribe.htm" title="V2ray Free节点订阅每天更新18.8M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新18.8M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-27285.htm" title="猫科医院好评评语（宠物医院写好评题材）">猫科医院好评评语（宠物医院写好评题材）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-29-node-share-links.htm" title="V2ray Free节点订阅每天更新21.5M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新21.5M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-36765.htm" title="如何使用正则表达式验证IP地址">如何使用正则表达式验证IP地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-26-free-node-subscribe.htm" title="V2ray Free节点订阅每天更新18.3M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新18.3M/S免费节点订阅链接地址分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <a href="/">V2ray Free免费机场订阅中文站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>
