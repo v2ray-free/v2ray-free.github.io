@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-60052.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>C\C++ 中 malloc、calloc、realloc 函数的用法</title>
+        <meta name="description" content="转自：https://www.jianshu.com/p/d6f209b8796d 前言 C\C++提供了底层的内存操作，为程序提供了强大的能力。在使用malloc() calloc() reallo" />
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray Free免费机场订阅中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2ray-free.github.io/news/article-60052.htm" />
+    <meta property="og:site_name" content="V2ray Free免费机场订阅中文站" />
+    <meta property="og:title" content="C\C++ 中 malloc、calloc、realloc 函数的用法" />
+    <meta property="og:image" content="https://v2ray-free.github.io/uploads/20241107/b4767de32988bb990d4f2fbc954e9a3c.webp" />
+        <meta property="og:release_date" content="2025-02-20T09:58:13" />
+    <meta property="og:updated_time" content="2025-02-20T09:58:13" />
+        <meta property="og:description" content="转自：https://www.jianshu.com/p/d6f209b8796d 前言 C\C++提供了底层的内存操作，为程序提供了强大的能力。在使用malloc() calloc() reallo" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="C\C++ 中 malloc、calloc、realloc 函数的用法">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">C\C++ 中 malloc、calloc、realloc 函数的用法</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="V2ray X节点订阅官网" data-url="https://v2rayx.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> </h1> <p>转自：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.jianshu.com/p/d6f209b8796d"  rel="nofollow">https://www.jianshu.com/p/d6f209b8796d</a></p> <p>前言</p> <p>C\C++提供了底层的内存操作，为程序提供了强大的能力。在使用<code>malloc() calloc() realloc()</code> 进行动态内存分配时，内存区域中的这个空间称为堆(heap)，另一个内存区域，称为栈(stack)，其中的空间分配给函数的参数和本地变量，执行完该函数后，存储参数和本地变量的内存空间就会自</p> <p>动释放。而堆中的内存是由人控制的，在分配堆上的内存时，需要人自己来判断什么时候需要分配，什么时候需要释放。</p> <p><code>malloc</code></p> <ol> <li>函数原型<br /><code>(TYPE *) malloc(SIZE)</code></li> <li>函数功能<br /><code>malloc()</code> 在内存的动态存储区中分配一块长度为<code>SIZE</code> 字节的连续区域。参数<code>SIZE</code> 为需要的内存空间的长度，返回该区域的地址。<code>malloc()</code> 函数不能为所分配的空间初始化值，需要使用<code>memset()</code>，不然可能会出现内存中遗留的数据。在程序结束前，需要使用<code>free()</code> 进行内存释放。</li> <li>使用</li> </ol> <pre class="has"><code>int *p = NULL; p = (int *) malloc(sizeof(int)); // 申请 memset(p, 20, sizeof(int) / 4); // 赋初值（不可取） printf("%d\n", *p); // 20 free(p); // 释放</code></pre> <p>主要注意的是，<code>memset()</code> 是按照字节来进行赋值，而<code>char</code> 类型的空间恰好是1字节，所以<code>memset()</code> 最好用于<code>char</code> 类型的赋值。当然，也可以用<code>sizeof(int) / 4</code> 来给<code>int</code> 类型赋值，只不过只能赋 0x00 - oxff 的值。不然的话就是按位赋值四次。</p> <pre class="has"><code>char *p = NULL; p = (char *) malloc(sizeof(char)); memset(p, 'g', sizeof(char)); printf("%c\n", *p); // g free(p); p = NULL;</code></pre> <p>如上，<code>char</code> 类型可以完美的赋值。</p> <p><code>calloc</code></p> <ol> <li>函数原型<br /><code>(TYPE * )calloc(int n, SIZE);</code></li> <li>函数功能<br /><code>calloc()</code> 函数功能和<code>malloc</code> 类似，都是从堆内存中分配内存，不同的是，<code>calloc()</code> 会自动进行初始化，每一位都初始化为零。<code>n</code> 表示元素的个数，<code>SIZE</code> 为单位元素的长度，从定义上看，<code>calloc()</code> 适合为数组申请动态内存。与<code>malloc()</code> 最后也需要使用<code>free()</code> 进行内存释放。</li> <li>使用</li> </ol> <pre class="has"><code>#define SIZE 10 int *p; p = (int *) calloc(SIZE, sizeof(int)); for (int i = 0; i &lt; SIZE; ++i) {     p[i] = i; } for (int j = 0; j &lt; SIZE; ++j) {     printf("%d\n", p[j]); // 0, 1, 2, 3, 4, 5 ... } free(p); p = NULL;</code></pre> <p><code>realloc</code></p> <ol> <li>函数原型<br /><code>(TYPE * )realloc(TYPE *ptr, NEW_SIZE);</code></li> <li>函数功能<br /><code>realloc()</code> 是给一个已经分配了地址的指针重新分配动态内存空间，<code>*ptr</code> 为原有的空间地址，<code>NEW_SIZE</code> 是重新申请的空间，若新的空间小于之前的空间，则不会进行改变，若新的空间大于原来的空间，则会从堆内存中为<code>*ptr</code> 分配一个大小为<code>NEW_SIZE</code> 的空间吗，同时将原来空间的内容依次复制进新的地址空间，<code>*ptr</code> 之前的空间被释放，<code>realloc()</code> 所分配的空间也是未初始化的。</li> <li>使用</li> </ol> <pre class="has"><code>#define SIZE 10 int *p; p = (int *) calloc(SIZE, sizeof(int)); for (int i = 0; i &lt; SIZE; ++i) {     p[i] = i; } p = (int *) realloc(p, SIZE * 2); for (int j = 10; j &lt; SIZE * 2; ++j) {     p[j] = j; } for (int k = 0; k &lt; SIZE * 2; ++k) {     printf("%d\n", p[k]); // 1, 2, 3, ... , 19 } free(p); p</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-59486.htm">不建议养的5种猫（懒人养什么猫最省心）</a></p>
+                                        <p>下一个：<a href="/news/article-60053.htm">2020上海宠物领养日期查询（上海领养宠物狗）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-2-20-node-share.htm" title="V2ray Free节点订阅每天更新18M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新18M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-15-free-subscribe-node.htm" title="V2ray Free节点订阅每天更新22.7M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新22.7M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-29-node-share-links.htm" title="V2ray Free节点订阅每天更新21.5M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新21.5M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-50681.htm" title="Docker 安装 Confluence">Docker 安装 Confluence</a></li>
+                        <li class="py-2"><a href="/news/article-56644.htm" title="宠物领养机构哪里有卖（宠物领养去哪里领养）">宠物领养机构哪里有卖（宠物领养去哪里领养）</a></li>
+                        <li class="py-2"><a href="/news/article-42703.htm" title="动物疫苗价格一览表图片大全及价格查询 动物疫苗价格一览表图片大全及价格查询">动物疫苗价格一览表图片大全及价格查询 动物疫苗价格一览表图片大全及价格查询</a></li>
+                        <li class="py-2"><a href="/news/article-20818.htm" title="宠物领养中心是什么部门管理的（宠物领养中心是什么部门管理的呢）">宠物领养中心是什么部门管理的（宠物领养中心是什么部门管理的呢）</a></li>
+                        <li class="py-2"><a href="/news/article-41195.htm" title="@Scheduled注解用法">@Scheduled注解用法</a></li>
+                        <li class="py-2"><a href="/news/article-50162.htm" title="Docker基础实战：自定义CentOS镜像详解">Docker基础实战：自定义CentOS镜像详解</a></li>
+                        <li class="py-2"><a href="/news/article-43696.htm" title="宠物领养正规网站 宠物领养正规网站有哪些">宠物领养正规网站 宠物领养正规网站有哪些</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <a href="/">V2ray Free免费机场订阅中文站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>
