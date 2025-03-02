@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-66046.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>手撕spring核心源码，彻底搞懂spring流程</title>
+        <meta name="description" content="引子 十几年前，刚工作不久的程序员还能过着很轻松的日子。记得那时候公司里有些开发和测试的女孩子，经常有问题解决不了的，不管什么领域的问题找到我，我都能帮她们解决。但是那时候我没有主动学习技术的意识，只" />
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray Free免费机场订阅中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2ray-free.github.io/news/article-66046.htm" />
+    <meta property="og:site_name" content="V2ray Free免费机场订阅中文站" />
+    <meta property="og:title" content="手撕spring核心源码，彻底搞懂spring流程" />
+    <meta property="og:image" content="https://v2ray-free.github.io/uploads/20241107/03681016d2129f97daffcf363ed9b168.webp" />
+        <meta property="og:release_date" content="2025-03-02T09:39:07" />
+    <meta property="og:updated_time" content="2025-03-02T09:39:07" />
+        <meta property="og:description" content="引子 十几年前，刚工作不久的程序员还能过着很轻松的日子。记得那时候公司里有些开发和测试的女孩子，经常有问题解决不了的，不管什么领域的问题找到我，我都能帮她们解决。但是那时候我没有主动学习技术的意识，只" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="手撕spring核心源码，彻底搞懂spring流程">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">手撕spring核心源码，彻底搞懂spring流程</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="V2ray X节点订阅官网" data-url="https://v2rayx.github.io">
+                  				  				  				<p><strong>引子</strong></p> <p>十几年前，刚工作不久的程序员还能过着很轻松的日子。记得那时候公司里有些开发和测试的女孩子，经常有问题解决不了的，不管什么领域的问题找到我，我都能帮她们解决。但是那时候我没有主动学习技术的意识，只是满足于解决问题，错过了能力提升最好的阶段。</p> <p>老公是个截然相反的类型，我就看他天天在宿舍里学习。学来学去也就那样了。他不陪我玩，我虽然心里不乐意，但是还好那时候未卜先知：知道自己能生一个长的帅、和我兴趣相投、天天粘我，我在他旁边他睡觉都能笑出声的儿子，就忍下了。我就自己学学历史、文学，出去上个外语培训班，什么感兴趣学什么。就是正经工作中的东西不学。</p> <p>后来才发现自己犯了多大一个错误：没有尽早建立一个系统性的知识体系和思维，还影响了思维上的连续性和逻辑性。武侠故事里一夜得到神功是骗人的，功夫还在平时。老公看似做了十几年长进不大的事，基础却非常扎实，有功力。但是如果他能头脑再活络些，掌握要领，可以事半功倍。</p> <p>很多朋友想学习Spring，总是很快地从入门到放弃。原因是头脑中没有框架，学到的东西没有索引，最终被深藏于记忆深处。本文通过手撕spring核心源码的方式，旨在让大家可以在头脑中形成一个spring框架，然后自己在工作中可以带着问题翻看源码，给这个框架添枝加叶，最终形成了一个饱满的spring知识体系。</p> <p>本文整体采用由浅入深的逻辑结构。侧重于面向于平时工作或学习中用spring写过业务代码的朋友。</p> <p><strong>HelloWorld版本Spring启动代码</strong></p> <p>有些朋友可能写过或者见过ClassPathXmlApplicationContext、AnnotationConfigApplicationContext，它们都是常见的spring容器或者是上下文。既然说到这里，就先来解释什么是spring容器，什么是spring上下文。</p> <p>Spring的核心就是容器，负责对象的整个生命周期：创建、管理、销毁程序执行过程中需要的对象。</p> <p>Spring容器又分为两种类型：第一种是BeanFactory，最简单的容器，只能提供基本的DI功能）另一种是:继承了BeanFactory后派生而来的ApplicationContext，被称之为Spring上下文。能提供更多企业级的服务。咱们最常用的还是基于<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://mp.weixin.qq.com/s?__biz=MzUzNjAxODg4MQ==&amp;mid=2247484928&amp;idx=1&amp;sn=dc3ce3b2f4c76cb712d384843e241cc8&amp;chksm=fafdecaecd8a65b83f622d170c5ebd328c7b8071a935a19c768e9ebe8632db20588f0fb6d9f2&amp;scene=21#wechat_redirect"  target="_blank" data-itemshowtype="0" data-linktype="2" rel="nofollow">IOC(控制反转)</a>的上下文容器。</p> <p>现在SpringBoot使用的很多，所以今天咱们手撕的主要是实现 AnnotationConfigApplicationContext 这个注解上下文的原理。</p> <p>咱们开始手撕。参照下面咱们用 spring 的方法，首先要有一个上下文将配置参数传入，然后有一个 getBean 可以获取对象来使用。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/cdc5083a78880191e17e614f212bdc01.jpg" alt="手撕spring核心源码，彻底搞懂spring流程"></p> <p>那咱们就根据这两个特质自己写一个类，要点如下图1和2两步。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/6c310638e1670902f7f2750a51fb9711.jpg" alt="手撕spring核心源码，彻底搞懂spring流程"></p> <p>既然需要将configClass配置类作为参数传入，就先来构造一个空的配置类。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/85e7ac46622ce9e6939aa6cd9139530c.jpg" alt="手撕spring核心源码，彻底搞懂spring流程"></p> <p>这样从表面上，就可以像使用AnnotationConfigApplicationContext一样使用Spring容器了。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/6f7fc73ce5ebbd9a89bc5ce951a9c121.jpg" alt="手撕spring核心源码，彻底搞懂spring流程"></p> <p>为了标注重点和屏蔽用户终端差异带来的文章阅读体验差异，这里我直接用的截图。代码文字在 https://github.com/xiexiaojing/yuna 里可以找到。</p> <p><strong>手撕Spring扫描流程</strong></p> <p>所谓HelloWorld版本就是除了入门，其他没有任何作用。咱们希望它可以实现自动扫描文件夹下的带有@Component注解的Bean完成注入。首先自己来新建一个@Component注解：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/bfe8e8b338ac6c93bd639f60017a4001.jpg" alt="手撕spring核心源码，彻底搞懂spring流程"></p> <p>并在UserService中使用这个注解：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/2180e02f968bbda62e990340b72656d8.jpg" alt="手撕spring核心源码，彻底搞懂spring流程"></p> <p>当然，Component注解是用来扫描的，那还得来定义一个扫描注解，就是把Component注解复制一份，改个名字：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/13898414339a79d9511359d5ad4bbed0.jpg" alt="手撕spring核心源码，彻底搞懂spring流程"></p> <p>ComponentScan这个注解要加在YunaConfig上，通过它来加载扫描配置：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/edb7395b46a8da4a4fa7c57141e8d566.jpg" alt="手撕spring核心源码，彻底搞懂spring流程"></p> <p>咱们再回到YunaApplicationContext，配置类定义完之后，咱们下一步上下文就来解析它：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/6132545ec61854e5aa161e0940889d67.jpg" alt="手撕spring核心源码，彻底搞懂spring流程"></p> <p>这时候咱们回到main方法，运行结果：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/eb4488177864cb79b78f3a3c306304ae.jpg" alt="手撕spring核心源码，彻底搞懂spring流程"></p> <p>咱们拿到了解析路径，但是UserService这个Bean还是空的。重点来了，下面的代码要注意看:</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/c2fd000db22259f6e13c36aba0f2b4d4.jpg" alt="手撕spring核心源码，彻底搞懂spring流程"></p> <p>上面首先使用hutool工具扫描path得到包下类的集合，然后从集合中过滤留下使用了Component注解的class。是不是还挺简单的？</p> <p>当然，这里类还没有被实例化，所以这里只是打印一下类名看看效果：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/aeee7c97ffdd88241ff63aa94c1acdb8.jpg" alt="手撕spring核心源码，彻底搞懂spring流程"></p> <p>从结果可以看到类已经获取到了。下一步实例化。</p> <p>手撕Spring实例化对象流程</p> <p>实例化对象，主要有两种作用域。一种是单例的，一种是多例的。这又要给用户选择了。给用户选择的地方都是通过注解。再将Component注解类复制一份，改名叫Scope。value默认是singleon，单例。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/93f7703a5a968b247cafaf80fe3df253.jpg" alt="手撕spring核心源码，彻底搞懂spring流程"></p> <p>实例化对象需要一个容器来存放，首先要定义一个对象BeanDefination来存放对象的描述：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/705245baa8ea68ccbbf7001e833e71b2.jpg" alt="手撕spring核心源码，彻底搞懂spring流程"></p> <p>每个class对应一个BeanDefination，存放到一个map容器中：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/f5e9b4b98fdaab9aac66a9307abcb1b3.jpg" alt="手撕spring核心源码，彻底搞懂spring流程"></p> <p>要获取实例的时候需要判断是否是单例的，单例的就用一个map存起来下次获取时直接用，不是单例就直接实例化。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/6c047cf9d88c3a132ce616cabff5a3b5.jpg" alt="手撕spring核心源码，彻底搞懂spring流程"></p> <p>运行看看效果：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/9fcdcc8fc1c8a7f4f8c883a7039bbcd1.jpg" alt="手撕spring核心源码，彻底搞懂spring流程"></p> <p>这次不是null，而是具体的实例了。但是咱们不满足于用getBean获取呀，下面咱们来看怎么自动注入。</p> <p>手撕Spring依赖注入流程</p> <p>首先来定义一个标识注入的注解Autowired:</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/d82a14bc08c6ed640d7fec0d5f2ad25e.jpg" alt="手撕spring核心源码，彻底搞懂spring流程"></p> <p>再任意定义一个Bean做注入测试：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/b4ecdc698ed184d94aad35b3cc5f16f7.jpg" alt="手撕spring核心源码，彻底搞懂spring流程"></p> <p>注入到UserService对象中：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/926f3ef70a27c716db2b3c62e71d6735.jpg" alt="手撕spring核心源码，彻底搞懂spring流程"></p> <p>把newInstance实例化的地方单独提取一个方法，实例化时获取类是否有Autowired注解的，有的化先实例化它：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/bb27669bdffdc933aacdb3a094d5540a.jpg" alt="手撕spring核心源码，彻底搞懂spring流程"></p> <p>测试效果：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/90f992fc4fb96ecc5684776c4cc9525b.jpg" alt="手撕spring核心源码，彻底搞懂spring流程"></p> <p><strong>总结</strong></p> <p><strong></strong></p> <p>这里面的代码咱们在平时业务开发中常用，我也没多解释。大家有没有感觉整个流程就像做业务开发一样顺畅。其实写底层容器就是这样，原理了解了一点都不难。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-65442.htm">动物疫苗生产厂家排名榜单图片及价格（动物疫苗行业排名）</a></p>
+                                        <p>下一个：<a href="/news/article-66047.htm">郑州宠物疫苗批发地址（郑州动物疫苗批发地址）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-22-free-node-subscribe.htm" title="V2ray Free节点订阅每天更新20.8M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新20.8M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-31415.htm" title="东北农业大学动物医院挂号（东北农业大学动物医学院官网）">东北农业大学动物医院挂号（东北农业大学动物医学院官网）</a></li>
+                        <li class="py-2"><a href="/news/article-41692.htm" title="宠物粮食销售方法 宠物粮食销售方法有哪些">宠物粮食销售方法 宠物粮食销售方法有哪些</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-20-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新19.3M/S免费节点订阅链接">V2ray Free节点订阅每天更新19.3M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-15-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新21.5M/S免费节点订阅链接">V2ray Free节点订阅每天更新21.5M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-52788.htm" title="猫咪领养协议模板怎么写（领养猫的协议是什么样的）">猫咪领养协议模板怎么写（领养猫的协议是什么样的）</a></li>
+                        <li class="py-2"><a href="/news/article-38725.htm" title="宠物粮食加工厂加盟条件是什么样的 宠物粮食加工厂加盟条件是什么样的呢">宠物粮食加工厂加盟条件是什么样的 宠物粮食加工厂加盟条件是什么样的呢</a></li>
+                        <li class="py-2"><a href="/news/article-33901.htm" title="国内前十名的兽药厂家 中国最好的兽药厂家">国内前十名的兽药厂家 中国最好的兽药厂家</a></li>
+                        <li class="py-2"><a href="/news/article-47126.htm" title="KTL 一个支持C++14编辑公式的K线技术工具平台 &#8211; 第五版，支持sqlite3，全新sqlite3zz语法超简单使用sqlite3; 添加方差等统计函数。">KTL 一个支持C++14编辑公式的K线技术工具平台 &#8211; 第五版，支持sqlite3，全新sqlite3zz语法超简单使用sqlite3; 添加方差等统计函数。</a></li>
+                        <li class="py-2"><a href="/news/article-40698.htm" title="宠物粮市场分析图表（宠物粮食市场份额）">宠物粮市场分析图表（宠物粮食市场份额）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <a href="/">V2ray Free免费机场订阅中文站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>
