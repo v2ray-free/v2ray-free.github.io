@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-69896.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>什么是TypeScript，为什么我会用它代替JavaScript？</title>
+        <meta name="description" content="TypeScript是JavaScript的超集，主要提供可选的静态类型，类和接口。其中一个重要好处是使IDE能够在您键入代码时提供更丰富的环境来发现常见错误。 要了解我的意思，请观看Microsof" />
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray Free免费机场订阅中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2ray-free.github.io/news/article-69896.htm" />
+    <meta property="og:site_name" content="V2ray Free免费机场订阅中文站" />
+    <meta property="og:title" content="什么是TypeScript，为什么我会用它代替JavaScript？" />
+    <meta property="og:image" content="https://v2ray-free.github.io/uploads/20241107/c0f75582a719885c00ddc548dfdee558.webp" />
+        <meta property="og:release_date" content="2025-03-08T05:07:12" />
+    <meta property="og:updated_time" content="2025-03-08T05:07:12" />
+        <meta property="og:description" content="TypeScript是JavaScript的超集，主要提供可选的静态类型，类和接口。其中一个重要好处是使IDE能够在您键入代码时提供更丰富的环境来发现常见错误。 要了解我的意思，请观看Microsof" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="什么是TypeScript，为什么我会用它代替JavaScript？">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">什么是TypeScript，为什么我会用它代替JavaScript？</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="V2ray X节点订阅官网" data-url="https://v2rayx.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-dracula"> <p>TypeScript是JavaScript的超集，主要提供可选的静态类型，类和接口。其中一个重要好处是使IDE能够在您键入代码时提供更丰富的环境来发现常见错误。</p> <p>要了解我的意思，请观看Microsoft关于该语言的介绍性视频。</p> <p>对于大型JavaScript项目，采用TypeScript可能会产生更强大的软件，同时仍可部署常规JavaScript应用程序。</p> <p>它是开源的，但如果您使用支持的IDE，则只能在键入时获得聪明的Intellisense。最初，这只是微软的Visual Studio（也在Miguel de Icaza的博客文章中提到）。目前，其他IDE也提供TypeScript支持。</p> <p>还有其他类似的技术吗？<br /> 有CoffeeScript，但这确实有不同的用途。恕我直言，CoffeeScript为人类提供了可读性，但TypeScript还通过其可选的静态类型为工具提供了深度可读性（请参阅最近的博客文章以获得更多批评）。还有Dart，但这完全取代了JavaScript（尽管它可以生成JavaScript代码）</p> <p>例<br /> 举个例子，这里有一些TypeScript（您可以在TypeScript Playground中使用它）</p> <pre><code>class Greeter {     greeting: string;     constructor (message: string) {         this.greeting = message;     }     greet() {         return "Hello, " + this.greeting;     } }   </code></pre> <p>这是它将产生的JavaScript</p> <pre><code>var Greeter = (function () {     function Greeter(message) {         this.greeting = message;     }     Greeter.prototype.greet = function () {         return "Hello, " + this.greeting;     };     return Greeter; })(); </code></pre> <p>注意TypeScript如何定义成员变量和类方法参数的类型。这在转换为JavaScript时被删除，但IDE和编译器使用它来发现错误，例如将数字类型传递给构造函数。</p> <p>它还能够推断未明确声明的类型，例如，它将确定该greet()方法返回一个字符串。</p> </h1> <p>许多浏览器和IDE通过源映射提供直接调试支持。有关更多详细信息，请参阅此Stack Overflow问题：使用Visual Studio调试TypeScript代码.</p> </h1> <p>TypeScript是现代JavaScript +类型。它是关于尽早捕获错误并使您成为更高效的开发人员，同时利用JavaScript社区。</p> <p>JavaScript通过ECMAScript标准进行标准化。较旧的浏览器不支持较新的ECMAScript标准的所有功能（请参阅此表）。TypeScript支持新的ECMAScript标准，并将它们编译为您选择的（较旧的）ECMAScript目标（当前目标是3,5和6 [又名2015]）。这意味着您可以使用ES2015及更高版本的功能，如模块，lambda函数，类，扩展运算符和解构，同时保持向后兼容旧版浏览器。</p> <p>类型支持不是ECMAScript标准的一部分，可能永远不会归因于解释性质而不是JavaScript的编译性质。TypeScript的类型系统非常丰富，包括：接口，枚举，混合类型，泛型，联合/交集类型，访问修饰符等等。TypeScript 的官方网站概述了这些功能。今天的打字稿类型系统与其他类型语言相当，在某些情况下可以说更强大。</p> <p>与其他JavaScript定位语言的关系<br /> 与其他编译为JavaScript的语言相比，TypeScript具有独特的理念。JavaScript代码是有效的TypeScript代码; TypeScript是JavaScript的超集。您几乎可以将.js文件重命名为.ts文件并开始使用TypeScript（请参阅下面的“JavaScript互操作性”）。TypeScript文件被编译为可读的JavaScript，因此可以进行迁移，并且理解编译的TypeScript并不困难。TypeScript建立在JavaScript成功的基础上，同时改善了它的弱点。</p> <p>一方面，您有未来的证明工具，它们采用现代ECMAScript标准并将其编译为较旧的JavaScript版本，其中Babel是最受欢迎的版本。另一方面，您的语言可能与针对JavaScript的JavaScript完全不同，如Coffeescript，Clojure，Dart，Elm，Haxe，ScalaJs以及更多主机（请参阅此列表））。这些语言虽然可能比JavaScript未来可能带来的更好，但却没有找到足够的采用它们的未来得到保证的风险。您可能也很难找到有经验的开发人员使用这些语言，尽管您会发现这些语言通常会更热情。使用JavaScript的Interop也可以更多地涉及，因为它们实际上远离了JavaScript。</p> <p>TypeScript位于这两个极端之间，从而平衡风险。TypeScript不是任何标准的危险选择。如果您熟悉JavaScript，则需要花费很少的精力，因为它不是一种完全不同的语言，具有出色的JavaScript互操作性支持，并且最近已经有很多采用。</p> </h1> <p>JavaScript是动态类型的。这意味着JavaScript在运行时实际实例化之前不知道变量的类型。这也意味着可能为时已晚。TypeScript为JavaScript添加了类型支持。如果你正确地玩牌，你可以完全根除某些类型的某些变量的错误假设所导致的错误（你输入代码的严格程度如何，或者你输入的代码完全取决于你）。</p> <p>通过使用类型推断，TypeScript使输入更容易，而且更不那么明确。例如：var x = "hello"在TypeScript中与var x : string = “hello”。相同。该类型只是从其使用中推断出来的。即使你没有明确地键入类型，它们仍然可以防止你做一些否则会导致运行时错误的事情。</p> <p>默认情况下，可选择键入TypeScript。例如function divideByTwo(x) { return x / 2 }，TypeScript中的有效函数可以使用任何类型的参数调用，即使使用字符串调用它也会显然导致运行时错误。就像你习惯于JavaScript一样。这是有效的，因为当没有显式指定类型并且无法推断类型时，就像在divideByTwo示例中一样，TypeScript将隐式指定类型any。这意味着divideByTwo函数的类型签名自动变为function divideByTwo(x : any) : any。有一个编译器标志来禁止这种行为：–noImplicitAny。启用此标志可以提供更高程度的安全性，但也意味着您需要进行更多的打字。</p> <p>类型具有与之相关的成本。首先，有一个学习曲线，其次，当然，使用适当的严格类型设置代码库会花费你更多的时间。根据我的经验，这些成本对于您与他人共享的任何严格代码库都是完全值得的。Github对编程语言和代码质量的大规模研究表明，“静态类型语言通常比动态类型更不易缺陷，并且强类型在同一方面优于弱类型”。</p> <p>有趣的是，这篇论文发现TypeScript比JavaScript更不容易出错：</p> <p>对于那些具有正系数的人，我们可以预期该语言与其他条件相同，更多的缺陷修复。这些语言包括C，C ++，JavaScript，Objective-C，Php和Python。语言Clojure，Haskell，Ruby，Scala和TypeScript都具有负系数，这意味着这些语言不太可能导致缺陷修复提交。</p> </h1> <p>TypeScript的开发经验是对JavaScript的重大改进。TypeScript编译器会在其丰富的类型信息上实时通知IDE。这提供了几个主要优点。例如，使用TypeScript，您可以安全地在整个代码库中进行重构等重构。通过代码完成，您可以获得库可能提供的任何功能的内联帮助。不再需要记住它们或在在线参考中查找它们。在您忙于编码时，编译错误会直接在IDE中报告，并带有红色波浪线。总而言之，与使用JavaScript相比，这可以显着提高工作效率。人们可以花更多的时间编写代码，减少调试时间。</p> <p>有各种各样的IDE对TypeScript有很好的支持，比如Visual Studio Code，WebStorm，Atom和Sublime。</p> </h1> <p>表单的运行时错误cannot read property ‘x’ of undefined或undefined is not a function通常由JavaScript代码中的错误引起。开箱即用TypeScript已经降低了发生这类错误的可能性，因为不能使用TypeScript编译器不知道的变量（any类型变量的属性除外）。尽管错误地利用设置的变量仍然是可能的undefined。但是，使用2.0版本的TypeScript，您可以通过使用非可空类型来消除这些类型的错误。其工作原理如下：</p> <p>启用严格空检查（–strictNullChecks编译器标志）后，undefined除非您明确声明它是可空类型，否则不允许将TypeScript编译器分配给变量。例如，let x : number = undefined将导致编译错误。这完全符合类型理论，因为undefined它不是数字。人们可以定义x为和的类型number并undefined纠正这个：let x : number | undefined = undefined。</p> <p>一旦知道某个类型可以为空，意味着它的类型也可以是值，null或者undefinedTypeScript编译器可以通过基于控制流的类型分析来确定您的代码是否可以安全地使用变量。换句话说，当您undefined通过例如if语句检查变量时，TypeScript编译器将推断代码控制流的该分支中的类型不再可为空，因此可以安全地使用。这是一个简单的例子：</p> <p>let x: number | undefined;<br /> if (x !== undefined) x += 1; // this line will compile, because x is checked.<br /> x += 1; // this line will fail compilation, because x might be undefined.<br /> 在2016年的会议期间，TypeScript Anders Hejlsberg的联合设计师对此功能进行了详细解释和演示：视频（从44:30到56:30）。</p> </h1> <p>要使用TypeScript，您需要一个构建过程来编译为JavaScript代码。构建过程通常只需几秒钟，具体取决于项目的大小。TypeScript编译器支持增量编译（–watch编译器标志），因此可以更快地编译所有后续更改。</p> <p>TypeScript编译器可以在生成的.js文件中内联源地图信息或创建单独的.map文件。调试实用程序（如Chrome DevTools和其他IDE）可以使用源映射信息将JavaScript中的行与在TypeScript中生成它们的行相关联。这使您可以直接在TypeScript代码上设置断点并在运行时检查变量。源地图信息非常好用，它早在TypeScript之前就已存在，但调试TypeScript通常不如直接使用JavaScript时那么好。以 this关键字为例。由于this自ES2015以来关键字围绕闭包的语义变化，this在运行时可能实际上存在一个被调用的变量_this（参见这个答案））。这可能会在调试期间使您感到困惑，但如果您了解它或检查JavaScript代码，通常不会出现问题。应该指出的是，巴贝尔遇到了完全相同的问题。</p> <p>TypeScript编译器可以执行一些其他技巧，例如基于装饰器生成拦截代码，为不同的模块系统生成模块加载代码以及解析JSX。但是，除了Typescript编译器之外，您可能还需要一个构建工具。例如，如果要压缩代码，则必须在构建过程中添加其他工具才能执行此操作。</p> <p>有适用于Webpack，Gulp，Grunt和几乎任何其他JavaScript构建工具的TypeScript编译插件。TypeScript文档有一个关于与构建工具集成的部分。一个棉短绒也可如果你想更多的建设时间检查。还有大量的种子项目可以让你开始使用TypeScript以及一些其他技术，如Angular 2，React，Ember，SystemJs，WebPack，Gulp等。</p> </h1> <p>由于TypeScript与JavaScript密切相关，因此具有出色的互操作性功能，但在TypeScript中使用JavaScript库需要一些额外的工作。打字稿定义需要这样的打字稿编译理解函数调用像_.groupBy或者angular.copy或者$.fadeOut不是真正意义上的非法语句。这些函数的定义放在.d.ts文件中。</p> <p>定义可以采用的最简单的形式是允许以任何方式使用标识符。例如，当使用Lodash时，单行定义文件declare var _ : any将允许您调用您想要的任何功能_，但当然您仍然可以犯错：_.foobar()将是合法的TypeScript调用，但当然是非法调用在运行时。如果您需要正确的类型支持和代码完成，您的定义文件需要更加精确（请参阅示例的lodash定义）。</p> <p>TypeScript编译器会自动理解预先打包自己的类型定义的Npm模块（请参阅文档）。对于几乎没有任何其他半流行的JavaScript库，它不包含自己的定义，那里的某些人已经通过另一个npm模块提供了类型定义。这些模块以“@ types /”为前缀，来自名为DefinitelyTyped的Github存储库。</p> <p>有一点需要注意：类型定义必须与您在运行时使用的库的版本相匹配。如果他们不这样做，TypeScript可能会禁止您调用函数或取消引用存在的变量或允许您调用函数或取消引用不存在的变量，这只是因为类型与编译时的运行时不匹配。因此，请确保为正在使用的库的正确版本加载正确版本的类型定义。</p> <p>说实话，这有点麻烦，这可能是你不选择TypeScript的原因之一，而是选择像Babel这样的东西，它们根本不需要获得类型定义。另一方面，如果您知道自己在做什么，则可以轻松克服由于错误或缺少定义文件而导致的任何问题。</p> </h1> <p>.js可以将任何文件重命名为a .ts并通过TypeScript编译器运行，以在语法上获得与输出相同的JavaScript代码（如果它首先在语法上是正确的）。即使TypeScript编译器出现编译错误，它仍然会生成一个.js文件。它甚至可以接受.js带有–allowJs标志的文件作为输入。这允许您立即从TypeScript开始。不幸的是，编译错误很可能在开始时发生。人们需要记住，这些不是像你可能习惯与其他编译器一样的显示停止错误。</p> <p>在将JavaScript项目转换为TypeScript项目时，编译错误在TypeScript的本质中是不可避免的。TypeScript检查所有代码的有效性，因此需要了解所有使用的函数和变量。因此，需要为所有类型定义类型定义，否则必然会发生编译错误。如上一章所述，对于几乎任何JavaScript框架，都.d.ts可以通过安装DefinitelyTyped包轻松获取文件。但是，您可能已经使用了一些不具有TypeScript定义的模糊库，或者您已经填充了一些JavaScript原语。在这种情况下，您必须为这些位提供类型定义，以便编译错误消失。只需创建一个.d.ts文件并将其包含在tsconfig.json的files数组中，以便TypeScript编译器始终考虑它。在其中声明TypeScript不知道的那些位作为类型any。一旦消除了所有错误，您可以根据需要逐步为这些部分引入打字。</p> <p>为了将TypeScript引入构建管道，还需要一些（重新）配置构建管道的工作。正如编译章节中所提到的，那里有很多很好的资源，我鼓励你寻找使用你想要使用的工具组合的种子项目。</p> <p>最大的障碍是学习曲线。我鼓励你先做一个小项目。看看它是如何工作的，如何构建，它使用哪些文件，如何配置，如何在IDE中运行，如何构建，使用哪些工具等等。当你知道将大型JavaScript代码库转换为TypeScript时是可行的你在做什么。阅读此博客，例如在72小时内将600k行转换为打字稿。只需确保在跳跃之前掌握好语言。</p> </h1> <p>TypeScript是开源的（Apache 2许可，请参阅github）并由Microsoft提供支持。C＃的首席架构师Anders Hejlsberg正在带领该项目。这是一个非常活跃的项目; TypeScript团队在过去几年中已经发布了许多新功能，并且还计划推出许多很棒的功能（参见路线图）。</p> <p>在2017年StackOverflow开发人员调查中， TypeScript是最受欢迎的JavaScript转换器（总体排名第9位），并且在最受欢迎的编程语言类别中获得第三名。</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-69262.htm">Redis 单数据多源超高并发下的解决方案</a></p>
+                                        <p>下一个：<a href="/news/article-69897.htm">领养宠物申请语（领养狗狗的申请书怎么写）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-38725.htm" title="宠物粮食加工厂加盟条件是什么样的 宠物粮食加工厂加盟条件是什么样的呢">宠物粮食加工厂加盟条件是什么样的 宠物粮食加工厂加盟条件是什么样的呢</a></li>
+                        <li class="py-2"><a href="/news/article-49105.htm" title="成都动物防疫站在哪里（成都动物防疫站***免费吗）">成都动物防疫站在哪里（成都动物防疫站***免费吗）</a></li>
+                        <li class="py-2"><a href="/news/article-38727.htm" title="兰州的狗市在什么地方（兰州那里有狗市）">兰州的狗市在什么地方（兰州那里有狗市）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-21-free-subscribe-node.htm" title="V2ray Free节点订阅每天更新20.8M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新20.8M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-11-node-share-links.htm" title="V2ray Free节点订阅每天更新22.4M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新22.4M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-48125.htm" title="哈尔滨农大动物医院哪个大夫好一点啊（哈尔滨农业大学动物医学）">哈尔滨农大动物医院哪个大夫好一点啊（哈尔滨农业大学动物医学）</a></li>
+                        <li class="py-2"><a href="/news/article-36767.htm" title="2021公务员国考报名要求是什么（公务员国考报考指南）">2021公务员国考报名要求是什么（公务员国考报考指南）</a></li>
+                        <li class="py-2"><a href="/news/article-60052.htm" title="C\C++ 中 malloc、calloc、realloc 函数的用法">C\C++ 中 malloc、calloc、realloc 函数的用法</a></li>
+                        <li class="py-2"><a href="/news/article-61820.htm" title="宠物批发店便宜吗（宠物批发零售）">宠物批发店便宜吗（宠物批发零售）</a></li>
+                        <li class="py-2"><a href="/news/article-42194.htm" title="天津宠物救助站领养宠物（天津正规宠物救助站）">天津宠物救助站领养宠物（天津正规宠物救助站）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <a href="/">V2ray Free免费机场订阅中文站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>
