@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-75878.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>采用JSP+Servlet+JavaBean+JDBC方式开发一个web登录程序</title>
+        <meta name="description" content="采用JSP+Servlet+JavaBean+JDBC方式开发一个web登录程序  1.选用开发环境：SQL Server 、JDK1.8、Tomcat7.0、Myeclipse 2014 2.开发模" />
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray Free免费机场订阅中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2ray-free.github.io/news/article-75878.htm" />
+    <meta property="og:site_name" content="V2ray Free免费机场订阅中文站" />
+    <meta property="og:title" content="采用JSP+Servlet+JavaBean+JDBC方式开发一个web登录程序" />
+    <meta property="og:image" content="https://v2ray-free.github.io/uploads/20241107/4c9e681f84a64ec8891c2fa70c10221e.webp" />
+        <meta property="og:release_date" content="2025-03-17T09:41:40" />
+    <meta property="og:updated_time" content="2025-03-17T09:41:40" />
+        <meta property="og:description" content="采用JSP+Servlet+JavaBean+JDBC方式开发一个web登录程序  1.选用开发环境：SQL Server 、JDK1.8、Tomcat7.0、Myeclipse 2014 2.开发模" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="采用JSP+Servlet+JavaBean+JDBC方式开发一个web登录程序">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">采用JSP+Servlet+JavaBean+JDBC方式开发一个web登录程序</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="V2ray X节点订阅官网" data-url="https://v2rayx.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p id="main-toc">采用JSP+Servlet+JavaBean+JDBC方式开发一个web登录程序</p> <hr/> <p>1.<strong>选用开发环境：</strong>SQL Server 、JDK1.8、Tomcat7.0、Myeclipse 2014</p> <p>2<strong>.开发模式及工作原理：</strong></p> <p>&nbsp; &nbsp; &nbsp; &nbsp; 首先，Servlet接收浏览器发送的请求，Servlet根据不同的Servlet调用相应的Javabean，然后JavaBean按照自己的业务逻辑 ，通过JDBC操作数据库。Servlet将数据库传递给JSP,最后，JSP将后台处理的结果呈现给浏览器。如图1.1所示：</p> <p><img fetchpriority="high" decoding="async" alt="" class="has" height="220" src="http://img.555519.xyz/uploads3/20220723/f56d0f46992b13cd1a6622c9ca86a74d.jpg"></p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 图1.1 &nbsp; &nbsp; &nbsp; Servlet模式工作原理</p> <p>3.<strong>建立数据库与表，创建数据库连接：</strong></p> <p>（1）创建数据库:在SQL Server 2014 中创建数据库，命名TEST，其中建立userTable 表（用户表），表结构如表1.1所示：</p> <table border="1" cellpadding="1" cellspacing="1" style="width:500px;"> <caption>   表1.1 userTable 表</caption> <tbody> <tr> <td>字段名称</td> <td>数据类型</td> <td>主键</td> <td>自增</td> <td>允许为空</td> <td>描述</td> </tr> <tr> <td>id</td> <td>int</td> <td>yes</td> <td>增1</td> <td></td> <td>ID号</td> </tr> <tr> <td>username</td> <td>varchar(20)</td> <td></td> <td></td> <td></td> <td>用户名</td> </tr> <tr> <td>password</td> <td>varchar(20)</td> <td></td> <td></td> <td></td> <td>密码</td> </tr> </tbody> </table> <ul> <li>id设为自增int型，主键</li> <li>表建好后，插入几条记录</li> <li>效果图如图1.2所示：</li> </ul> <p><img decoding="async" alt="" class="has" height="200" src="http://img.555519.xyz/uploads3/20220723/58a1fb07e85d0a8447a5acaa949f62a2.jpg"></p> <p><img decoding="async" alt="" class="has" height="198" src="http://img.555519.xyz/uploads3/20220723/be08b11f9cf57894b655e13d9a4430c3.jpg"></p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; 图1.2 数据库表及数据效果图</p> <p>&nbsp; &nbsp;&nbsp; （2）创建数据库连接：</p> <ul> <li>加载JDBC驱动包：sqljdbc4.jar,可从网上下载并保存在Myeclipse 2014默认工作区“C：\User\join\Workspaces\MyeElipse professional 2014，同时，将JDBC驱动包sqljdbc4.jar复制到项目"\WebRoot\WEB-INF\lib"目录下。</li> <li>创建数据源连接：主菜单【Window】，选择【Open Perspective】，【MyEclipse Database Explorer】，打开“数据库浏览器”模式，右击鼠标选择【New...】，编辑数据库驱动如图1.3，其中Driver JARs 即先前存盘的数据库驱动。右击创建的sqlsrv,选择菜单【Open connection...】测试</li> </ul> <p><img loading="lazy" decoding="async" alt="" class="has" height="358" src="http://img.555519.xyz/uploads3/20220723/4e8b215a2d67a21fd55039cca1b96bb0.jpg"></p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 图1.3&nbsp;编辑数据库连接驱动</p> <p>4.<strong>详细开发步骤</strong>：</p> <p>（1）<em>创建Java EE项目</em>：选择主菜单【File】<img decoding="async" alt="\rightarrow" class="mathcode" src="http://img.555519.xyz/uploads3/20220723/4b641d298233e2c377d9bd3f0104e3fb.jpg">【New】<img decoding="async" alt="\rightarrow" class="mathcode" src="http://img.555519.xyz/uploads3/20220723/4b641d298233e2c377d9bd3f0104e3fb.jpg">【Web Project】，在【New Web Project】窗口中填写项目名jsp_servlet_javabean_jdbc,单击【Next】，在“Web Module"页勾选"Generate web.xml deployment descriptor"，可自动生成web.xml配置文件。单击【Next】，勾选"JavaEE 7.0 Generic Library",取消选择''JSTL 1.2.2 Library(除去不必要的类库）。设置完成后，单击【Finish】，生成一个Java EE 项目。</p> <p>（2）<em>创建JDBC类</em>：右击项目src,选择【New】<img decoding="async" alt="\rightarrow" class="mathcode" src="http://img.555519.xyz/uploads3/20220723/4b641d298233e2c377d9bd3f0104e3fb.jpg">【Package】，输入包名"org.easybooks.test.jdbc",单击【Finish】按钮。</p> <p>右击src,选择【New】<img decoding="async" alt="\rightarrow" class="mathcode" src="http://img.555519.xyz/uploads3/20220723/4b641d298233e2c377d9bd3f0104e3fb.jpg">【Class】，指定"org.easybooks.test.jdbc"包,输入类名"SqlSrvDBConn"。</p> <p>SqlSrvDBConn.java代码如下：</p> <pre class="has"><code>package org.easybooks.test.jdbc; import java.sql.*; public class SqlSrvDBConn { 	private Statement stmt; 	private Connection conn; 	ResultSet rs; 	public SqlSrvDBConn(){ 		stmt=null; 		try{ 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); 			 			conn=DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=TEST","sa","sa"); 			 		}catch(Exception e){ 			e.printStackTrace(); 		} 		rs=null; 	} 	//执行查询类语句，又返回集 	public ResultSet executeQuery(String sql) 	{ 		try{ 			stmt=conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, 					                                          ResultSet.CONCUR_UPDATABLE); 				rs=stmt.executeQuery(sql); 			}catch(SQLException e){ 				System.err.println("Data.executeQuery:"+e.getMessage()); 			} 		return rs; 	} 	//关闭对象 	public void closeStmt() 	{ 		try{ 			stmt.close();    //关闭Statement对象 		}catch(SQLException e){ 			System.err.println("Data.executeQuery:"+e.getMessage()); 		} 	} 	public void closeConn() 	{ 		try{ 			conn.close();     //关闭连接 		}catch(SQLException e){ 			System.err.println("Data.executeQuery:"+e.getMessage()); 		} 	} }</code></pre> <p>（3）<em>构造JavaBean</em>:在src下建立包org.easybooks.test.model.vo,其中创建名为UserTable的类，为userTable表构造一个JavaBean,代码如下：</p> <pre class="has"><code>package org.easybooks.test.model.vo;  public class UserTable { 	private Integer id; 	private String username; 	private String password; 	public Integer getId() { 		return this.id; 	} 	public void setId(Integer id) { 		this.id = id; 	} 	public String getUsername() { 		return this.username; 	} 	public void setUsername(String username) { 		this.username = username; 	} 	public String getPassword() { 		return this.password; 	} 	public void setPassword(String password) { 		this.password = password; 	} 	 }</code></pre> <p>（4）<em>编写JSP</em>:</p> <p>展开项目工程树，右击"WebRoot",选择【New】<img decoding="async" alt="\rightarrow" class="mathcode" src="http://img.555519.xyz/uploads3/20220723/4b641d298233e2c377d9bd3f0104e3fb.jpg">【File】，在File name中输入文件名login.jsp,单击【Finish】。在代码编辑器中编写登录页login.jsp文件。代码如下：</p> <pre class="has"><code>&lt;%@ page language="java" pageEncoding="utf-8"%&gt; &lt;html&gt; &lt;head&gt;&lt;title&gt;登录&lt;/title&gt;&lt;/head&gt; &lt;body bgcolor="#E3E3E3"&gt; &lt;form action="mainServlet" method="post"&gt; &lt;table&gt;   &lt;caption&gt;用户登录：&lt;/caption&gt;   &lt;tr&gt;     &lt;td&gt;用户名：&lt;/td&gt;     &lt;td&gt;       &lt;input type="text" name="username" size="20"/&gt;     &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td&gt;密码：&lt;/td&gt;    &lt;td&gt;      &lt;input type="password" name="password" size="21"/&gt;    &lt;/td&gt;   &lt;/tr&gt; &lt;/table&gt; &lt;input type="submit" value="登录"/&gt; &lt;input type="reset"  value="重置"/&gt; &lt;/form&gt; 如果没注册单击&lt;a href=""&gt;这里&lt;/a&gt;注册！ &lt;/body&gt; &lt;/html&gt;</code></pre> <p>此页面用于登录首页。同样方法在WebRoot下创建主页main.jsp文件，代码如下：</p> <pre class="has"><code>&lt;%@page language="java" pageEncoding="gb2312" import="org.easybooks.test.model.vo.UserTable"%&gt; &lt;html&gt; &lt;head&gt; 	&lt;title&gt;留言板信息&lt;/title&gt; &lt;/head&gt; &lt;body&gt; 	&lt;% 		UserTable user=(UserTable)session.getAttribute("user"); 		String usr=user.getUsername(); 		 		%&gt; 		&lt;%=usr%&gt;,您好，欢迎登录留言板。 &lt;/body&gt; &lt;/html&gt;</code></pre> <p>同样方法在WebRoot下创建主页error.jsp文件，代码如下：</p> <pre class="has"><code>&lt;%@page language="java" pageEncoding="utf-8"%&gt; &lt;html&gt; &lt;head&gt; 	&lt;title&gt;出错&lt;/title&gt; &lt;/head&gt; &lt;body&gt;    	   登录失败！单击&lt;a href="login.jsp"&gt;这里&lt;/a&gt;返回 &lt;/body&gt; &lt;/html&gt;</code></pre> <p>（5）<em>编写Servlet</em>:</p> <p>在src下创建包org.easybooks.test.servlet，在包中创建名为MainServlet的类（Servlet类）。编写MainServlet.java 代码如下：</p> <pre class="has"><code>package org.easybooks.test.servlet; import  java.sql.*; import  java.io.*; import  javax.servlet.*; import  javax.servlet.http.*; import  org.easybooks.test.jdbc.SqlSrvDBConn; import  org.easybooks.test.model.vo.UserTable;; public class MainServlet extends HttpServlet { 	public void doGet(HttpServletRequest request,HttpServletResponse response)throws ServletException, 	        IOException{ 		request.setCharacterEncoding("gb2312"); 		String  usr=request.getParameter("username"); 		String  pwd=request.getParameter("password"); 		boolean validated=false; 		SqlSrvDBConn sqlsrvdb=new SqlSrvDBConn(); 		HttpSession session=request.getSession(); 		UserTable user=null; 		user=(UserTable)session.getAttribute("user"); 		if(user==null){ 			String sql="select*from userTable"; 			ResultSet rs=sqlsrvdb.executeQuery(sql); 			try{ 				 			 			while(rs.next())       		 {        			if((rs.getString("username").trim().compareTo(usr)==0)                 			 &amp;&amp;(rs.getString("password").compareTo(pwd)==0))         			 {        					user=new UserTable();        					user.setId(rs.getInt(1));        					user.setUsername(rs.getString(2));        					user.setPassword(rs.getString(3));        					session.setAttribute("user",user);  //把user对象存储在会话中        					validated=true;  //标识为true表示验证成功通过           			 }           	}           rs.close(); 	}catch(SQLException e){ 		e.printStackTrace(); 	} 			sqlsrvdb.closeStmt(); 			sqlsrvdb.closeConn(); 		} 		else{ 			validated=true; 		} 		if(validated) 		{ 			response.sendRedirect("main.jsp"); 		} 		else{ 			response.sendRedirect("error.jsp"); 			 		} 	        } 	        public void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException, 	           IOException{ 	        	doGet(request,response); 	        	 	        } 	 	 	 	 }</code></pre> <p>（6）<em>配置Servlet</em>:修改web.xml，代码如下：</p> <pre class="has"><code class="language-java">&lt;?xml version="1.0" encoding="UTF-8"?&gt; &lt;web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0"&gt;   &lt;display-name&gt;jsp_servlet_javabean_jdbc&lt;/display-name&gt;   &lt;welcome-file-list&gt;     	&lt;welcome-file&gt;index.html&lt;/welcome-file&gt;     	&lt;welcome-file&gt;index.htm&lt;/welcome-file&gt;    	 	&lt;welcome-file&gt;login.jsp&lt;/welcome-file&gt;     	&lt;welcome-file&gt;default.html&lt;/welcome-file&gt;     	&lt;welcome-file&gt;default.htm&lt;/welcome-file&gt;     	&lt;welcome-file&gt;default.jsp&lt;/welcome-file&gt;   &lt;/welcome-file-list&gt;    &lt;servlet&gt;   		&lt;servlet-name&gt;mainServlet&lt;/servlet-name&gt;   		&lt;servlet-class&gt;org.easybooks.test.servlet.MainServlet&lt;/servlet-class&gt;   &lt;/servlet&gt;   &lt;servlet-mapping&gt;   		&lt;servlet-name&gt;mainServlet&lt;/servlet-name&gt;  		&lt;url-pattern&gt;/mainServlet&lt;/url-pattern&gt;   &lt;/servlet-mapping&gt;        &lt;servlet&gt;   		&lt;servlet-name&gt;selectAll&lt;/servlet-name&gt;   		&lt;servlet-class&gt;org.easybooks.test.servlet.SelectAllServlet&lt;/servlet-class&gt;   &lt;/servlet&gt;   &lt;servlet-mapping&gt;   		&lt;servlet-name&gt;selectAll&lt;/servlet-name&gt;  		&lt;url-pattern&gt;/selectAll&lt;/url-pattern&gt;   &lt;/servlet-mapping&gt; &lt;/web-app&gt;</code></pre> <p>5.<strong>部署和运行：</strong></p> <ul> <li>项目最终形成树见下图1.4：</li> </ul> <p><img loading="lazy" decoding="async" alt="" class="has" height="305" src="http://img.555519.xyz/uploads3/20220723/1add342aa3252ec5bbed4936843cc9d0.jpg"></p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; 图1.4&nbsp; 项目jsp_servlet_javabean_jdbc最终形成树</p> <p><img loading="lazy" decoding="async" alt="" class="has" height="301" src="http://img.555519.xyz/uploads3/20220723/38feb21b3698724039e1634520f9fe40.jpg"></p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; 图1.5&nbsp; 部署成功</p> <ul> <li>单击工具栏<img loading="lazy" decoding="async" alt="" class="has" height="16" src="http://img.555519.xyz/uploads3/20220723/7b66aec29a3e6d58fcf3276e9ffcd8e0.jpg">按钮，弹出图1.5对话框，选择项目jsp_servlet_javabean_jdbc，单击【Add】按钮，选择Tomcat7.0作为服务器（此程序使用内置Tomcat),单击【OK】，部署成功。</li> <li>启动Tomcat 7.0，在浏览器中输入“http://localhost:8080/jsp_servlet_javabean_jdbc/,显示登录页面（图1.6），输入用户名，密码，提交表单，转到主页（图1.7），若userTable表中不存在相对应的用户名，密码，则提交后跳转到出错页（图1.8）。</li> </ul> <p><img loading="lazy" decoding="async" alt="" class="has" height="161" src="http://img.555519.xyz/uploads3/20220723/13abdb17a68cf95fb18e97067a2d4c98.jpg"></p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 图1.6 &nbsp;&nbsp;登录页面</p> <p><img loading="lazy" decoding="async" alt="" class="has" height="152" src="http://img.555519.xyz/uploads3/20220723/3ccd4a43d28bdc4090345ad100ce8b7c.jpg"></p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 图1.7 成功登录页面</p> <p><img loading="lazy" decoding="async" alt="" class="has" height="169" src="http://img.555519.xyz/uploads3/20220723/437abfab9d74e9e3e0bf14f02d82a7c7.jpg"></p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; 图1.8 出错页</p> <p id="-toc" style="margin-left:80px;"> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-75212.htm">C/C++内存申请函数总结</a></p>
+                                        <p>下一个：<a href="/news/article-75880.htm">上海宠物医院有多少家（上海宠物医院前十名）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-54413.htm" title="井字棋 C++">井字棋 C++</a></li>
+                        <li class="py-2"><a href="/news/article-52249.htm" title="1宠物领养中心 宠物领养中心要钱吗">1宠物领养中心 宠物领养中心要钱吗</a></li>
+                        <li class="py-2"><a href="/news/article-70539.htm" title="宠物领养的软件（宠物领养的平台）">宠物领养的软件（宠物领养的平台）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-17-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新21.1M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新21.1M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-71873.htm" title="宠物领养协议是什么法律（宠物领养协议简单版本）">宠物领养协议是什么法律（宠物领养协议简单版本）</a></li>
+                        <li class="py-2"><a href="/news/article-62400.htm" title="收猫长期回收各种宠物猫上海（上海收猫的宠物店）">收猫长期回收各种宠物猫上海（上海收猫的宠物店）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-18-node-share-links.htm" title="V2ray Free节点订阅每天更新21.2M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新21.2M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-47126.htm" title="KTL 一个支持C++14编辑公式的K线技术工具平台 &#8211; 第五版，支持sqlite3，全新sqlite3zz语法超简单使用sqlite3; 添加方差等统计函数。">KTL 一个支持C++14编辑公式的K线技术工具平台 &#8211; 第五版，支持sqlite3，全新sqlite3zz语法超简单使用sqlite3; 添加方差等统计函数。</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-14-free-high-speed-nodes.htm" title="V2ray Free节点订阅每天更新22.1M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新22.1M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-5-free-node-subscribe.htm" title="V2ray Free节点订阅每天更新19.6M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新19.6M/S免费节点订阅链接地址分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">51</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <a href="/">V2ray Free免费机场订阅中文站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>

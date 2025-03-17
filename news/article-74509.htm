@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-74509.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>由浅入深快速掌握Java 数组的使用_java</title>
+        <meta name="description" content="目录  1.数组定义格式  1.1 数组概述 1.2 什么是数组 1.3 数组的定义格式：  2.数组初始化之动态初始化  2.1 数组初始化概述 2.2 数组初始化方法  3.数组元素访问  3.1" />
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray Free免费机场订阅中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2ray-free.github.io/news/article-74509.htm" />
+    <meta property="og:site_name" content="V2ray Free免费机场订阅中文站" />
+    <meta property="og:title" content="由浅入深快速掌握Java 数组的使用_java" />
+    <meta property="og:image" content="https://v2ray-free.github.io/uploads/20241107/1087ff68104024ec6a2f32f0ab5b63d8.webp" />
+        <meta property="og:release_date" content="2025-03-15T07:21:16" />
+    <meta property="og:updated_time" content="2025-03-15T07:21:16" />
+        <meta property="og:description" content="目录  1.数组定义格式  1.1 数组概述 1.2 什么是数组 1.3 数组的定义格式：  2.数组初始化之动态初始化  2.1 数组初始化概述 2.2 数组初始化方法  3.数组元素访问  3.1" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="由浅入深快速掌握Java 数组的使用_java">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">由浅入深快速掌握Java 数组的使用_java</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="V2ray X节点订阅官网" data-url="https://v2rayx.github.io">
+                  				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">1.数组定义格式</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_0_0" rel="nofollow">1.1 数组概述</a></li> <li><a href="#_lab2_0_1" rel="nofollow">1.2 什么是数组</a></li> <li><a href="#_lab2_0_2" rel="nofollow">1.3 数组的定义格式：</a></li> </ul> <li><a href="#_label1" rel="nofollow">2.数组初始化之动态初始化</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_1_3" rel="nofollow">2.1 数组初始化概述</a></li> <li><a href="#_lab2_1_4" rel="nofollow">2.2 数组初始化方法</a></li> </ul> <li><a href="#_label2" rel="nofollow">3.数组元素访问</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_2_5" rel="nofollow">3.1 数组元素访问</a></li> </ul> <li><a href="#_label3" rel="nofollow">4.内存分配</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_3_6" rel="nofollow">4.1 java中的内存分配</a></li> <li><a href="#_lab2_3_7" rel="nofollow">4.2 数组内存图（单个数组）</a></li> <li><a href="#_lab2_3_8" rel="nofollow">4.3 多个数组内存图</a></li> </ul> <li><a href="#_label4" rel="nofollow">5.数组初始化之静态初始化</a></li> <ul class="second_class_ul"></ul> <li><a href="#_label5" rel="nofollow">6.数组操作的两个常见小问题</a></li> <ul class="second_class_ul"></ul> <li><a href="#_label6" rel="nofollow">7.数组常见操作</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_6_9" rel="nofollow">7.1 遍历</a></li> <li><a href="#_lab2_6_10" rel="nofollow">7.2 获取数组元素个数</a></li> <li><a href="#_lab2_6_11" rel="nofollow">7.3 获取最值</a></li> </ul> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>1.数组定义格式</h2> <p class="maodian"><a name="_lab2_0_0" rel="nofollow"></a></p> <h3>1.1 数组概述</h3> <p>* 一次性声明大量的用于存储数据的变量</p> <p>* 要存储的数据通常都是同类型数据。</p> <p class="maodian"><a name="_lab2_0_1" rel="nofollow"></a></p> <h3>1.2 什么是数组</h3> <p>数组（array）是一个存储多个相同类型数据的存储模型</p> <p class="maodian"><a name="_lab2_0_2" rel="nofollow"></a></p> <h3>1.3 数组的定义格式：</h3> <blockquote> <p>格式1：数据类型[ ]  变量名</p> <p>范例：           int[ ]  arr</p> </blockquote> <p>定义了一个int类型的数组，数组名是arr</p> <blockquote> <p>格式2：数据类型  变量名[ ]</p> <p>范例：           int  arr[ ]</p> </blockquote> <p>定义了一个int类型的变量，变量名是arr数组</p> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>2.数组初始化之动态初始化</h2> <p class="maodian"><a name="_lab2_1_3" rel="nofollow"></a></p> <h3>2.1 数组初始化概述</h3> <p>java中的数组必须先初始化，然后才能使用</p> <p>所谓初始化：就是为数组中的数组元素分配内存空间，并为每个元素赋值</p> <p class="maodian"><a name="_lab2_1_4" rel="nofollow"></a></p> <h3>2.2 数组初始化方法</h3> <p>动态初始化</p> <p>动态初始化：初始化时只指定数组长度，由系统为数组分配初始值</p> <p>格式：</p> <blockquote> <p>数组类型[ ] 变量名 = new 数据类型[数组长度];</p> </blockquote> <p>范例：           </p> <blockquote> <p>int[ ]    arr    =   new         int[3];</p> </blockquote> <p>示例代码：</p> <div class="ay1code"> <pre class="brush:java;">	int [] arr = new int[3];  		/*  		 * 左边：  		 *     int：说明数组中的元素是int类型  		 *     []:说明这是一个数组  		 *     arr：这是一个数组的名称  		 * 右边：  		 *     new：为数组申请内存空间  		 *     int：说明数组中元素类型是int类型  		 *     []:说明这是一个数组  		 *     3：数组长度，其实就是数组中元素个数  		 *    		 */</pre> </div> <p class="maodian"><a name="_label2" rel="nofollow"></a></p> <h2>3.数组元素访问</h2> <p class="maodian"><a name="_lab2_2_5" rel="nofollow"></a></p> <h3>3.1 数组元素访问</h3> <p>* 数组变量访问方式</p> <p>* 格式：</p> <blockquote> <p>数组名</p> </blockquote> <p>* 数组内部保存数据的访问方式</p> <p>* 格式：</p> <blockquote> <p>数组名[索引]</p> </blockquote> <p>* 索引是数组中数据的编号方式</p> <p>* 作用：索引用于访问数组中的数据使用，数组名[索引]等同于变量名，是一种特殊的变量名</p> <p>* 特征：索引是从0开始，是连续的，是逐一增加每次加1的。</p> <div class="ay1code"> <pre class="brush:java;">//输出数组名  		System.out.println(arr);//[I@dcf3e99  		 //输出数组中的元素  		System.out.println(arr[0]);  		System.out.println(arr[1]);  		System.out.println(arr[2]);</pre> </div> <p class="maodian"><a name="_label3" rel="nofollow"></a></p> <h2>4.内存分配</h2> <p class="maodian"><a name="_lab2_3_6" rel="nofollow"></a></p> <h3>4.1 java中的内存分配</h3> <p style="text-align:center"><img fetchpriority="high" decoding="async" alt="" height="776" src="http://img.555519.xyz/uploads3/20220419/be7107a0882ada4ee731b500c06044e2.jpg"></p> <p> 栈内存：存储局部空间</p> <p>堆内存：存储new出来的内容（实体，对象）</p> <p class="maodian"><a name="_lab2_3_7" rel="nofollow"></a></p> <h3>4.2 数组内存图（单个数组）</h3> <div class="ay1code"> <pre class="brush:java;">		//输出数组名  		System.out.println(arr);//[I@dcf3e99  		 //输出数组中的元素  		System.out.println(arr[0]);  		System.out.println(arr[1]);  		System.out.println(arr[2]);  		  		//给数组中的元素赋值  		arr[0]=10;  		arr[2]=100;  		 //输出数组中的元素  		System.out.println(arr);  		System.out.println(arr[0]);  		System.out.println(arr[1]);  		System.out.println(arr[2]);</pre> </div> <p>控制台输出结果：</p> <p style="text-align:center"><img decoding="async" alt="" height="1080" src="http://img.555519.xyz/uploads3/20220419/6243b188945b4bfd725caca9c27ff48e.jpg"></p> <p class="maodian"><a name="_lab2_3_8" rel="nofollow"></a></p> <h3>4.3 多个数组内存图</h3> <p style="text-align:center"><img decoding="async" alt="" height="768" src="http://img.555519.xyz/uploads3/20220419/a98590f10beeb5369aa98b1ce00bfd56.jpg"></p> <p class="maodian"><a name="_label4" rel="nofollow"></a></p> <h2>5.数组初始化之静态初始化</h2> <p>静态初始化： 初始化时指定每个元素的初始值，由系统决定数组长度</p> <p>格式：</p> <blockquote> <p>数据类型[ ] 变量名 = new 数据类型[ ] {<!-- -->数据1， 数据2， 数据3....};</p> </blockquote> <p>范例：</p> <blockquote> <p>int [ ] arr = new int [ ]{1,2,3};</p> </blockquote> <p>简化格式：</p> <blockquote> <p>数据类型 [ ] 变量名 = {数据1，数据2，数据3....};</p> </blockquote> <p>范例：</p> <blockquote> <p>int[ ] 变量名 = {1,2,3}；</p> </blockquote> <p>示例代码：</p> <div class="ay1code"> <pre class="brush:java;">	int [] arr = {1,2,3};  	//输出数组名  		System.out.println(arr);//[I@dcf3e99  		 //输出数组中的元素  		System.out.println(arr[0]);  		System.out.println(arr[1]);  		System.out.println(arr[2]);</pre> </div> <p class="maodian"><a name="_label5" rel="nofollow"></a></p> <h2>6.数组操作的两个常见小问题</h2> <p>1. 索引越界:访问了数组中不存在的索引对应的元素，造成索引越界问题</p> <blockquote> <p>int[ ] arr = new int [3];</p> <p>system out.println(arr[3]);</p> </blockquote> <p>2.空指针异常：访问的数组已经不在指向堆内存的数据，造成空指针异常</p> <blockquote> <p>int[ ] arr = new int [3];</p> <p>system out.println(arr[2]);</p> <p>arr = null;</p> <p>system out.println(arr[0]);</p> </blockquote> <p>3.null:空值，引用数据类型默认值，表示不指向任何有效对象</p> <p class="maodian"><a name="_label6" rel="nofollow"></a></p> <h2>7.数组常见操作</h2> <p class="maodian"><a name="_lab2_6_9" rel="nofollow"></a></p> <h3>7.1 遍历</h3> <p>通用格式</p> <div class="ay1code"> <pre class="brush:java;">int []arr={...};  for(int x=0;x&lt;arr.length;x++){  	arr[x];   //对arr[x]进行操作  }</pre> </div> <p class="maodian"><a name="_lab2_6_10" rel="nofollow"></a></p> <h3>7.2 获取数组元素个数</h3> <p>格式：</p> <blockquote> <p>数组名.length</p> </blockquote> <p>范例：</p> <blockquote> <p>arr.length</p> </blockquote> <p class="maodian"><a name="_lab2_6_11" rel="nofollow"></a></p> <h3>7.3 获取最值</h3> <p>示例代码：</p> <div class="ay1code"> <pre class="brush:java;">   	public static void main(String[] args) {  		// TODO Auto-generated method stub  		//定义数组  		int []arr={15,66,75,42,85,45,87,99,10};  		//定义一个变量，用于保存最大值  		//取数组中第一个数据作为变量初始值  		int max= arr[0];  		//与数组中剩余元素逐个比对，并将最大值保存在变量中  		for(int x=0;x&lt;arr.length;x++){     			if(arr[x]&gt;max){  				max=arr[x];  			}       		}  		//循环结束后在控制台打印变量值  		System.out.println("max:"+max);  	}</pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-74508.htm">整理了25个Pandas实用技巧（上）</a></p>
+                                        <p>下一个：<a href="/news/article-75211.htm">jackson   json对象、实体类相互转换</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-56645.htm" title="动物防疫年度计划（动物防疫年度工作总结）">动物防疫年度计划（动物防疫年度工作总结）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-23-free-subscribe-node.htm" title="V2ray Free节点订阅每天更新20.7M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新20.7M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-17-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新19.8M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新19.8M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-16-node-share-links.htm" title="V2ray Free节点订阅每天更新20.3M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新20.3M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-18-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新20.4M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新20.4M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-51216.htm" title="动物疫苗批发市场在哪里（动物疫苗企业名单）">动物疫苗批发市场在哪里（动物疫苗企业名单）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-7-free-node-subscribe.htm" title="V2ray Free节点订阅每天更新22M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新22M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-47629.htm" title="mysql5.7自动创建分区">mysql5.7自动创建分区</a></li>
+                        <li class="py-2"><a href="/news/article-48125.htm" title="哈尔滨农大动物医院哪个大夫好一点啊（哈尔滨农业大学动物医学）">哈尔滨农大动物医院哪个大夫好一点啊（哈尔滨农业大学动物医学）</a></li>
+                        <li class="py-2"><a href="/news/article-42703.htm" title="动物疫苗价格一览表图片大全及价格查询 动物疫苗价格一览表图片大全及价格查询">动物疫苗价格一览表图片大全及价格查询 动物疫苗价格一览表图片大全及价格查询</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">51</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <a href="/">V2ray Free免费机场订阅中文站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>
