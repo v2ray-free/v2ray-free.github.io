@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-77241.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>什么叫做阻塞队列的有界和无界</title>
+        <meta name="description" content="昨天一个3年Java经验的小伙伴私信我，他说现在面试怎么这么难啊！ 我只是面试一个业务开发，他们竟然问我： 什么叫阻塞队列的有界和无界。现在面试也太卷了吧! 如果你也遇到过类似问题，那我们来看看普通人" />
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray Free免费机场订阅中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2ray-free.github.io/news/article-77241.htm" />
+    <meta property="og:site_name" content="V2ray Free免费机场订阅中文站" />
+    <meta property="og:title" content="什么叫做阻塞队列的有界和无界" />
+    <meta property="og:image" content="https://v2ray-free.github.io/uploads/20241107/784e516d7a03dfa3fb06ccc83ef950fd.webp" />
+        <meta property="og:release_date" content="2025-03-19T09:11:34" />
+    <meta property="og:updated_time" content="2025-03-19T09:11:34" />
+        <meta property="og:description" content="昨天一个3年Java经验的小伙伴私信我，他说现在面试怎么这么难啊！ 我只是面试一个业务开发，他们竟然问我： 什么叫阻塞队列的有界和无界。现在面试也太卷了吧! 如果你也遇到过类似问题，那我们来看看普通人" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="什么叫做阻塞队列的有界和无界">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">什么叫做阻塞队列的有界和无界</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="V2ray X节点订阅官网" data-url="https://v2rayx.github.io">
+                  				  				  				<blockquote> <p>昨天一个3年Java经验的小伙伴私信我，他说现在面试怎么这么难啊！<br /> 我只是面试一个业务开发，他们竟然问我： 什么叫阻塞队列的有界和无界。现在面试也太卷了吧!<br /> 如果你也遇到过类似问题，那我们来看看普通人和高手的回答吧！</p> </blockquote> </h1> <p>有界队列就是说队列中的元素个数是有限制的，而无界对接表示队列中的元素个数没有限制！ 嗯！！！</p> </h1> <ol> <li> <p>阻塞队列，是一种特殊的队列，它在普通队列的基础上提供了两个附加功能<img decoding="async" src="http://img.555519.xyz/uploads3/20220509/01b89c1adb695ab1c153c6f0805d9537.jpg" alt="什么叫做阻塞队列的有界和无界"></p> <ol> <li>当队列为空的时候，获取队列中元素的消费者线程会被阻塞，同时唤醒生产者线程。</li> <li>当队列满了的时候，向队列中添加元素的生产者线程被阻塞，同时唤醒消费者线程。</li> </ol> </li> <li> <p>其中，阻塞队列中能够容纳的元素个数，通常情况下是有界的，比如我们实例化一个<code>ArrayBlockingList</code>，可以在构造方法中传入一个整形的数字，表示这个基于数组的阻塞队列中能够容纳的元素个数。这种就是有界队列。</p> </li> <li> <p>而无界队列，就是没有设置固定大小的队列，不过它并不是像我们理解的那种元素没有任何限制，而是它的元素存储量很大，像LinkedBlockingQueue，它的默认队列长度是Integer.Max_Value，所以我们感知不到它的长度限制。</p> </li> <li> <p>无界队列存在比较大的潜在风险，如果在并发量较大的情况下，线程池中可以几乎无限制的添加任务，容易导致内存溢出的问题！</p> </li> </ol> <p>以上就是我对这个问题的理解!</p> </h1> <p>阻塞队列在生产者消费者模型的场景中使用频率比较高，比较典型的就是在线程池中，通过阻塞队列来实现线程任务的生产和消费功能。</p> <p>基于阻塞队列实现的生产者消费者模型比较适合用在异步化性能提升的场景，以及做并发流量缓冲类的场景中！</p> <p>在很多开源中间件中都可以看到这种模型的使用，比如在Zookeeper源码中就大量用到了阻塞队列实现的生产者消费者模型。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-76566.htm">上海宠物狗领养网站官网（上海宠物狗领养网站官网电话）</a></p>
+                                        <p>下一个：<a href="/news/article-77242.htm">动物疫苗保存条件是什么意思（动物疫苗未冷藏几小时失效）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-50681.htm" title="Docker 安装 Confluence">Docker 安装 Confluence</a></li>
+                        <li class="py-2"><a href="/news/article-55530.htm" title="一篇文章带你彻底吃透Spring">一篇文章带你彻底吃透Spring</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-29-node-share-links.htm" title="V2ray Free节点订阅每天更新21.5M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新21.5M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-27-free-high-speed-nodes.htm" title="V2ray Free节点订阅每天更新22.2M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新22.2M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-1-free-node-subscribe.htm" title="V2ray Free节点订阅每天更新19.8M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新19.8M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-48473.htm" title="让我们写一个 Win32 文本编辑器吧 &#8211; 2. 计划和显示">让我们写一个 Win32 文本编辑器吧 &#8211; 2. 计划和显示</a></li>
+                        <li class="py-2"><a href="/news/article-52788.htm" title="猫咪领养协议模板怎么写（领养猫的协议是什么样的）">猫咪领养协议模板怎么写（领养猫的协议是什么样的）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-14-free-subscribe-node.htm" title="V2ray Free节点订阅每天更新18M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新18M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-62399.htm" title="VUE中前端mock假数据的办法">VUE中前端mock假数据的办法</a></li>
+                        <li class="py-2"><a href="/news/article-42703.htm" title="动物疫苗价格一览表图片大全及价格查询 动物疫苗价格一览表图片大全及价格查询">动物疫苗价格一览表图片大全及价格查询 动物疫苗价格一览表图片大全及价格查询</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <a href="/">V2ray Free免费机场订阅中文站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>
