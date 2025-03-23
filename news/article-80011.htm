@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-80011.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>CEPH-5：ceph集群基本概念与管理_在线工具</title>
+        <meta name="description" content="ceph集群基本概念   ceph集群整体结构图      名称 作用     osd 全称Object Storage Device，主要功能是存储数据、复制数据、平衡数据、恢复数据等。每个OSD间" />
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray Free免费机场订阅中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2ray-free.github.io/news/article-80011.htm" />
+    <meta property="og:site_name" content="V2ray Free免费机场订阅中文站" />
+    <meta property="og:title" content="CEPH-5：ceph集群基本概念与管理_在线工具" />
+    <meta property="og:image" content="https://v2ray-free.github.io/uploads/20241107/f6b0dd1c9f72829affd71aa65891937e.webp" />
+        <meta property="og:release_date" content="2025-03-23T08:25:37" />
+    <meta property="og:updated_time" content="2025-03-23T08:25:37" />
+        <meta property="og:description" content="ceph集群基本概念   ceph集群整体结构图      名称 作用     osd 全称Object Storage Device，主要功能是存储数据、复制数据、平衡数据、恢复数据等。每个OSD间" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="CEPH-5：ceph集群基本概念与管理_在线工具">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">CEPH-5：ceph集群基本概念与管理_在线工具</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="V2ray X节点订阅官网" data-url="https://v2rayx.github.io">
+                  				  				  				</h1> <h2 id="ceph集群基本概念">ceph集群基本概念</h2> <ol> <li> <strong>ceph集群整体结构图</strong><br /><img decoding="async" src="https://img2022.cnblogs.com/blog/1715041/202205/1715041-20220505162854630-1143925356.png" alt="CEPH-5：ceph集群基本概念与管理_在线工具"> </li> </ol> <table> <thead> <tr> <th>名称</th> <th>作用</th> </tr> </thead> <tbody> <tr> <td>osd</td> <td>全称Object Storage Device，主要功能是存储数据、复制数据、平衡数据、恢复数据等。每个OSD间会进行心跳检查，并将一些变化情况上报给Ceph Monitor。</td> </tr> <tr> <td>mon</td> <td>全称Monitor,负责监视Ceph集群，维护Ceph集群的健康状态，同时维护着Ceph集群中的各种Map图，比如OSD Map、Monitor Map、PG Map和CRUSH Map，这些Map统称为Cluster Map，根据Map图和object id等计算出数据最终存储的位置。</td> </tr> <tr> <td>mgr</td> <td>全称Manager，负责跟踪运行时指标和Ceph集群的当前状态，包括存储利用率，当前性能指标和系统负载。</td> </tr> <tr> <td>mds</td> <td>全称是MetaData Server，主要保存的文件系统服务的元数据，如果使用cephfs功能才会启用它，对象存储和块存储设备是不需要使用该服务。</td> </tr> <tr> <td>rgw</td> <td>全称radosgw，是一套基于当前流行的RESTFUL协议的网关，ceph对象存储的入口，内嵌civetweb服务，不启用对象存储，则不需要安装。</td> </tr> </tbody> </table> <ol start="2"> <li> <p><strong>ceph配置文件</strong></p> <p>标准位置：/etc/ceph/ceph.conf</p> <p>组成部分：</p> <pre><code class="language-bash">## 全局配置，全局生效 [global] fsid = 537175bb-51de-4cc4-9ee3-b5ba8842bff2 public_network = 10.0.0.0/8 cluster_network = 10.0.0.0/8 mon_initial_members = ceph-node1 mon_host = 10.153.204.xx:6789,10.130.22.xx:6789,10.153.204.xx:6789 auth_cluster_required = cephx auth_service_required = cephx auth_client_required = cephx  ## osd专用配置，可以使用osd.num 来表示具体的哪一个osd [osd] [osd.1]  ## monitor专用配置，可以使用mon.A 来表示具体的哪一个monitor，其中A表示该节点的名称，使用ceph mon dump可以查看。 [mon] [mon.a]  ## 客户端专用配置 [client]  </code></pre> <p>ceph配置文件的加载顺序：</p> <ul> <li>$CEPH_CONF 环境变量</li> </ul> <ul> <li>-c 指定的位置</li> <li>/etc/ceph/ceph.conf</li> <li>~/.ceph/ceph.conf</li> <li>./ceph.conf</li> </ul> </li> <li> <p><strong>存储池类型</strong></p> <ul> <li>副本池：replicated <ul> <li>定义每个对象在集群中保存为多少个副本，默认为三个副本，一主两备</li> <li>实现高可用，副本池是 ceph 默认的存储池类型。</li> </ul> </li> <li>纠删码池：erasure code <ul> <li>把各对象存储为 N=K+M 个块，其中 K 为数据块数量，M 为编码块数量，因此存储池的尺寸为 K+M。</li> <li>即数据保存在 K 个数据块，并提供 M 个冗余块提供数据高可用，那么最多能故障的块就是 M 个，实际的磁盘占用就是 K+M 块，因此相比副本池机制比较节省存储资源，一般采用 8+4 机制，即 8 个数据块+4 个冗余块，那么也就是 12 个数据块有 8 个数据块保存数据，有 4 个 实现数据冗余，即 1/3 的磁盘空间用于数据冗余，比默认副本池的三倍冗余节省空间，但是不能出现大于一定数据块故障。</li> <li>不是所有的应用都支持纠删码池，RBD 只支持副本池而 radosgw 则可以支持纠删码池。</li> <li>对于文件系统及块存储，由于读写性能的问题 Ceph 不建议使用纠删码池。</li> </ul> </li> </ul> <p>如何查看某个存储池为什么类型：</p> <pre><code class="language-bash">$ ceph osd pool get test crush_rule crush_rule: erasure-code </code></pre> </li> <li> <p><strong>副本池IO</strong></p> <ul> <li>将一个数据对象存储为多个副本。</li> <li>在客户端写入操作时，ceph 使用 CRUSH 算法计算出与对象相对应的 PG ID 和 primary OSD ，主 OSD 根据设置的副本数、对象名称、存储池名称和集群运行图(cluster map)计算出 PG 的 各辅助 OSD，然后由 OSD 将数据再同步给辅助 OSD。</li> </ul> <p>读写数据：</p> <pre><code class="language-markdown">## 读数据 1.客户端发送读请求，RADOS 将请求发送到主 OSD。 2.主 OSD 从本地磁盘读取数据并返回数据，最终完成读请求。  ## 写数据 1.客户端APP请求写入数据，RADOS发送数据到主OSD。 2.主OSD写入完毕后将完成信号给客户端APP，并发送数据到各副本OSD。 3.副本OSD写入数据，并发送写入完成信号给主OSD。 </code></pre> </li> <li> <p><strong>纠删码池 IO</strong></p> <ul> <li>Ceph 从 Firefly 版本开始支持纠删码，但是不推荐在生产环境使用纠删码池。</li> <li>纠删码池降低了数据保存所需要的磁盘总空间数量，但是读写数据的计算成本要比副本池高 ，RGW 可以支持纠删码池，RBD 不支持。</li> </ul> <p>读写数据：</p> <pre><code class="language-markdown">## 读数据 1.从相应的 OSDs 中获取数据后进行解码 2.如果此时有数据丢失，Ceph 会自动从存放校验码的 OSD 中读取数据进行解码 3.完成数据解码后返回数据  ## 写数据 1.数据将在主 OSD 进行编码然后分发到相应的 OSDs 上去 2.计算合适的数据块并进行编码 3.对每个数据块进行编码并写入OSD </code></pre> </li> <li> <p><strong>PG与PGP</strong></p> <ul> <li>PG = Placement Group  # 归置组</li> <li>PGP = Placement Group for Placement purpose # 归置组的组合，pgp 相当于是 pg 对应 osd 的 一种排列组合关系。</li> </ul> <p>归置组(placement group)是用于跨越多osd将数据存储在每个存储池中的内部数据结构。 pg 在 osd 守护进程和 ceph 客户端之间的一个中间层，hash 算法负责将每个对象动态映射到一个pg中，此pg即为主pg，按照存储池的副本数量（例如3个）会再将每个主pg再复制出两个副本pg，CRUSH 算法负责将 三个 pg 动态映射到三个不同的 OSD 守护进程中，此三个pg组成一个pgp，从而在 osd 中达到多副本高可用。</p> <p><strong>文件寻址流程大致如下图所示：</strong></p> </li> </ol> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220505/711af0ef66767f1f214a980fb9aa3aea.jpg" alt="CEPH-5：ceph集群基本概念与管理_在线工具"></p> <blockquote> <p>File-&gt;Objects-&gt;PGs-&gt;OSDs。</p> </blockquote> <p><strong>需要注意的几个点：</strong></p> <ul> <li>PG和PGP可以自定义数量，且是针对于存储池的，但PG总数会根据OSD集群的大小决定</li> <li>相对于存储池来说，PG是一个虚拟组件，它是对象映射到存储池时使用的虚拟层</li> <li>出于规模伸缩及性能方面的考虑，ceph将存储池细分为多个PGP，每个PGP中有一个主PG，主PG所在的OSD节点便是主OSD。</li> <li>当有新OSD节点加入集群时，ceph会通过CRUSH重新组合PGP，致使每个OSD都有数据，达到整个集群的数据平衡。</li> </ul> <p><strong>PG的分配计算：</strong></p> <ul> <li> <p>官方建议：每个osd中的pg数量最好不要超过100个，公式：Total PGS = (Total_number_of _osd * 100) / max_replication_count</p> </li> <li> <p>具体算法：举例现在有12台osd机器，我需要创建20个存储池。</p> <p>此时pg总数为：12 * 100 / 3 = 400</p> <p>平均每个存储池分配pg数量为：400 / 20 = 20</p> <p>这里计算出，平均每个存储池可以分配20个pg，但每个存储池pg的个数推荐为2的N次幂，故2、4、8、16、32、64、128等，这时要结合具体的pool是来存储什么，大概能存储多少数据来进行一个简单的转换，如果此pool只存储一些元数据，则分配4即可，反之数据量比较大的，可以分配16、32等。</p> <p>另外pool中pg个数是推荐用2的整数次幂，也可以不用，但会有警告提示。</p> </li> </ul> <p><strong>PG与PGP组合：</strong></p> <ol start="2"> <li> <p>查看replicapool池的pg、pgp数量</p> <pre><code class="language-bash">$ ceph osd pool get replicapool pg_num  pg_num: 32 $ ceph osd pool get replicapool pgp_num  pgp_num: 32 </code></pre> <p>查看replicapool池的pg、pgp分布</p> <pre><code class="language-bash">$ ceph pg ls-by-pool replicapool | awk '{print $1,$2,$15}' PG OBJECTS ACTING 2.0 596 [3,1,0]p3 2.1 623 [3,4,0]p3 2.2 570 [3,4,0]p3 2.3 560 [3,4,0]p3 2.4 630 [0,3,4]p0 2.5 574 [4,0,3]p4 2.6 572 [4,3,0]p4 2.7 572 [3,4,0]p3 2.8 622 [3,4,0]p3 2.9 555 [0,3,4]p0 2.a 523 [1,3,0]p1 2.b 574 [4,3,0]p4 2.c 620 [4,3,0]p4 2.d 637 [1,3,0]p1 2.e 522 [0,3,4]p0 2.f 599 [4,3,0]p4 2.10 645 [4,3,0]p4 2.11 534 [3,4,0]p3 2.12 622 [4,3,0]p4 2.13 577 [1,3,0]p1 2.14 661 [3,4,0]p3 2.15 626 [1,3,0]p1 2.16 585 [2,4,0]p2 2.17 610 [3,4,0]p3 2.18 610 [4,2,0]p4 2.19 560 [4,3,0]p4 2.1a 599 [3,4,0]p3 2.1b 614 [1,2,0]p1 2.1c 581 [4,3,0]p4 2.1d 614 [4,3,0]p4 2.1e 595 [0,3,1]p0 2.1f 572 [3,4,0]p3    * NOTE: afterwards </code></pre> </li> </ol> <p><strong>PG的状态解释：</strong></p> <p>在osd扩缩容或者一些特殊情况的时候，ceph会以pg为整体进行rebalancing数据重平衡，此时pg会出现很多不同的状态，例如：</p> <pre><code class="language-bash">$ ceph -s    cluster:     id:     537175bb-51de-4cc4-9ee3-b5ba8842bff2     health: HEALTH_WARN             Degraded data redundancy: 152/813 objects degraded (18.696%), 43 pgs degraded, 141 pgs undersized     services:     mon: 2 daemons, quorum yq01-aip-aikefu10,bjkjy-feed-superpage-gpu-04 (age 111s)     mgr: yq01-aip-aikefu10(active, since 11d), standbys: bjkjy-feed-superpage-gpu-04     mds: mycephfs:1 {0=ceph-node2=up:active} 1 up:standby     osd: 8 osds: 8 up (since 3d), 8 in (since 3d); 124 remapped pgs     rgw: 2 daemons active (ceph-node1, ceph-node2)     task status:     data:     pools:   8 pools, 265 pgs     objects: 271 objects, 14 MiB     usage:   8.1 GiB used, 792 GiB / 800 GiB avail     pgs:     152/813 objects degraded (18.696%)              114/813 objects misplaced (14.022%)              111 active+clean+remapped              98  active+undersized              43  active+undersized+degraded              13  active+clean </code></pre> <ul> <li>clean：干净态，PG当前不存在待修复的对象，并且大小等于存储池的副本数，即PG的活动集(Acting Set)和上行集(Up Set)为同一组 OSD 且内容一致。</li> <li>active：就绪状态或活跃状态，Active 表示主 OSD 和备 OSD 处于正常工作状态，此时的 PG 可以正常 处理来自客户端的读写请求，正常的 PG 默认就是 Active+Clean 状态。</li> <li>peering：正在同步状态，同一个 PG 中的OSD需要将准备数据同步一致，而Peering(对等)就是OSD同步过程中的状态。</li> <li>activating：Peering 已经完成，PG 正在等待所有 PG 实例同步 Peering 的结果(Info、Log 等)</li> <li>degraded：降级状态，出现于 OSD 被标记为 down 以后，那么其他映射到此 OSD 的 PG 都会转换到降级状态，如果此OSD被标记为down的时间超过 5 分钟还没有修复，ceph 会对被降级的 PG 启动恢复操作，直到所有由于此 OSD 而被降级的 PG 重新恢复为 clean 状态。</li> <li>undersized：PG 当前副本数小于其存储池定义的值的时候，PG 会转换为 undersized 状态，直到添加备 份 OSD 添加完成，或者修复完成。</li> <li>remapped：当 pg 改变, 数据从旧的 OSD 迁移到新的 OSD, 新的主 OSD 应该请求将会花费一段时间, 在这段时间内, 将会继续向旧主 OSD 请求服务, 直到 PG 迁移完成。</li> <li>scrubbing：scrub 是 ceph 对数据的清洗状态，用来保证数据完整性的机制，Ceph 的 OSD 定期启动 scrub 线程来扫描部分对象，通过与其他副本比对来发现是否一致，主要检查元数据(metadata )信息，比如文件名、object属性、大小等，如果不一样，就会从主pg复制一份过去。</li> <li>stale：过期状态，正常状态下，每个OSD都要周期性的向 RADOS 集群中的监视器(mon)报告其作为OSD所持有的所有主PG的最新统计数据，因任何原因导致某个OSD无法正常向监视器发送汇报信息的、或者由其他OSD报告某个OSD已经down的时候，则所有以此OSD为主PG则会立即被标记为stale状态，即它们的主 OSD 已经不是最新的数据了。</li> <li>recovering：正在恢复态，集群正在执行迁移或同步对象和他们的副本。这可能是由于添加了一个新的OSD到集群中或者某个OSD 宕掉后，PG被CRUSH算法重新分配到不同的OSD，其中PG发生内部数据同步的过程。</li> <li>backfilling：后台填充态，backfill 是recovery的一种特殊场景，指peering完成后，如果基于当前权威日志无法对Up Set(上行集)当中的某些PG实例实施增量同步（例如承载这些 PG 实例的 OSD 离线太久，或者是新的 OSD 加入集群导致的 PG 实例整体迁移），则通过完全拷贝当前 Primary 所有对象的方式进行全量同步，此过程中的 PG 会处于 backfilling。</li> <li>backfill-toofull：某个需要被 Backfill 的 PG 实例，其所在的 OSD 可用空间不足，Backfill 流程当前被挂起时 PG给的状态。</li> <li>creating：创建PG中的状态，一般出现创建新pool时。</li> <li>incomplete：Peering过程中由于无法选出权威日志或者通过choos_acting选出的acting不足以完成数据恢复，（例如针对纠删码，存活的副本数小于k值）等，导致Peering无法正常完成。即pg元数据丢失，无法恢复pg状态。（ceph-objectstore-tool工具可以调整此状态pg为complete）</li> </ul> <ol start="7"> <li> <p><strong>noscrub 和 nodeep-scrub</strong></p> <ul> <li>noscrub：数据轻量扫描，主要检查元数据信息是否一致，若不一致则会进行同步，一般为一天进行一次比对，默认开启。</li> <li>nodeep-scrub：数据深度扫描，对所有数据的全量扫描，包括元数据、object等，一般一周进行一次，默认开启。</li> </ul> <p>数据校验时会导致读压力增大，如果扫描出数据不一致还要进行同步写，增大写的压力，因此在做扩容等操作的时候，我们会人为去设置noscrub与nodeep-scrub，暂停数据校验。查看pool是否开启清洗：</p> <pre><code class="language-bash">$ ceph osd pool get replicapool noscrub noscrub: false $ ceph osd pool get replicapool nodeep-scrub nodeep-scrub: false </code></pre> </li> <li> <p><strong>数据压缩</strong></p> <p>如果使用 BlueStore 存储引擎，ceph 支持称为 "实时数据压缩" 即边压缩边保存数据的功能， 该功能有助于节省磁盘空间，可以在BlueStore OSD上创建的每个存储池池上启用或禁用压缩， 以节约磁盘空间，默认没有开启压缩，需要后期配置并开启：</p> <pre><code class="language-bash">## 开启压缩功能 $ ceph osd pool set &lt;pool name&gt; compression_algorithm &lt;压缩算法&gt;  算法介绍：   sanppy：默认算法，消耗cpu较少   zstd：压缩比好，但消耗 CPU   lz4：消耗cpu较少   zlib：不推荐    $ ceph osd pool set replicapool compression_algorithm snappy set pool 2 compression_algorithm to snappy  ## 指定压缩模式 $ ceph osd pool set &lt;pool name&gt; compression_mode &lt;指定模式&gt; 模式介绍：   none:从不压缩数据，默认值。   passive:除非写操作具有可压缩的提示集，否则不要压缩数据。   aggressive:压缩数据，除非写操作具有不可压缩的提示集。   force:无论如何都尝试压缩数据，即使客户端暗示数据不可压缩也会压缩，也就是在所有情况下都使用压缩  $ ceph osd pool set replicapool compression_mode passive set pool 2 compression_mode to passive </code></pre> <p>全局压缩选项，这些可以配置到 ceph.conf 中，作用于所有存储池：</p> <pre><code class="language-bash">bluestore_compression_algorithm #压缩算法 bluestore_compression_mode      #压缩模式 bluestore_compression_required_ratio #压缩后与压缩前的压缩比，默认为.875 bluestore_compression_min_blob_size  #小于它的块不会被压缩,默认0 bluestore_compression_max_blob_size  #大于它的块在压缩前会被拆成更小的块,默认 0 bluestore_compression_min_blob_size_ssd #默认 8k bluestore_compression_max_blob_size_ssd #默认 64k bluestore_compression_min_blob_size_hdd #默认 128k bluestore_compression_max_blob_size_hdd #默认 512k </code></pre> <p>此功能开启会影响cpu的使用率，如果环境为生产环境，<strong>不建议开启此功能</strong>。</p> </li> </ol> <h2 id="ceph集群管理命令">ceph集群管理命令</h2> <ol> <li> <p><strong>存储池基本管理</strong></p> <p>创建存储池，格式示例</p> <pre><code class="language-bash">$ ceph osd pool create &lt;poolname&gt; pg_num pgp_num {replicated|erasure}  $ ceph osd pool create study 8 8  pool 'study' created </code></pre> <p>列出存储池</p> <pre><code class="language-bash">$ ceph osd lspools 1 .rgw.root 2 study </code></pre> <p>重命名存储池，格式示例</p> <pre><code class="language-bash">$ ceph osd pool rename old-name new-name   $ ceph osd pool rename study re-study pool 'study' renamed to 're-study' </code></pre> <p>显示存储池用量信息</p> <pre><code class="language-bash">$ rados df  或者 $ ceph osd df  </code></pre> <p>删除存储池</p> <pre><code class="language-bash">## 1、ceph为了防止存储池被误删，故设置了两个机制来保护，首先要将存储池的nodelete标志为false $ ceph osd pool set re-study nodelete false set pool 13 nodelete to true $ ceph osd pool get re-study nodelete nodelete: false  ## 2、第二个机制，要将mon设置为允许删除--mon-allow-pool-delete=true $ ceph tell mon.* injectargs --mon-allow-pool-delete=true  injectargs:mon_allow_pool_delete = 'true'   ## 3、开始删除，要写两边存储池的名字，并加参数--yes-i-really-really-mean-it $ ceph osd pool rm re-study re-study --yes-i-really-really-mean-it pool 're-study' removed </code></pre> </li> <li> <p><strong>存储池配额</strong></p> <p>存储池可以设置两个配对存储的对象进行限制，一个配额是最大空间(max_bytes)，另外一个 配额是对象最大数量(max_objects)，默认不会限制，例如：</p> <pre><code class="language-bash">## 查看replicapool存储池的配额情况，N/A表示不限制 $ ceph osd pool get-quota replicapool  quotas for pool 'replicapool':   max objects: N/A   max bytes  : N/A    ## 限制最大对象数为1000，最大byte为1000000000 $ ceph osd pool set-quota replicapool max_objects 1000 set-quota max_objects = 1000 for pool replicapool  $ ceph osd pool set-quota replicapool max_bytes 1000000000 set-quota max_bytes = 1000000000 for pool replicapool  $ ceph osd pool get-quota replicapool  quotas for pool 'replicapool':   max objects: 1k objects   max bytes  : 954 MiB    ## 可以再设置为不限额 $ ceph osd pool set-quota replicapool max_bytes 0 </code></pre> </li> <li> <p><strong>存储池常用参数</strong></p> <p>查看存储池对象副本数 和 最小副本数</p> <pre><code class="language-bash">$ ceph osd pool get replicapool size size: 1  $ ceph osd pool get replicapool min_size  min_size: 1 </code></pre> <blockquote> <p>min_size：提供服务所需要的最小副本数，默认为2，表示如果一个3副本的存储池，其中一个副本所在的osd坏掉了，那么还剩两副本，可以正常工作，但如果再坏掉一个，只剩下一个副本，则此存储池不能正常提供服务。</p> </blockquote> <p>查看存储池pg、pgp数量</p> <pre><code class="language-bash">$ ceph osd pool get replicapool pg_num  pg_num: 32  $ ceph osd pool get replicapool pgp_num  pgp_num: 32 </code></pre> <p>控制是否可以更改存储池的pg、pgp、存储大小</p> <pre><code class="language-bash">$ ceph osd pool get replicapool nopgchange nopgchange: false  $ ceph osd pool get replicapool nosizechange nosizechange: false </code></pre> <p>轻量扫描和深层扫描管理</p> <pre><code class="language-bash">## 关闭轻量扫描和深层扫描 $ ceph osd pool set replicapool noscrub true $ ceph osd pool set replicapool nodeep-scrub true  ## 扫描的最小与最大间隔时间，默认没设置，如果需要，则要在配置文件中指定 osd_scrub_min_interval xxx osd_scrub_max_interval xxx osd_deep_scrub_interval xxx </code></pre> <p>ceph osd默认配置查看</p> <pre><code class="language-bash">$ ceph daemon osd.1 config show | grep scrub </code></pre> </li> </ol> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-79312.htm">合肥宠物寄养一般怎么收费（合肥宠物收养中心）</a></p>
+                                        <p>下一个：<a href="/news/article-80012.htm">猫咪三针疫苗的作用（猫咪三针疫苗包括哪些）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-12-free-high-speed-nodes.htm" title="V2ray Free节点订阅每天更新18.4M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新18.4M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-1-free-node-subscribe.htm" title="V2ray Free节点订阅每天更新19.8M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新19.8M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-69896.htm" title="什么是TypeScript，为什么我会用它代替JavaScript？">什么是TypeScript，为什么我会用它代替JavaScript？</a></li>
+                        <li class="py-2"><a href="/news/article-58932.htm" title="【impala】python通过kerberos连接impala操作hive，及解决遇到的问题">【impala】python通过kerberos连接impala操作hive，及解决遇到的问题</a></li>
+                        <li class="py-2"><a href="/news/article-47127.htm" title="被野猫抓伤多少天过危险期（被野猫抓伤多少天过危险期没打疫苗）">被野猫抓伤多少天过危险期（被野猫抓伤多少天过危险期没打疫苗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-16-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新21.9M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新21.9M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-61227.htm" title="宠物粮食批发市场兰州在哪（兰州宠物批发市场在哪里）">宠物粮食批发市场兰州在哪（兰州宠物批发市场在哪里）</a></li>
+                        <li class="py-2"><a href="/news/article-57194.htm" title="济南美联众合动物医院领秀城电话（美联众合动物医院地址）">济南美联众合动物医院领秀城电话（美联众合动物医院地址）</a></li>
+                        <li class="py-2"><a href="/news/article-47629.htm" title="mysql5.7自动创建分区">mysql5.7自动创建分区</a></li>
+                        <li class="py-2"><a href="/news/article-67946.htm" title="免费领养狗狗58同城 免费领养狗狗58同城网">免费领养狗狗58同城 免费领养狗狗58同城网</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">69</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <a href="/">V2ray Free免费机场订阅中文站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>
