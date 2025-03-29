@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-84210.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>redis在CentOs服务器上的安装和设置开机自启动</title>
+        <meta name="description" content="一、安装 1、官网下载Redis  2、上传下载好的redis压缩包到 /home/software 3、解压 tar -zxvf redis-6.2.6.tar.gz 4、安装所需gcc环境 yum" />
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray Free免费机场订阅中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2ray-free.github.io/news/article-84210.htm" />
+    <meta property="og:site_name" content="V2ray Free免费机场订阅中文站" />
+    <meta property="og:title" content="redis在CentOs服务器上的安装和设置开机自启动" />
+    <meta property="og:image" content="https://v2ray-free.github.io/uploads/20241107/03681016d2129f97daffcf363ed9b168.webp" />
+        <meta property="og:release_date" content="2025-03-29T09:03:25" />
+    <meta property="og:updated_time" content="2025-03-29T09:03:25" />
+        <meta property="og:description" content="一、安装 1、官网下载Redis  2、上传下载好的redis压缩包到 /home/software 3、解压 tar -zxvf redis-6.2.6.tar.gz 4、安装所需gcc环境 yum" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="redis在CentOs服务器上的安装和设置开机自启动">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">redis在CentOs服务器上的安装和设置开机自启动</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="V2ray X节点订阅官网" data-url="https://v2rayx.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p><strong>一、安装</strong></p> <p>1、官网下载<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://redis.io/"  title="Redis" rel="nofollow">Redis</a></p> <p><img fetchpriority="high" decoding="async" alt="" height="364" src="http://img.555519.xyz/uploads3/20220902/f93fedad86c81bc11e54a4ccee765d54.jpg"></p> <p>2、上传下载好的redis压缩包到 /home/software</p> <p>3、解压</p> <pre><code class="language-bash">tar -zxvf redis-6.2.6.tar.gz</code></pre> <p>4、安装所需gcc环境</p> <pre><code class="language-bash">yum install gcc-c++</code></pre> <p>5、<strong>cd redis-6.2.6/</strong></p> <p>6、<strong>make &amp;&amp; make install</strong></p> <p>&nbsp;7、安装完毕</p> <p><img decoding="async" alt="" height="237" src="http://img.555519.xyz/uploads3/20220902/e4807597da03216ad99dffb18c469e1b.jpg"></p> <p><strong>&nbsp;二、设置开机自启动</strong></p> <p>在设置之前，做一些自己的修改，以使redis更好的符合我们的生产环境</p> <p>1、进入redis目录下的ustils</p> <pre><code class="language-bash">cd /home/software/redis-6.2.6/utils/</code></pre> <p>2、拷贝</p> <pre><code class="language-bash">cp redis_init_script /etc/init.d/</code></pre> <p><img decoding="async" alt="" height="164" src="http://img.555519.xyz/uploads3/20220902/5e4baa19f14c94634dc9e401ead0a073.jpg"></p> <p>3、回到redis目录。<strong>cd /home/software/redis-6.2.6/，</strong>新建文件夹</p> <pre><code class="language-bash">mkdir /usr/local/redis -p</code></pre> <p>&nbsp;拷贝核心配置文件redis.conf到新创建的文件夹中</p> <pre><code class="language-bash">cp redis.conf /usr/local/redis/</code></pre> <p><img loading="lazy" decoding="async" alt="" height="120" src="http://img.555519.xyz/uploads3/20220902/54bca3af0ca99765784ce8006fbbc4d2.jpg"></p> <p><strong>&nbsp;cd /usr/local/redis</strong></p> <p>&nbsp;4、<strong>vim redis.conf</strong>修改配置文件如下</p> <p>①&nbsp; daemonize yes&nbsp; //是否后台启动</p> <p><img loading="lazy" decoding="async" alt="" height="314" src="http://img.555519.xyz/uploads3/20220902/d53bf54921f23c3fd8a6ba1cfaed13c3.jpg"></p> <p>②&nbsp; dir /usr/local/redis/working&nbsp; &nbsp;//写明redis的工作空间</p> <p><img loading="lazy" decoding="async" alt="" height="315" src="http://img.555519.xyz/uploads3/20220902/5b002c675de081c5e2d1c6e7f14ea1a5.jpg"></p> <p>&nbsp;所以要在此目录下创建一个working文件夹<strong>mkdir working</strong></p> <p><img loading="lazy" decoding="async" alt="" height="117" src="http://img.555519.xyz/uploads3/20220902/8dc7c870a27dd1435d8f6f77b0cf71c8.jpg"></p> <p>&nbsp;③&nbsp; bind 0.0.0.0&nbsp; //如果想要外部能访问redis，则改成0.0.0.0，原来是127.0.0.1，只能被内部访问</p> <p><img loading="lazy" decoding="async" alt="" height="317" src="http://img.555519.xyz/uploads3/20220902/ed0f7309d7375c177c6c4ba02423cad5.jpg"></p> <p>&nbsp;④&nbsp; requirepass 123456&nbsp; &nbsp;//设置redis密码，默认是被注释的，不需要密码。在云服务器上的密码记得设置的复杂些，这里是本地虚拟机所以无关紧要。</p> <p><img loading="lazy" decoding="async" alt="" height="310" src="http://img.555519.xyz/uploads3/20220902/a0069d77e68b4062ef512822f6639c4d.jpg"></p> <p>至此核心配置文件就修改完毕了，可以根据自己实际需求修改</p> <p>5、进入/etc/init.d/，修改一开始复制的启动脚本redis_init_script 。</p> <p><strong>cd /etc/init.d/</strong></p> <p><strong>vim redis_init_script</strong></p> <p><img loading="lazy" decoding="async" alt="" height="296" src="http://img.555519.xyz/uploads3/20220902/be42f22f4f1f6637d95c59b32207e823.jpg"></p> <p>&nbsp;（这里修改了CONF="/usr/local/redis/redis.conf"，指定我们的配置文件的位置。其他像端口之类的保持默认即可）</p> <p>6、赋予脚本可执行文件</p> <pre><code class="language-bash">chmod 777 redis_init_script</code></pre> <p>7、启动脚本</p> <pre><code class="language-bash">./redis_init_script start</code></pre> <p>成功启动，如图：</p> <p><img loading="lazy" decoding="async" alt="" height="247" src="http://img.555519.xyz/uploads3/20220902/dbee62f4ba6bc42c6c97eecbdf6dc57c.jpg"></p> <p>&nbsp;8、设置开机自启动</p> <p><strong>vim redis_init_script</strong>加入如下内容</p> <pre><code>#chkconfig: 22345 10 90 #description: Start and Stop redis</code></pre> <p><img loading="lazy" decoding="async" alt="" height="270" src="http://img.555519.xyz/uploads3/20220902/f835457dc9fd89aa2929194cf93bac68.jpg"></p> <p>&nbsp;9、注册到开机自启动服务中</p> <pre><code class="language-bash">chkconfig redis_init_script on</code></pre> <p>10、测试</p> <p>输入reboot，重启centOs7。</p> <p>重启成功后，重新连接，输入 ps -ef | grep redis</p> <p><img loading="lazy" decoding="async" alt="" height="347" src="http://img.555519.xyz/uploads3/20220902/c29b77ffd0bf53ef239bfda1d7cc6c05.jpg"></p> <p>开机自启动成功！</p> <p><strong>题外：</strong></p> <p>一、在上面设置了redis密码的话，我们使用脚本关闭redis服务时会报错。</p> <p><img loading="lazy" decoding="async" alt="" height="144" src="http://img.555519.xyz/uploads3/20220902/42392349b9e27d685f47f72ab68c4460.jpg"></p> <p>&nbsp;需要在脚本里面设置我们的密码</p> <pre><code class="language-bash">vim /etc/init.d/redis_init_script</code></pre> <p><img loading="lazy" decoding="async" alt="" height="423" src="http://img.555519.xyz/uploads3/20220902/7cf86fc902297710b6ce4ad691a9f875.jpg"></p> <p>&nbsp;成功</p> <p><img loading="lazy" decoding="async" alt="" height="71" src="http://img.555519.xyz/uploads3/20220902/b6d3beb93ac7f5867cbde385e9b74a7e.jpg"></p> <p>二、关于设置了密码的redis如何访问</p> <p><strong>redis-cli</strong></p> <p><strong>auth 123456</strong></p> <p><img loading="lazy" decoding="async" alt="" height="158" src="http://img.555519.xyz/uploads3/20220902/35cad52f523bfd2a39dbc4561e850d3b.jpg"></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-83492.htm">成年猫打几针（成年猫打几针疫苗可以绝育）</a></p>
+                                        <p>下一个：<a href="/news/article-84211.htm">使用EasyExcel实现自定义表头导出</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-69262.htm" title="Redis 单数据多源超高并发下的解决方案">Redis 单数据多源超高并发下的解决方案</a></li>
+                        <li class="py-2"><a href="/news/article-43196.htm" title="我被猫咬了,没去打针,会不会死亡呢（被猫咬了没打针会死吗）">我被猫咬了,没去打针,会不会死亡呢（被猫咬了没打针会死吗）</a></li>
+                        <li class="py-2"><a href="/news/article-77242.htm" title="动物疫苗保存条件是什么意思（动物疫苗未冷藏几小时失效）">动物疫苗保存条件是什么意思（动物疫苗未冷藏几小时失效）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-3-free-high-speed-nodes.htm" title="V2ray Free节点订阅每天更新21.6M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新21.6M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-1-free-node-subscribe.htm" title="V2ray Free节点订阅每天更新19.8M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新19.8M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-75880.htm" title="上海宠物医院有多少家（上海宠物医院前十名）">上海宠物医院有多少家（上海宠物医院前十名）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-4-free-subscribe-node.htm" title="V2ray Free节点订阅每天更新18.4M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新18.4M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-54964.htm" title="沈阳宠物免费领养赠送地点（沈阳赠送领养宠物网站）">沈阳宠物免费领养赠送地点（沈阳赠送领养宠物网站）</a></li>
+                        <li class="py-2"><a href="/news/article-71204.htm" title="芭比堂宠物医院玉泉路店电话（芭比堂宠物总部电话）">芭比堂宠物医院玉泉路店电话（芭比堂宠物总部电话）</a></li>
+                        <li class="py-2"><a href="/news/article-42699.htm" title="北京动物园鹦鹉馆馆长（北京动物园鹦鹉馆图片）">北京动物园鹦鹉馆馆长（北京动物园鹦鹉馆图片）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">87</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <a href="/">V2ray Free免费机场订阅中文站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>
