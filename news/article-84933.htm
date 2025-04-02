@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-84933.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>vue使用Vuex状态管理模式_vue.js_</title>
+        <meta name="description" content="目录  1、基于单向数据流问题而产生了Vuex 2、安装及使用 3、核心及使用方法  （1）State （2） Getters （3） Mutation （4） Action （5）Modules  " />
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray Free免费机场订阅中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2ray-free.github.io/news/article-84933.htm" />
+    <meta property="og:site_name" content="V2ray Free免费机场订阅中文站" />
+    <meta property="og:title" content="vue使用Vuex状态管理模式_vue.js_" />
+    <meta property="og:image" content="https://v2ray-free.github.io/uploads/20241107/03681016d2129f97daffcf363ed9b168.webp" />
+        <meta property="og:release_date" content="2025-03-30T09:36:46" />
+    <meta property="og:updated_time" content="2025-03-30T09:36:46" />
+        <meta property="og:description" content="目录  1、基于单向数据流问题而产生了Vuex 2、安装及使用 3、核心及使用方法  （1）State （2） Getters （3） Mutation （4） Action （5）Modules  " />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue使用Vuex状态管理模式_vue.js_">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">vue使用Vuex状态管理模式_vue.js_</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="V2ray X节点订阅官网" data-url="https://v2rayx.github.io">
+                  				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">1、基于单向数据流问题而产生了Vuex</a></li> <li><a href="#_label1" rel="nofollow">2、安装及使用</a></li> <li><a href="#_label2" rel="nofollow">3、核心及使用方法</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_2_0" rel="nofollow">（1）State</a></li> <li><a href="#_lab2_2_1" rel="nofollow">（2） Getters</a></li> <li><a href="#_lab2_2_2" rel="nofollow">（3） Mutation</a></li> <li><a href="#_lab2_2_3" rel="nofollow">（4） Action</a></li> <li><a href="#_lab2_2_4" rel="nofollow">（5）Modules</a></li> </ul> <li><a href="#_label3" rel="nofollow">4、Vuex和全局对象的不同</a></li> <ul class="second_class_ul"></ul> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>1、基于单向数据流问题而产生了Vuex</h2> <p>单向数据流是vue 中父子组件的核心概念，props 是单向绑定的。当父组件的属性值发生变化的时候，会传递给子组件发生相应的变化，从而形成一个单向下行的绑定，父组件的属性改变会流向下行子组件中，但是反之，为了防止子组件无意间修改了父组件中的数据而影响到了其他的子组件的状态，vue 规定了从下往上的数据流是不允许的。当我们的应用遇到多个组件共享状态时，单向数据流的简洁性很容易被破坏：</p> <p>a、多个组件依赖于同一状态。组件之间传参变得特别繁琐，并且兄弟组件之间状态传递无能为力。</p> <p>b、来自不同视图的行为需要变更同一状态。 经常会采用父子组件直接引用或者通过事件来变更和同步状态的多份拷贝。</p> <p>我们为什么不把组件的共享状态抽取出来，以一个全局单例模式管理呢？Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。</p> <p>使用 Vuex 并不意味着你需要将所有的状态放入 Vuex。虽然将所有的状态放到 Vuex 会使状态变化更显式和易调试，但也会使代码变得冗长和不直观。如果有些状态严格属于单个组件，最好还是作为组件的局部状态。应该根据你的应用开发需要进行权衡和确定。</p> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>2、安装及使用</h2> <div class="ay1code"> <pre class="brush:plain;">CDN 方式： &lt;script src="...vuex.js"&gt;&lt;/script&gt;      NPM 方式： npm install vuex --save      Yarn方式： yarn add vuex      其他方式：项目初始化是引入依赖      无论哪种方式都需要  Vue.use(Vuex)来安装 Vuex</pre> </div> <p class="maodian"><a name="_label2" rel="nofollow"></a></p> <h2>3、核心及使用方法</h2> <p>每一个 Vuex 应用的核心就是 store（仓库）。“store”基本上就是一个容器，它包含着你的应用中大部分的状态 vuex的Vuex 核心 State 、Getters 、Mutation、Action、Module。</p> <p class="maodian"><a name="_lab2_2_0" rel="nofollow"></a></p> <h3>（1）State</h3> <p>Vuex也使用了单一状态树来管理应用层级的全部状态。唯一数据源。</p> <p>单一状态树能够让我们最直接的方式找到某个状态的片段，而且在之后的维护和调试过程中，也可以非常方便的管理和维护。</p> <p>state存储状态类似于组件中data，在组件中访问状态经常有两种方法：分别为</p> <p>a、通过 this.$store.state.属性 的方式来访问状态，通常写在computed计算属性中，当然也可以直接通过插值表达式访问；</p> <p>b、借助mapState 辅助函数。</p> <p>核心代码如下：</p> <div class="ay1code"> <pre class="brush:xhtml;">&lt;div id="app"&gt;              {{ mycount }}&lt;br&gt;              直接插值表达式访问              {{ this.$store.state.count }}&lt;br&gt;              {{ myinfoAge }}&lt;br&gt;          &lt;/div&gt;          &lt;script&gt;          import Vue from 'vue';          import Vuex from 'vuex';          import { mapState } from 'vuex'// 使用辅助函数一定记住引入          const store = new Vuex.Store({              // 存储状态数据              state: {                  count: 0,                  info:{                      name:"xiaoming",                      age:18                  }              },          )          new Vue({               el: '#app',              store,              computed:{                  // a、计算属性方式                  mycount(){                      return this.$store.state.count                  },                  // b、利用辅助函数赋值给对应变量，页面可以直接使用该变量                   ...mapState({                      myinfoAge: (state) =&gt; state.info.age,                  }),                  // 当映射的计算属性的名称与 state 的子节点名称相同时，我们也可以给 mapState 传一个字符串数组。下面的简化写法相当于 info: (state) =&gt; state.info,                  ...mapState(["info"]),              }          })          &lt;/script&gt;</pre> </div> <p class="maodian"><a name="_lab2_2_1" rel="nofollow"></a></p> <h3>（2） Getters</h3> <p>store的一个计算属性，类比组件的计算属性,getter 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算,Getter 接受 state 作为其第一个参数,在state中的数据发生改变，计算属性重新计算</p> <p>Getters 的状态存储相当于组件中计算属性，访问方式有三种：</p> <p>a、通过属性访问</p> <p>b、通过方法访问</p> <p>c、通过mapGetters 辅助函数访问</p> <p>核心代码如下：</p> <div class="ay1code"> <pre class="brush:xhtml;">&lt;div id="app"&gt;             {{ myInfoLength }}&lt;br&gt;             直接插值表达式访问             {{ this.$store.getters.infoLength }}&lt;br&gt;             {{ myName }}&lt;br&gt;             {{ infoLength }}          &lt;/div&gt;          &lt;script&gt;          import Vue from 'vue';          import Vuex from 'vuex';          import { mapGetters  } from 'vuex'// 使用辅助函数一定记住引入          const store = new Vuex.Store({              state: {                  info:[                      {name:"name1",age:18},                      {name:"name2",age:28}                  ]              },              // 存储状态数据              getters: {                  infoLength: (state) =&gt; {                      return state.info.length;                  },                  getNameByAge: (state) =&gt; (age) =&gt; {                      return state.info.find(item =&gt; item.age === age).name                  }              },          )          new Vue({               el: '#app',              store,              computed:{                  // a、通过属性访问                  myInfoLength(){                      return this.$store.getters.infoLength                  }                  // b、通过方法访问                  myName(){                      return this.$store.getters.getNameByAge(18)                  }                  // c、mapGetters 辅助函数仅仅是将 store 中的 getter 映射到局部计算属性                  ...mapGetters(["infoLength"])              }          })          &lt;/script&gt;</pre> </div> <p class="maodian"><a name="_lab2_2_2" rel="nofollow"></a></p> <h3>（3） Mutation</h3> <p>前面state和getters两个核心概念都是为了在store存储数据和访问数据的使用，Mutation则提供了对store中数据的修改功能，并且是唯一的更新方式，提交Mutation，Mutation主要包括两部分：字符串的事件类型（type）和一个回调函数（handler）,该回调函数的第一个参数就是state。</p> <p>在视图组件中不能直接修改store容器中的状态，需要先在容器中注册一个事件函数，当需要更新状态时候需要提交触发该事件，同时可以向该事件传递参数。这里需要区别与组件内v-model双向绑定。提交事件方法有一下几种：</p> <p>a、普通提交方式</p> <p>b、对象风格提交</p> <p>c、借助 mapMutations 辅助函数</p> <p>其核心代码如下：</p> <div class="ay1code"> <pre class="brush:xhtml;">&lt;div id="app"&gt;              &lt;button @click="handleAdd"&gt;点我加一&lt;/button&gt;              &lt;button @click="handleAddForNum"&gt;点我加加&lt;/button&gt;              &lt;button @click="handleAddForObj"&gt;对象添加&lt;/button&gt;              &lt;button @click="handleAddMap"&gt;对象添加&lt;/button&gt;          &lt;/div&gt;          &lt;script&gt;          import Vue from 'vue';          import Vuex from 'vuex';          import { mapMutations  } from 'vuex'// 使用辅助函数一定记住引入          const store = new Vuex.Store({              state: {                  count:1              },              mutations：{                  // 注册事件                  addCount(state){                      state.count ++                  },                  addCountForNum(state,num){                      state.count += num                  },                  addCountForObj(state,payload){                      state.count += payload.num                  },                  addMap(state){                      state.count ++                  }              }          )          new Vue({               el: '#app',              store,              methods:{                  // a、普通提交方式                  handleAdd(){                      this.$store.commit('addCount')                  },                  handleAddForNum(){                      this.$store.commit('addCountForNum',10)                  },                  // b、对象风格提交                  handleAddForObj() {                      this.$store.commit({ type: "addCountForObj", num: 100 });                  },                  // c、借助 mapMutations 辅助函数                  ...mapMutations(["addMap"]),                  handleAddMap(){                      this.addMap()                  }              }          })          &lt;/script&gt;</pre> </div> <p>Mutation 需遵守 Vue 的响应规则，Vuex 的 store 中的状态是响应式的，那么当我们变更状态时，监视状态的 Vue 组件也会自动更新。这也意味着 Vuex 中的 mutation 也需要与使用 Vue 一样遵守一些注意事项：最好提前在你的 store 中初始化好所有所需属性。当需要在对象上添加新属性时，你应该使用 Vue.set(obj, 'newProp', 123), 或者以新对象替换老对象。例如，利用对象展开运算符 state.obj = { ...state.obj, newProp: 123 }</p> <p>注意：Mutation 必须是同步函数。在 mutation 中混合异步调用会导致你的程序很难调试。例如，当你调用了两个包含异步回调的 mutation 来改变状态，你怎么知道什么时候回调和哪个先回调呢？</p> <p class="maodian"><a name="_lab2_2_3" rel="nofollow"></a></p> <h3>（4） Action</h3> <p> Action类似于Mutation, 但是是用来代替Mutation进行异步操作的.action 用于异步的修改state，它是通过muation间接修改state的。</p> <p> context是和store对象具有相同方法和属性的对象.也就是说, 我们可以通过context去进行commit相关的操作, 也可以获取context.state等.</p> <p> 若需要异步操作来修改state中的状态，首先需要action来注册事件，组件视图在通过dispatch分发方式调用该事件，该事件内部提交mutation中的事件完成改变状态操作，总之，通过action这个中介来提交mutation中的事件函数.分发事件方法如下：</p> <p>a、普通提交方式</p> <p> b、对象风格提交</p> <p> c、借助 mapActions 辅助函数</p> <p> 核心代码如下：</p> <div class="ay1code"> <pre class="brush:xhtml;">&lt;div id="app"&gt;              &lt;button @click="handleAdd"&gt;点我加一&lt;/button&gt;              &lt;button @click="handleAddTen"&gt;点我加十&lt;/button&gt;              &lt;button @click="handleAddForObj"&gt;对象添加&lt;/button&gt;              &lt;button @click="handleAddMap"&gt;对象添加&lt;/button&gt;          &lt;/div&gt;          &lt;script&gt;          import Vue from 'vue';          import Vuex from 'vuex';          import { mapMutations,mapActions  } from 'vuex'// 使用辅助函数一定记住引入          const store = new Vuex.Store({              state: {                  count:1              },              // 注册事件修改state状态值              mutations：{                  addCount(state){                      state.count ++                  },                  addCountForNum(state,num){                      state.count += num                  },                  addCountForObj(state,payload){                      state.count += payload.num                  },                  addMap(state){                      state.count ++                  }              },              // 注册事件,提交给 mutation              actions：{                  addAction(context){                      setTimeout(() =&gt; {                          context.commit('addCount')                      }, 1000)                  },                  addActionForNum(context,num){                      setTimeout(() =&gt; {                          context.commit('addCountForNum',num)                      }, 1000)                  },                  addActionForObj(context,payload){                      setTimeout(() =&gt; {                          context.commit('addCountForObj',payload)                      }, 1000)                  },                  addActionMap(context){                      setTimeout(() =&gt; {                          context.commit('addMap')                      }, 1000)                  }              }          )          new Vue({               el: '#app',              store,              methods:{                  // a、普通提交方式                  handleAdd(){                      this.$store.dispatch('addAction')                  },                  handleAddTen(){                      this.$store.dispatch('addActionForNum',10)                  },                  //  b、对象风格提交                  handleAddForObj(){                      this.$store.dispatch({                          type: 'addActionForObj',                          amount: 10                      })                  }                  // 借助 mapActions 辅助函数                  ...mapActions(["addActionMap"]),// 相当于...mapActions({addActionMap："addActionMap"})                   handleAddMap(){                      this.addActionMap()                  }              }          })</pre> </div> <p>组合 Action:组合多个 action，以处理更加复杂的异步流程.store.dispatch 可以处理被触发的 action 的处理函数返回的 Promise，并且 store.dispatch 仍旧返回 Promise。一个 store.dispatch 在不同模块中可以触发多个 action 函数。在这种情况下，只有当所有触发函数完成后，返回的 Promise 才会执行。假设 getData() 和 getOtherData() 返回的是 Promise。</p> <div class="ay1code"> <pre class="brush:xhtml;">actions: {              async actionA ({ commit }) {                  commit('gotData', await getData())              },              async actionB ({ dispatch, commit }) {                  await dispatch('actionA') // 等待 actionA 完成                  commit('gotOtherData', await getOtherData())              }          }</pre> </div> <p class="maodian"><a name="_lab2_2_4" rel="nofollow"></a></p> <h3>（5）Modules</h3> <p>Vuex允许我们将store分割成模块(Module), 而每个模块拥有自己的state、mutation、action、getters等</p> <p class="maodian"><a name="_label3" rel="nofollow"></a></p> <h2>4、Vuex和全局对象的不同</h2> <p>（1）Vuex 的状态存储是响应式的。当 Vue 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新。</p> <p>（2）你不能直接改变 store 中的状态。改变 store 中的状态的唯一途径就是显式地提交 (commit) mutation。这样使得我们可以方便地跟踪每一个状态的变化，从而让我们能够实现一些工具帮助我们更好地了解我们的应用。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-84211.htm">使用EasyExcel实现自定义表头导出</a></p>
+                                        <p>下一个：<a href="/news/article-84934.htm">动物防疫补助资金管理办法（动物防疫补助资金管理办法细则）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-67944.htm" title="广州哪里可以领养宠物猫咪（广州哪里可以领养宠物猫咪的）">广州哪里可以领养宠物猫咪（广州哪里可以领养宠物猫咪的）</a></li>
+                        <li class="py-2"><a href="/news/article-66047.htm" title="郑州宠物疫苗批发地址（郑州动物疫苗批发地址）">郑州宠物疫苗批发地址（郑州动物疫苗批发地址）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-6-node-share.htm" title="V2ray Free节点订阅每天更新18.5M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新18.5M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-1-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新19.4M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新19.4M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-25-node-share.htm" title="V2ray Free节点订阅每天更新20.6M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新20.6M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-74508.htm" title="整理了25个Pandas实用技巧（上）">整理了25个Pandas实用技巧（上）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-2-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新22.5M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新22.5M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-76566.htm" title="上海宠物狗领养网站官网（上海宠物狗领养网站官网电话）">上海宠物狗领养网站官网（上海宠物狗领养网站官网电话）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-4-free-node-subscribe.htm" title="V2ray Free节点订阅每天更新22.5M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新22.5M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-82779.htm" title="猫三联三针（猫三联三针疫苗是一样的吗）">猫三联三针（猫三联三针疫苗是一样的吗）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <a href="/">V2ray Free免费机场订阅中文站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>
