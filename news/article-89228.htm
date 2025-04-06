@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-89228.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>【Android】ListView 控件的简单使用</title>
+        <meta name="description" content="1. 效果预览  2. 在布局文件中放置 ListView 控件 &lt;?xml version="1.0" encoding="utf-8"?&gt; &lt;LinearLayout xmlns" />
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray Free免费机场订阅中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2ray-free.github.io/news/article-89228.htm" />
+    <meta property="og:site_name" content="V2ray Free免费机场订阅中文站" />
+    <meta property="og:title" content="【Android】ListView 控件的简单使用" />
+    <meta property="og:image" content="https://v2ray-free.github.io/uploads/20241107/868256767d6f6e3e7bdff43d6e565d01.webp" />
+        <meta property="og:release_date" content="2025-04-05T08:21:12" />
+    <meta property="og:updated_time" content="2025-04-05T08:21:12" />
+        <meta property="og:description" content="1. 效果预览  2. 在布局文件中放置 ListView 控件 &lt;?xml version="1.0" encoding="utf-8"?&gt; &lt;LinearLayout xmlns" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="【Android】ListView 控件的简单使用">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">【Android】ListView 控件的简单使用</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="V2ray X节点订阅官网" data-url="https://v2rayx.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>1. 效果预览</p> <p class="img-center"><img fetchpriority="high" decoding="async" alt="" height="818" src="http://img.555519.xyz/uploads/20230202/10236495c042a53b1b6eb2758e8a9265.jpg"></p> <p>2. 在布局文件中放置 ListView 控件</p> <pre><code class="language-XML">&lt;?xml version="1.0" encoding="utf-8"?&gt; &lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"     xmlns:tools="http://schemas.android.com/tools"     android:layout_width="match_parent"     android:layout_height="match_parent"     tools:context=".MainActivity"&gt;      &lt;ListView         android:id="@+id/listView"         android:layout_width="match_parent"         android:layout_height="wrap_content"/&gt;  &lt;/LinearLayout&gt;</code></pre> <p>3. 创建 ListView 的 item 布局</p> <pre><code class="language-XML">&lt;?xml version="1.0" encoding="utf-8"?&gt; &lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"     xmlns:tools="http://schemas.android.com/tools"     android:layout_width="match_parent"     android:layout_height="wrap_content"&gt;      &lt;ImageView         android:id="@+id/iv_interaction"         android:layout_alignParentStart="true"         android:padding="10dp"         android:layout_width="wrap_content"         android:layout_height="wrap_content"         tools:ignore="ContentDescription" /&gt;      &lt;TextView         android:id="@+id/tv_interaction"         android:layout_toEndOf="@+id/iv_interaction"         android:layout_centerVertical="true"         android:textSize="20sp"         android:layout_width="wrap_content"         android:layout_height="wrap_content"         tools:ignore="RelativeOverlap" /&gt;      &lt;ImageView         android:id="@+id/messages_into"         android:layout_alignParentEnd="true"         android:padding="10dp"         android:layout_width="wrap_content"         android:layout_height="wrap_content"         tools:ignore="ContentDescription" /&gt;  &lt;/RelativeLayout&gt;</code></pre> <p>4. 创建实体类</p> <pre><code class="language-java">public class InteractionBean {      private final int iv_interaction;     private final String tv_interaction;     private final int messages_into;      public InteractionBean(int iv_interaction, String tv_interaction, int messages_into){         this.iv_interaction = iv_interaction;         this.tv_interaction = tv_interaction;         this.messages_into = messages_into;     }      public int getIv_interaction() {         return iv_interaction;     }      public String getTv_interaction() {         return tv_interaction;     }      public int getMessages_into() {         return messages_into;     }  }</code></pre> <p>5. 创建适配器继承自 BaseAdapter</p> <pre><code class="language-java">public class InteractionAdapter extends BaseAdapter {      private final Context context;     private final List&lt;InteractionBean&gt; interactions;      public InteractionAdapter(Context context, List&lt;InteractionBean&gt; interactions){         this.context = context;         this.interactions = interactions;     }      @Override     public int getCount() {         return interactions.size();     }      @Override     public Object getItem(int i) {         return interactions.get(i);     }      @Override     public long getItemId(int i) {         return i;     }      @Override     public View getView(int i, View view, ViewGroup viewGroup) {          ViewHolder holder;          if (view == null){             view = LayoutInflater.from(context).inflate(R.layout.interaction_item, viewGroup, false);             holder = new ViewHolder();             holder.iv_interaction = view.findViewById(R.id.iv_interaction);             holder.tv_interaction = view.findViewById(R.id.tv_interaction);             holder.messages_into = view.findViewById(R.id.messages_into);             view.setTag(holder);         }else {             holder = (ViewHolder) view.getTag();         }          holder.iv_interaction.setImageResource(interactions.get(i).getIv_interaction());         holder.tv_interaction.setText(interactions.get(i).getTv_interaction());         holder.messages_into.setImageResource(interactions.get(i).getMessages_into());          return view;      }      static class ViewHolder{         ImageView iv_interaction;         TextView tv_interaction;         ImageView messages_into;     }  }</code></pre> <p>6. 为 item 设置数据，为 ListView 设置适配器</p> <pre><code class="language-java">public class MainActivity extends AppCompatActivity {      @Override     protected void onCreate(Bundle savedInstanceState) {         super.onCreate(savedInstanceState);         setContentView(R.layout.activity_main);          ListView listView = findViewById(R.id.listView);         List&lt;InteractionBean&gt; interactions = new ArrayList&lt;&gt;();         InteractionAdapter adapter = new InteractionAdapter(MainActivity.this, interactions);          InteractionBean at = new InteractionBean(R.drawable.messages_at, "有人@你", R.drawable.messages_into);         InteractionBean comment = new InteractionBean(R.drawable.messages_comment, "评论提醒", R.drawable.messages_into);         InteractionBean like = new InteractionBean(R.drawable.messages_like, "点赞提醒", R.drawable.messages_into);          interactions.add(at);         interactions.add(comment);         interactions.add(like);          listView.setAdapter(adapter);      } }</code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-88552.htm">流动摊贩占道经营处理办法(2名流动小贩占道经营,你作为执法者)</a></p>
+                                        <p>下一个：<a href="/news/article-89229.htm">灵感乍现！造了个与众不同的Dubbo注册中心扩展轮子</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-4-6-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新20M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新20M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-73180.htm" title="动物疫苗多少钱一支啊（动物疫苗的使用方法）">动物疫苗多少钱一支啊（动物疫苗的使用方法）</a></li>
+                        <li class="py-2"><a href="/news/article-82070.htm" title="动物接种途径有哪些类型（动物接种应掌握哪些要点）">动物接种途径有哪些类型（动物接种应掌握哪些要点）</a></li>
+                        <li class="py-2"><a href="/news/article-71203.htm" title="win11系统新硬盘不显示怎么办">win11系统新硬盘不显示怎么办</a></li>
+                        <li class="py-2"><a href="/news/article-77241.htm" title="什么叫做阻塞队列的有界和无界">什么叫做阻塞队列的有界和无界</a></li>
+                        <li class="py-2"><a href="/news/article-74508.htm" title="整理了25个Pandas实用技巧（上）">整理了25个Pandas实用技巧（上）</a></li>
+                        <li class="py-2"><a href="/news/article-77930.htm" title="选择排序详解（Java实现）">选择排序详解（Java实现）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-5-node-share-links.htm" title="V2ray Free节点订阅每天更新21.7M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新21.7M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-75880.htm" title="上海宠物医院有多少家（上海宠物医院前十名）">上海宠物医院有多少家（上海宠物医院前十名）</a></li>
+                        <li class="py-2"><a href="/news/article-81389.htm" title="URL编码及解码原理">URL编码及解码原理</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <a href="/">V2ray Free免费机场订阅中文站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>
