@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-96020.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Python向hdfs写入文件与hadoop命令向hdfs写入文件</title>
+        <meta name="description" content="首先需要安装pyhdfs，可用如下命令安装 pip install pyhdfs  首先我们如果先用hadoop原生命令来操作hdfs（分布式文件系统）上传文件。 命令如下 hadoop fs -pu" />
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray Free免费机场订阅中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2ray-free.github.io/news/article-96020.htm" />
+    <meta property="og:site_name" content="V2ray Free免费机场订阅中文站" />
+    <meta property="og:title" content="Python向hdfs写入文件与hadoop命令向hdfs写入文件" />
+    <meta property="og:image" content="https://v2ray-free.github.io/uploads/20241107/e0af44cc764c051637e5f83f60ea878b.webp" />
+        <meta property="og:release_date" content="2025-04-14T08:04:29" />
+    <meta property="og:updated_time" content="2025-04-14T08:04:29" />
+        <meta property="og:description" content="首先需要安装pyhdfs，可用如下命令安装 pip install pyhdfs  首先我们如果先用hadoop原生命令来操作hdfs（分布式文件系统）上传文件。 命令如下 hadoop fs -pu" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Python向hdfs写入文件与hadoop命令向hdfs写入文件">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">Python向hdfs写入文件与hadoop命令向hdfs写入文件</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="V2ray X节点订阅官网" data-url="https://v2rayx.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>首先需要安装pyhdfs，可用如下命令安装</p> <pre><code class="prism language-python">pip install pyhdfs </code></pre> <p>首先我们如果先用hadoop原生命令来操作hdfs（分布式文件系统）上传文件。<br /> 命令如下</p> <pre><code class="prism language-powershell">hadoop fs <span class="token operator">-</span>put <span class="token operator">/</span>home<span class="token operator">/</span>hadoop1<span class="token operator">/</span>software<span class="token operator">/</span><span class="token keyword">data</span><span class="token operator">/</span>two<span class="token punctuation">.</span>txt <span class="token operator">/</span> </code></pre> <p>其中-put上传，本地路径/home/hadoop1/software/data/two.txt，上传在HDFS的路径是 /</p> <p>使用Python来操作hdfs写入文件的代码为</p> <pre><code class="prism language-python"><span class="token keyword">from</span> pyhdfs <span class="token keyword">import</span> HdfsClient client <span class="token operator">=</span> HdfsClient<span class="token punctuation">(</span>hosts<span class="token operator">=</span><span class="token string">'hadoop1:50070'</span><span class="token punctuation">,</span>user_name<span class="token operator">=</span><span class="token string">'root'</span><span class="token punctuation">)</span> client<span class="token punctuation">.</span>copy_from_local<span class="token punctuation">(</span><span class="token string">'/home/hadoop1/software/data/one.txt'</span><span class="token punctuation">,</span><span class="token string">'/1'</span><span class="token punctuation">)</span><span class="token comment">#本地文件绝对路径,HDFS目录必须不存在</span> </code></pre> <p>其中hosts的参数为hdfs的url。user_name是本机的用户可以使用hadoop的用户。copy_from_local的第一个参数为本地路径。第二个参数为HDFS的路径，且这个路径不能已经存在。<br /> Python读hdfs</p> <pre><code class="prism language-python"><span class="token keyword">from</span> pyhdfs <span class="token keyword">import</span> HdfsClient client<span class="token operator">=</span>HdfsClient<span class="token punctuation">(</span>hosts<span class="token operator">=</span><span class="token string">'hadoop1:50070'</span><span class="token punctuation">)</span><span class="token comment">#hdfs的主机用户名和端口</span> res<span class="token operator">=</span>client<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'/two.txt'</span><span class="token punctuation">)</span><span class="token comment">#hdfs文件路径,从根目录计</span> <span class="token keyword">for</span> r <span class="token keyword">in</span> res<span class="token punctuation">:</span>  line<span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span>encoding<span class="token operator">=</span><span class="token string">'utf8'</span><span class="token punctuation">)</span><span class="token comment">#open后是二进制,str()转换为字符串</span>  <span class="token keyword">print</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span> </code></pre> <p>Python创建新文件</p> <pre><code class="prism language-python"><span class="token keyword">from</span> pyhdfs <span class="token keyword">import</span> HdfsClient client <span class="token operator">=</span> HdfsClient<span class="token punctuation">(</span>hosts<span class="token operator">=</span><span class="token string">'hadoop1:50070'</span><span class="token punctuation">,</span>user_name<span class="token operator">=</span><span class="token string">'root'</span><span class="token punctuation">)</span> <span class="token builtin">str</span><span class="token operator">=</span><span class="token string">'666'</span> client<span class="token punctuation">.</span>create<span class="token punctuation">(</span><span class="token string">'/py.txt'</span><span class="token punctuation">,</span><span class="token builtin">str</span><span class="token punctuation">)</span><span class="token comment">#创建新文件，写入字符串</span> </code></pre> <p>部分参考<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.jb51.net/article/188157.htm"  rel="nofollow">Python连接HDFS实现文件上传下载及Pandas转换文本文件到CSV操作</a></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-95252.htm">38岁学美容晚不晚（34岁学美容一般学多久）</a></p>
+                                        <p>下一个：<a href="/news/article-96021.htm">Caused by: java.lang.ClassNotFoundException: springfox.documentation.schema.ModelReference 错误解决</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-68619.htm" title="数据结构+带头结点双向循环链表+(C语言)">数据结构+带头结点双向循环链表+(C语言)</a></li>
+                        <li class="py-2"><a href="/news/article-85635.htm" title="广州狗狗领养中心（广州犬只领养中心）">广州狗狗领养中心（广州犬只领养中心）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-15-free-node-subscribe.htm" title="V2ray Free节点订阅每天更新18.4M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新18.4M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-75211.htm" title="jackson   json对象、实体类相互转换">jackson   json对象、实体类相互转换</a></li>
+                        <li class="py-2"><a href="/news/article-67944.htm" title="广州哪里可以领养宠物猫咪（广州哪里可以领养宠物猫咪的）">广州哪里可以领养宠物猫咪（广州哪里可以领养宠物猫咪的）</a></li>
+                        <li class="py-2"><a href="/news/article-71204.htm" title="芭比堂宠物医院玉泉路店电话（芭比堂宠物总部电话）">芭比堂宠物医院玉泉路店电话（芭比堂宠物总部电话）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-9-free-node-subscribe.htm" title="V2ray Free节点订阅每天更新20.6M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新20.6M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-16-free-subscribe-node.htm" title="V2ray Free节点订阅每天更新18.4M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新18.4M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-3-free-high-speed-nodes.htm" title="V2ray Free节点订阅每天更新21.6M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新21.6M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-10-node-share-links.htm" title="V2ray Free节点订阅每天更新20.6M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新20.6M/S免费节点订阅链接地址分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">45</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <a href="/">V2ray Free免费机场订阅中文站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>
