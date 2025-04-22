@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-101834.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Linux上部署net6应用</title>
+        <meta name="description" content="前言 	.net6都出来了，作为一名.net搬砖工却一直都在windows下部署应用，还未尝试过linux环境下部署应用。参考福禄网络研发团队的相关博客，学习一下如何将应用部署到linux系统。  ." />
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray Free免费机场订阅中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2ray-free.github.io/news/article-101834.htm" />
+    <meta property="og:site_name" content="V2ray Free免费机场订阅中文站" />
+    <meta property="og:title" content="Linux上部署net6应用" />
+    <meta property="og:image" content="https://v2ray-free.github.io/uploads/20241107/b28423352dbfd28a182f71bdb78f9d89.webp" />
+        <meta property="og:release_date" content="2025-04-22T08:26:10" />
+    <meta property="og:updated_time" content="2025-04-22T08:26:10" />
+        <meta property="og:description" content="前言 	.net6都出来了，作为一名.net搬砖工却一直都在windows下部署应用，还未尝试过linux环境下部署应用。参考福禄网络研发团队的相关博客，学习一下如何将应用部署到linux系统。  ." />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Linux上部署net6应用">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">Linux上部署net6应用</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="V2ray X节点订阅官网" data-url="https://v2rayx.github.io">
+                <div class="xcblog-blog-detail">
+                      				  				  				<h3 id="前言">前言</h3> <p>	.net6都出来了，作为一名.net搬砖工却一直都在windows下部署应用，还未尝试过linux环境下部署应用。参考<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://home.cnblogs.com/u/fulu/"  target="_blank" rel="nofollow">福禄网络研发团队</a>的相关博客，学习一下如何将应用部署到linux系统。</p> <blockquote> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/fulu/p/13983734.html"  target="_blank" rel="nofollow">.NET5都来了，你还不知道怎么部署到linux？最全部署方案，总有一款适合你 - 福禄网络研发团队 - 博客园 (cnblogs.com)</a></p> </blockquote> <h3 id="一准备">一、准备</h3> <p>云服务器：腾讯云（便宜）</p> <p>操作系统：CentOS 8.2</p> <p>SSH 客户端：PuTTY （免费且开源）</p> <p>SFTP工具：WinSCP（免费且开源）</p> <h3 id="二安装sdk">二、安装Sdk</h3> <p>打开PuTTy，登录云服务器，输入账户密码</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/bf7eee051e57a51d01f8dcd300ad2bb0.jpg" alt="Linux上部署net6应用"></p> <p>在linux上先安装sdk</p> <p>参考<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.microsoft.com/zh-cn/dotnet/core/install/linux-centos"  target="_blank" rel="nofollow">在 CentOS 上安装 .NET - .NET | Microsoft Docs</a></p> <p>指令：</p> <pre><code>sudo yum install -y dotnet-sdk-6.0</code></pre> <p>安装成功后，查看是否安装成功</p> <pre><code>dotnet --version</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/82201fd5d1ba84727d097a553b95b1e8.jpg" alt="Linux上部署net6应用"></p> <h3 id="三创建和发布web应用">三、创建和发布Web应用</h3> <p>创建web应用：</p> <pre><code>dotnet new webapp -o test</code></pre> <p>输入cd test，进入应用目录，输入运行命令：dotnet run</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/bdad3ac67b99889208eb6336300616da.jpg" alt="Linux上部署net6应用"></p> <p><strong>运行成功，这个时候我们用外网ip访问时无法访问的</strong>。</p> <p>用WinScp打开目录/root/test/Properties，编辑launchSettings.json，将applicationUrl的localhost改为*</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/7fb18ea97c2f85763bccaae1a0e4c706.jpg" alt="Linux上部署net6应用"></p> <p>修改好后我们再用dotnet run 运行一次，用外网ip访问正常</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/821acda26b334c3c2747fb0bda3c43c1.jpg" alt="Linux上部署net6应用"></p> <p>web程序没问题后，我们用命令发布</p> <pre><code>dotnet publish</code></pre> <h3 id="四安装和配置supervisor">四、安装和配置Supervisor</h3> <p>外网访问无问题以后，安装Supervisor。Supervisor是用Python开发的一套通用的进程管理程序，能将一个普通的命令行进程变为后台daemon，并监控进程状态，异常退出时能自动重启。</p> <p>安装Supervisor:</p> <pre><code>yum install -y supervisor</code></pre> <p>安装成功后，分别执行以下命令</p> <pre><code>systemctl enable supervisord</code></pre> <pre><code>systemctl start supervisord</code></pre> <p>查看状态</p> <pre><code>systemctl status supervisord</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/0e005d2fd2e9383cb3529a267dd05de6.jpg" alt="Linux上部署net6应用"></p> <p>使用vi编辑/etc/conf.d，结果如下图（<strong>一定要一样</strong>）</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/674188d642d924232bdff0405daa8498.jpg" alt="Linux上部署net6应用"></p> <p>重新加载配置文件：</p> <pre><code>supervisorctl reload</code></pre> <p>打开IP：9001，输入用户密码:user/123</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/5a2ea8ee0c8674bf32dd8acbbd4d874a.jpg" alt="Linux上部署net6应用"></p> <p>supervisor安装配置完成后，开始配置一个ini文件：</p> <pre><code class="language-json">[program:test] ;表示程序名称，用于在supervisor中显示，无特殊意义。 command=/bin/bash -c "dotnet test.dll --urls http://*:5001" ; 输入执行命令，这里表示执行的是dotnet test.dll directory=/root/test/bin/Debug/net6.0/publish/ ; 应用程序根目录  autostart=true ; 是否自动启动，当 supervisor 加载该配置文件的时候立即启动它  autorestart=true ; 是否自动重启， 程序异常退出后自动重启 logfile_maxbytes=50MB ; 该配置文件输出单个日志文件的大小，默认50M logfile_backups=10 ; 日志备份个数  loglevel=info ; 记录日志级别  stdout_logfile=/root/data/logs/test/test.out.log ; 指定标准输出日志文件  environment=ASPNETCORE_ENVIRONMENT=Production ;环境变量。 user=root ;启动服务的用户   redirect_stderr=true ;把 stderr 重定向到 stdout，默认 false</code></pre> <p>主要配置</p> <p>command： 执行命令</p> <p>directory：应用程序所在目录</p> <p>stdout_logfile：日志文件所在路径，非常注意：<strong>请一定先要创建好路径</strong>，可用命令</p> <pre><code>mkdir -p /root/data/logs/test</code></pre> <p>上列ini可直接复制使用，但须注意：<strong>';'前一定一定要有个空格</strong>，否则会报错。（踩坑）</p> <p>在本地配置好这个文件后，将其放到/etc/supervisord.d这个目录下</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/2d037099d11874a078ada9fa559ec120.jpg" alt="Linux上部署net6应用"></p> <p>重新加载：</p> <pre><code>supervisorctl reload</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/a2205c6fe2b129c506cb614c0e595959.jpg" alt="Linux上部署net6应用"></p> <p>这时可以看到配置的应用已经运行起来了</p> <h3 id="五nginx">五、Nginx</h3> <p>安装Nginx</p> <pre><code> yum install -y nginx</code></pre> <p>依次执行以下命令：</p> <pre><code>systemctl enable nginx</code></pre> <pre><code>systemctl start nginx</code></pre> <p>浏览器访问ip：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/53863dd0152ae3c8d502134792857a01.jpg" alt="Linux上部署net6应用"></p> <p>配置文件位置：/etc/nginx/nginx.conf，找到location节点，输入proxy_pass<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://0.0.0.0:5001"  target="_blank" rel="nofollow">http://0.0.0.0:5001</a>;</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/2629bb58c104359b0eab54c0ec799baf.jpg" alt="Linux上部署net6应用"></p> <p>重新加载配置：</p> <pre><code>nginx -s reload</code></pre> <p>直接用ip访问成功，如果有绑定域名，也可直接用域名访问</p> <p>至此，所有配置就都完成啦~~</p> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-101830.htm">微信小程序，自定义导航栏组件</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-10-free-node-subscribe-links.htm" title="V2ray Free节点订阅每天更新20.7M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新20.7M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-98225.htm" title="猫粮自作（猫粮如何自己做）">猫粮自作（猫粮如何自己做）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-9-node-share-links.htm" title="V2ray Free节点订阅每天更新19.7M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新19.7M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-85633.htm" title="打过疫苗的猫抓伤出血（打过疫苗的猫抓伤出血要***吗）">打过疫苗的猫抓伤出血（打过疫苗的猫抓伤出血要***吗）</a></li>
+                        <li class="py-2"><a href="/news/article-75878.htm" title="采用JSP+Servlet+JavaBean+JDBC方式开发一个web登录程序">采用JSP+Servlet+JavaBean+JDBC方式开发一个web登录程序</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-16-free-subscribe-node.htm" title="V2ray Free节点订阅每天更新18.4M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新18.4M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-101830.htm" title="微信小程序，自定义导航栏组件">微信小程序，自定义导航栏组件</a></li>
+                        <li class="py-2"><a href="/news/article-77930.htm" title="选择排序详解（Java实现）">选择排序详解（Java实现）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-20-node-share-links.htm" title="V2ray Free节点订阅每天更新22.4M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新22.4M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-77931.htm" title="实现垂直居中的几种方式">实现垂直居中的几种方式</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <a href="/">V2ray Free免费机场订阅中文站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>

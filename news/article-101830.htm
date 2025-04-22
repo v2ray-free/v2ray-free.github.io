@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-101830.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>微信小程序，自定义导航栏组件</title>
+        <meta name="description" content="微信小程序，自定义导航栏组件，可兼容iPhone 11及以上留海屏显示，关于参数获取设置参照微信小程序-收藏_羽筠的博客-CSDN博客 可定义设置的内容如下： 文字及返回箭头颜色 背景图片（优先级高于" />
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray Free免费机场订阅中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2ray-free.github.io/news/article-101830.htm" />
+    <meta property="og:site_name" content="V2ray Free免费机场订阅中文站" />
+    <meta property="og:title" content="微信小程序，自定义导航栏组件" />
+    <meta property="og:image" content="https://v2ray-free.github.io/uploads/20241107/c0f75582a719885c00ddc548dfdee558.webp" />
+        <meta property="og:release_date" content="2025-04-22T08:26:10" />
+    <meta property="og:updated_time" content="2025-04-22T08:26:10" />
+        <meta property="og:description" content="微信小程序，自定义导航栏组件，可兼容iPhone 11及以上留海屏显示，关于参数获取设置参照微信小程序-收藏_羽筠的博客-CSDN博客 可定义设置的内容如下： 文字及返回箭头颜色 背景图片（优先级高于" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="微信小程序，自定义导航栏组件">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">微信小程序，自定义导航栏组件</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="V2ray X节点订阅官网" data-url="https://v2rayx.github.io">
+                <div class="xcblog-blog-detail">
+                      				  				  				<div id="content_views" class="htmledit_views"> <p>微信小程序，自定义导航栏组件，可兼容iPhone 11及以上留海屏显示，关于参数获取设置参照<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/qq_16494241/article/details/103474646"  title="微信小程序-收藏_羽筠的博客-CSDN博客" rel="nofollow">微信小程序-收藏_羽筠的博客-CSDN博客</a></p> <p><span style="color:#4da8ee;">可定义设置的内容如下：</span><br /> 文字及返回箭头颜色<br /> 背景图片（优先级高于 背景色）<br /> 背景色<br /> 页面标题<br /> 页面标题显示图片（优先级高于 页面标题）<br /> 是否显示返回菜单<br /> 是否显示 页面主体顶部被自定义菜单挡住部分(false则主体内容会被导航栏遮盖)</p> <p><span style="color:#4da8ee;">组件相关代码：</span><br /> .wxss</p> <pre><code>page, view, scroll-view, swiper, swiper-item, button, input, textarea, label, navigator, image{ 	box-sizing: border-box; }  .nav-custom-bar{ width: 100%; font-size: 30rpx; position: fixed; left: 0; top: 0; z-index: 9999; transition: all linear .3s;} .nav-custom-bar-back{ width: 110rpx; padding-left: 25rpx; display: flex; justify-content: space-between; align-items: center;} .nav-custom-bar-back-arrow{ width: 22rpx; height: 22rpx; border-top: none !important; border-right: none !important; transform: rotate(45deg);} .nav-custom-bar-back-text{} .nav-custom-bar-title{ text-align: center; position: absolute; left: 50%; transform: translateX(-50%);} .nav-custom-bar-title view{ white-space: nowrap; overflow: hidden; text-overflow: ellipsis;} .nav-custom-bar-title image{ width: 100%;}  .nav-custom-bar-space{}</code></pre> <p>.wxml</p> <pre><code>&lt;!-- 自定义头部菜单 - 不显示返回文字 &lt;navigation-custom textColor="{<!-- -->{textColor值}}" bgImg="{<!-- -->{bgImg值}}" bgColor="{<!-- -->{bgColor值}}" title="{<!-- -->{pageTitle值}}" titleImg="{<!-- -->{pageTitleImg值}}" isShowBack="{<!-- -->{isShowBack值}}" isShowCustomBarSpace="{<!-- -->{isShowCustomBarSpace值}}"&gt;&lt;/navigation-custom&gt; 自定义头部菜单 - 显示返回文字 &lt;navigation-custom textColor="{<!-- -->{textColor值}}" bgImg="{<!-- -->{bgImg值}}" bgColor="{<!-- -->{bgColor值}}" title="{<!-- -->{pageTitle值}}" titleImg="{<!-- -->{pageTitleImg值}}" isShowBack="{<!-- -->{isShowBack值}}" isShowCustomBarSpace="{<!-- -->{isShowCustomBarSpace值}}"&gt; 	&lt;text slot="back"&gt;返回&lt;/text&gt; &lt;/navigation-custom&gt; 注： textColor : 文字及返回箭头颜色 bgImg : 背景图片（优先级高于 背景色） bgColor : 背景色 title : 页面标题 titleImg : 页面标题显示图片（优先级高于 页面标题） isShowBack : 是否显示返回菜单 isShowCustomBarSpace : 是否显示 页面主体顶部被自定义菜单挡住部分 --&gt;  &lt;!-- 自定义头部菜单 --&gt; &lt;view class="nav-custom-bar" style="color: {<!-- -->{textColor}}; background: url({<!-- -->{bgImg}}) no-repeat center top; background-size: 100%; background-color: {<!-- -->{bgColor}}; height: {<!-- -->{CustomBar}}px; padding-top: {<!-- -->{Custom.top}}px;"&gt; 	&lt;view bindtap="navigateBack" wx:if="{<!-- -->{isShowBack}}" class="nav-custom-bar-back" style="height: {<!-- -->{Custom.height}}px;"&gt; 		&lt;view class="nav-custom-bar-back-arrow" style=" border: {<!-- -->{textColor}} solid 2px;"&gt;&lt;/view&gt; 		&lt;!-- &lt;view class="nav-custom-bar-back-text"&gt;返回&lt;/view&gt; --&gt; 		&lt;view class="nav-custom-bar-back-text"&gt; 			&lt;slot name="back"&gt;&lt;/slot&gt; 		&lt;/view&gt; 	&lt;/view&gt; 	&lt;view class="nav-custom-bar-title" style="width: calc(100vw - {<!-- -->{Custom.width * 2}}px - 10px); height: {<!-- -->{Custom.height}}px; top: {<!-- -->{Custom.top}}px;"&gt; 		&lt;view wx:if="{<!-- -->{!titleImg}}" style="line-height: {<!-- -->{Custom.height}}px;"&gt;{<!-- -->{title}}&lt;/view&gt; 		&lt;image wx:if="{<!-- -->{titleImg}}" src="{<!-- -->{titleImg}}" mode="aspectFit" style="height: {<!-- -->{Custom.height}}px;"&gt;&lt;/image&gt; 	&lt;/view&gt; &lt;/view&gt; &lt;!-- 显示 页面主体顶部被自定义菜单挡住部分 --&gt; &lt;view wx:if="{<!-- -->{isShowCustomBarSpace}}" class="nav-custom-bar-space" style="height: {<!-- -->{CustomBar}}px;"&gt;&lt;/view&gt;</code></pre> <p>.json</p> <pre><code>{   "component": true }</code></pre> <p>.js</p> <pre><code>var App = getApp(); Component({ 	options: { 		multipleSlots: true // 在组件定义时的选项中启用多 slot 支持 	}, 	properties: { 		// 文字及返回箭头颜色 		textColor: { 			type: String, 			value: "#000", 		}, 		// 背景图片（优先级高于 背景色） 		bgImg: { 			type: String, 			value: "", 		}, 		// 背景色 		bgColor: { 			type: String, 			value: "", 		}, 		// 页面标题 		title: { 			type: String, 			value: "", 		}, 		// 页面标题显示图片（优先级高于 页面标题） 		titleImg: { 			type: String, 			value: "", 		}, 		//是否显示返回菜单 		isShowBack: { 			type: Boolean, 			value: true, 		}, 		//是否显示页面主体顶部被自定义菜单挡住部分 		isShowCustomBarSpace: { 			type: Boolean, 			value: true, 		}, 	}, 	data: { 		modelIsIphoneX: App.globalData.modelIsIphoneX, 		StatusBar: App.globalData.StatusBar, 		CustomBar: App.globalData.CustomBar, 		Custom: App.globalData.Custom 	}, 	ready: function() {  	}, 	methods: { 		navigateBack(){ 			App.doNavigateBack(); 		},  	} }) </code></pre> <p><span style="color:#4da8ee;">引用组件相关代码：</span></p> <p>app.json中全局中进行引用声明</p> <pre><code>"usingComponents": { 	"navigation-custom": "/components/navigation-custom/index" },</code></pre> <p><span style="color:#4da8ee;">引用组件页面相关代码：</span></p> <p>.wxml</p> <pre><code>&lt;image id="view" style="width: 100%;" src="https://avatar.csdnimg.cn/D/5/3/3_qq_16494241_1581835814.jpg" alt="微信小程序，自定义导航栏组件" mode="widthFix"&gt;&lt;/image&gt;  &lt;!-- 自定义头部菜单 --&gt; &lt;navigation-custom textColor="#fff" bgImg="{<!-- -->{bgImg}}" bgColor="{<!-- -->{bgColor}}" title="测试demo" titleImg="{<!-- -->{titleImg}}" isShowBack="{<!-- -->{false}}" isShowCustomBarSpace="{<!-- -->{false}}"&gt;&lt;/navigation-custom&gt;  &lt;view&gt;111111111111&lt;/view&gt; &lt;view&gt;222222222222&lt;/view&gt; &lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;&lt;view&gt;test test&lt;/view&gt;</code></pre> <p>.json</p> <pre><code>{ 	"navigationStyle": "custom", }</code></pre> <p>.js</p> <pre><code>var App = getApp(); Page({  	data: { 		modelIsIphoneX: App.globalData.modelIsIphoneX, 		StatusBar: App.globalData.StatusBar, 		CustomBar: App.globalData.CustomBar, 		Custom: App.globalData.Custom 	}, 	/** 	 * 生命周期函数--监听页面初次渲染完成 	 */ 	onReady: function() { 		var query = wx.createSelectorQuery(); 		query.select('#view').boundingClientRect() 		query.exec((res) =&gt; { 			console.log(res[0].height); 			this.setData({ 				topImgH : res[0].height 			}) 		}) 	}, 	/** 	 * 监听页面滚动 	 */ 	onPageScroll (e) {  		console.log(e.scrollTop); 		// 解决苹果手机在当前页面滚动到一定位置后跳转至其他页面再返回导致的scrollTop负数引起的不能设置自定义菜单背景色BUG； 		if(e.scrollTop &lt; 0){ 			wx.pageScrollTo({ 				scrollTop: 0, 				duration: 10 			}) 		} 		if(e.scrollTop &gt; this.data.topImgH + 200){ 			this.setData({ 				bgColor:"#39b54a", 				bgImg:"https://img-blog.csdnimg.cn/20201014180756918.png", 				titleImg:"" 			}) 		}else if(e.scrollTop &gt; this.data.topImgH - App.globalData.CustomBar){ 			this.setData({ 				bgColor:"#1cbbb4", 				bgImg:"", 				titleImg:"https://csdnimg.cn/medal/chizhiyiheng@240.png" 			}) 		}else{ 			this.setData({ 				bgColor:"", 				bgImg:"", 				titleImg:"" 			}) 		} 	}, })</code></pre> </p></div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-101082.htm">农大动物医院医生排班（农大动物医院 挂号）</a></p>
+                                        <p>下一个：<a href="/news/article-101834.htm">Linux上部署net6应用</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-4-22-node-share.htm" title="V2ray Free节点订阅每天更新21.2M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新21.2M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-69261.htm" title="python的eval和json.loads(),json.dumps()">python的eval和json.loads(),json.dumps()</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-14-free-high-speed-nodes.htm" title="V2ray Free节点订阅每天更新22.1M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新22.1M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-15-free-node-subscribe.htm" title="V2ray Free节点订阅每天更新18.4M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新18.4M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-71204.htm" title="芭比堂宠物医院玉泉路店电话（芭比堂宠物总部电话）">芭比堂宠物医院玉泉路店电话（芭比堂宠物总部电话）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-9-node-share-links.htm" title="V2ray Free节点订阅每天更新19.7M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新19.7M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-89229.htm" title="灵感乍现！造了个与众不同的Dubbo注册中心扩展轮子">灵感乍现！造了个与众不同的Dubbo注册中心扩展轮子</a></li>
+                        <li class="py-2"><a href="/news/article-92973.htm" title="Hadoop：MR以parquet格式保存文件">Hadoop：MR以parquet格式保存文件</a></li>
+                        <li class="py-2"><a href="/news/article-99681.htm" title="宠物粮食加工厂什么岗位比较好干 宠物粮食加工厂什么岗位比较好干呢">宠物粮食加工厂什么岗位比较好干 宠物粮食加工厂什么岗位比较好干呢</a></li>
+                        <li class="py-2"><a href="/news/article-99679.htm" title="动物疫苗贵吗多少钱一次打（动物的疫苗多少钱）">动物疫苗贵吗多少钱一次打（动物的疫苗多少钱）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <a href="/">V2ray Free免费机场订阅中文站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>
