@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-104120.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Python中的Super详解</title>
+        <meta name="description" content="这篇文章我们来介绍一下 super，我相信大部分的人使用 super 都是使用这种方式； # 就是我有一个 class 比如说是 Male，然后继承另外一个 class 比如是 Person，然后我在" />
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray Free免费机场订阅中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2ray-free.github.io/news/article-104120.htm" />
+    <meta property="og:site_name" content="V2ray Free免费机场订阅中文站" />
+    <meta property="og:title" content="Python中的Super详解" />
+    <meta property="og:image" content="https://v2ray-free.github.io/uploads/20241107/b840ad329894bd4c2cd5f317fb945e66.webp" />
+        <meta property="og:release_date" content="2025-04-25T07:09:36" />
+    <meta property="og:updated_time" content="2025-04-25T07:09:36" />
+        <meta property="og:description" content="这篇文章我们来介绍一下 super，我相信大部分的人使用 super 都是使用这种方式； # 就是我有一个 class 比如说是 Male，然后继承另外一个 class 比如是 Person，然后我在" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Python中的Super详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">Python中的Super详解</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="V2ray X节点订阅官网" data-url="https://v2rayx.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<p>这篇文章我们来介绍一下 super，我相信大部分的人使用 super 都是使用这种方式；</p> <pre><code class="language-python"># 就是我有一个 class 比如说是 Male，然后继承另外一个 class 比如是 Person，然后我在这个 Male 也就是它的子类的 init 函数里面用 super().__init__() 来调用它父类的初识化函数  from objprint import op   class Person:     def __init__(self, name):         self.name = name   class Male(Person):     def __init__(self, name):         super().__init__(name)         self.gender = "male"   m = Male('xiaoyang') op(m)  # 输出： &lt;Male 0x23669a19fa0   .gender = 'male',   .name = 'xiaoyang' &gt;</code></pre> <p>在我们常用 super 的时候都通常会认为 super 是一个方法或者函数，但是实际上 super 是一个正儿八经的 class，它是一个内置内的名字，然后 super() 并不是调用了一个函数 ，super() 是建立 了一个 super 的对象</p> <pre><code>&gt;&gt;&gt; type(super) &lt;class 'type'&gt;</code></pre> <p>尽管我们更常用的是 super() 括号里面什么都没有，但是 super 的完整版它里面应该是有两个参数，第一个参数是一个 type 也就是一个 class，第二个参数是一个 type 或者是一个 object，其中第二个参数决定了这一个函数绑定到那个 object 或者 class 上，同时第二个参数决定了使用那个mro，而第一个参数决定了在 mro 链上 从哪个class 开始往后找，例如；</p> <pre><code class="language-python">from objprint import op   class Person:     def __init__(self, name):         self.name = name   class Male(Person):     def __init__(self, name):         # super().__init__(name)         super(Male, self).__init__(name)         self.gender = "male"   m = Male('xiaoyang') op(m)  # 输出： &lt;Male 0x171f680afa0   .gender = 'male',   .name = 'xiaoyang' &gt;   # 其实我们看刚才的 super().__init__(name) 它是等价于 super(Male, self).__init__(name) 的。</code></pre> <p>那么这个<code>super(Male, self)</code>它是做了这样一个事情，首先它要从 self 这个 object 里面拿到 mro，然后他会找到第一个 argument，也就是 Male 在 mro 里所处的位置，那在当前的情况下 Male 就是最开始的那个（Male Person object）接下来他会从 Male 后面的那个 class 开始找，那它第一个找到的就是 Person，然后它就看Person 里面有没有<code>__init__</code>这个函数，然后发现有这个函数，然后它在把这个<code>__init__</code>绑定到 self 上，在这里可以理解为这个 Person 的<code>__init__</code>函数传进去的这个 self 就是 super 里面的这个 self，也就是说<code>Person.__init__(self,name)</code>这行代码等价于<code>super(Male, self).__init__(name)</code>这行代码。</p> <p>至于为什么不直接使用<code>Person.__init__(self,name)</code>是有几个原因：</p> <ol> <li>在未来有可能会改变基类的名字，甚至会改变继承的方式，在这种情况下如果使用 super 的话就什么都不用管，应为他会自动追随这个 mro 找到正确的 class ，但是用这种命名的 class 的话就要全部修改，这样更容易引起错误</li> <li>其实 super 是动态的，他会根据 self 的 mro 进行寻找，而 self 也就是传进来的这个 argument 它本身是动态的，也就是说同样一个函数里面，我用 super 在不改变这个函数的情况下我有可能会拿到不同的 class。</li> </ol> <p>在来看这个示例：</p> <pre><code class="language-python">from objprint import op   class Animal:     def __init__(self, age):         self.age = age   class Person(Animal):     def __init__(self, age, name):         super().__init__(age)         self.name = name   class Male(Person):     def __init__(self,age, name):         # super(Male, self).__init__(age, name)          super(Person, self).__init__(age, name)          self.gender = "male"   m = Male(18， 'xiaoyang') op(m)</code></pre> <p>如果在 Male 中正常的使用它<code>super(Male, self).__init__(age, name)</code>，那么它就会正常的初始化所有的东西，它会访问这个 Person 的<code>__init__</code> ，然后 Person 的<code>__init__</code>会访问 Animal 的<code>__init__</code>，最后就完成了这个 Male。</p> <p>那如果把它改成<code>super(Person, self).__init__(age, name)</code>，那么就会报错，因为当我们使用<code>super(Person, self)</code>的时候，self 的 mro 链是 Male Person Animal 然后是  object，那第一个参数它由于是 Person，所以他会从 Person 后面的那个 class 也就是 Animal 开始找，那 Animal 是有<code>__init__</code>函数的，但是 Animal 的<code>__init__</code> 只有一个参数 age，所以当我们传入 age name 的时候那就错了，这时候就只需要将它改成只传进去一个 age 如：<code>super(Person, self).__init__(age)</code> 就可以了，同时也跳过了 Person。</p> <blockquote> <p>总结 super 的两个参数也就是第一个 type 和第二个 type 或者 object 分别决定了什么：</p> <p>第一个只决定了在 mro 这个链上从哪里开始找</p> <p>第二个是决定使用这个函数的对象和 mro</p> </blockquote> <p>super 并不是只能在 class 里面使用的，它可以在任何一个地方使用，我只要给定 第二个参数 object 或者 class ，在给定第一个参数从哪里开始找，我就能使用它的函数，例如：</p> <pre><code class="language-python"># 那这里的话就是从 m 这个 object 的 mro 上寻找 Male 后面开始的 __init__ 函数，这样实际上就找到了 Person 的 __init__ 函数，然后再用 Person 的 __init__ 函数对 m 这个 object 做初始化  from objprint import op   class Animal:     def __init__(self, age):         self.age = age   class Person(Animal):     def __init__(self, age, name):         super().__init__(age)         self.name = name   class Male(Person):     def __init__(self,age, name):         super(Person, self).__init__(age)         self.gender = "male"   m = Male(18, 'xiaoyang') op(m)  print("----------------------")  super(Male, m).__init__(20, "xiaoyang") op(m)   # 输出： &lt;Male 0x18412d13f70   .age = 18,   .gender = 'male' &gt; ---------------------- &lt;Male 0x18412d13f70   .age = 20,   .gender = 'male',   .name = 'xiaoyang' &gt;</code></pre> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-104119.htm">mysql timestamp_MySQL中的时间字段的几种数据类型比较</a></p>
+                                        <p>下一个：<a href="/news/article-105082.htm">猫咪三针疫苗打完还要***什么意思（猫猫三针疫苗打完后要过多久再打）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-4-11-free-subscribe-node.htm" title="V2ray Free节点订阅每天更新18.7M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新18.7M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-75878.htm" title="采用JSP+Servlet+JavaBean+JDBC方式开发一个web登录程序">采用JSP+Servlet+JavaBean+JDBC方式开发一个web登录程序</a></li>
+                        <li class="py-2"><a href="/news/article-84211.htm" title="使用EasyExcel实现自定义表头导出">使用EasyExcel实现自定义表头导出</a></li>
+                        <li class="py-2"><a href="/news/article-72523.htm" title="生物疫苗和药品（生物医药和疫苗）">生物疫苗和药品（生物医药和疫苗）</a></li>
+                        <li class="py-2"><a href="/news/article-92975.htm" title="【LINT】cpplint修改版：自定义编码风格检查工具lint_在线工具">【LINT】cpplint修改版：自定义编码风格检查工具lint_在线工具</a></li>
+                        <li class="py-2"><a href="/news/article-101834.htm" title="Linux上部署net6应用">Linux上部署net6应用</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-25-free-high-speed-nodes.htm" title="V2ray Free节点订阅每天更新21.7M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新21.7M/S免费节点订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-103455.htm" title="动物医院的宗旨和目标（动物医院部门）">动物医院的宗旨和目标（动物医院部门）</a></li>
+                        <li class="py-2"><a href="/news/article-103453.htm" title="SpringMVC 最详细笔记必备知识点">SpringMVC 最详细笔记必备知识点</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-4-node-share.htm" title="V2ray Free节点订阅每天更新20.9M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新20.9M/S免费节点订阅链接地址分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">78</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <a href="/">V2ray Free免费机场订阅中文站</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>
