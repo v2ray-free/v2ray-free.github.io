@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2ray-free.github.io/news/article-190371.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Clash退出就上不了网？全面剖析背后的技术逻辑与解决之道</title>
+        <meta name="description" content="在科学上网日益普及的今天，Clash作为一款灵活、强大的代理工具，赢得了大量用户的青睐。不少人依赖Clash实现稳定的代理连接与网络加速体验。但一个令人沮丧的问题也随之出现：**“Clash退出后，我" />
+        <link rel="icon" href="/assets/website/img/v2ray_free/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray Free免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2ray-free.github.io/news/article-190371.htm" />
+    <meta property="og:site_name" content="V2ray Free免费机场订阅节点官网" />
+    <meta property="og:title" content="Clash退出就上不了网？全面剖析背后的技术逻辑与解决之道" />
+    <meta property="og:image" content="https://v2ray-free.github.io/uploads/20241107/ea1a1a133f5d960052d5b708b1ed3a9e.webp" />
+        <meta property="og:release_date" content="2025-12-19T09:34:09" />
+    <meta property="og:updated_time" content="2025-12-19T09:34:09" />
+        <meta property="og:description" content="在科学上网日益普及的今天，Clash作为一款灵活、强大的代理工具，赢得了大量用户的青睐。不少人依赖Clash实现稳定的代理连接与网络加速体验。但一个令人沮丧的问题也随之出现：**“Clash退出后，我" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Clash退出就上不了网？全面剖析背后的技术逻辑与解决之道">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/font-awesome.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/slick-theme.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/smoothScorllbar.css">
+    <link rel="stylesheet" href="/assets/website/css/v2ray_free/app.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V08D8D5GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V08D8D5GL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6957240247502121" crossorigin="anonymous"></script></head>
+
+<body class="tt-smooth-scroll" data-page="detail">
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="container">
+            <div class="loading">
+                <div class="loading__letter">V</div>
+                <div class="loading__letter">2</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">A</div>
+                <div class="loading__letter">Y&nbsp;</div>
+                <div class="loading__letter">&nbsp;</div>
+                <div class="loading__letter">F</div>
+                <div class="loading__letter">R</div>
+                <div class="loading__letter">E</div>
+                <div class="loading__letter">E</div>
+            </div>
+        </div>
+    </div>
+    <!-- PRELOADER END -->
+    <!-- Main Wrapper Start -->
+    <div id="scroll-container">
+                <!-- HEADER MENU START -->
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="navigation d-flex align-items-center justify-content-between">
+                    <a href="/" class="d-flex align-items-center logo-box">
+                                                <span>V2ray Free 全球节点</span>
+                                            </a>
+                    <div class="menu-button-right">
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- HEADER MENU END -->
+        <!-- TITLE BANNER START -->
+        <section class="title-banner">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-11">
+                        <div class="title-wrapper">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="title-content">
+                                        <h1 class="white fw-700">Clash退出就上不了网？全面剖析背后的技术逻辑与解决之道</h1>
+                                        <small>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 d-sm-block d-none">
+                                    <div class="title-image">
+                                        <img src="static/picture/title-banner.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TITLE BANNER END -->
+                <!-- WHY CHOOSE US -->
+        <section class="why-choose-us py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <input type="hidden" id="share-website-info" data-name="Clash Tun模式中文网" data-url="https://clashtun.github.io">
+<div class="xcblog-blog-detail xcblog-blog-detail-defined">
+    
+<p data-start="33" data-end="195">在科学上网日益普及的今天，Clash作为一款灵活、强大的代理工具，赢得了大量用户的青睐。不少人依赖Clash实现稳定的代理连接与网络加速体验。但一个令人沮丧的问题也随之出现：**“Clash退出后，我就无法正常上网了。”**这种现象不仅打断了用户的日常网络使用，也暴露出许多初级用户对代理原理与系统网络配置之间关系的不了解。</p>
+<p data-start="197" data-end="312">本文将用通俗但不失专业的语言，带你一步步剖析这一问题的成因，从Clash的工作机制出发，深入到操作系统的代理与DNS配置层面，并结合大量实践经验提供系统性解决方案。无论你是初学者还是老用户，这篇文章都能为你带来极具参考价值的指导。</p>
+<hr data-start="314" data-end="317">
+<h2 data-start="319" data-end="347">一、Clash是什么，它是怎么“接管”你的网络的？</h2>
+<p data-start="349" data-end="501">Clash是一个基于规则的代理客户端，支持VMess、VLESS、Shadowsocks等协议，具备极强的灵活性与自定义能力。它最核心的功能就是<strong data-start="421" data-end="436">拦截并转发你的网络请求</strong>。这意味着，Clash并不只是简单地“翻墙”，它实际上是将你的网络流量“劫持”到自己内部处理后，再决定是走代理、走直连，还是屏蔽。</p>
+<p data-start="503" data-end="533">那么，Clash是怎么做到这点的？主要依赖两个关键技术路径：</p>
+<ol data-start="535" data-end="706">
+<li data-start="535" data-end="621">
+<p data-start="538" data-end="621"><strong data-start="538" data-end="550">修改系统代理设置</strong>：Clash运行后，会将系统的HTTP、HTTPS代理地址指向本地监听端口（如127.0.0.1:7890），从而接管浏览器等软件的网络请求。</p>
+</li>
+<li data-start="622" data-end="706">
+<p data-start="625" data-end="706"><strong data-start="625" data-end="640">DNS劫持或自定义解析</strong>：Clash还会通过内置DNS服务劫持系统DNS请求，比如将DNS地址改为本地的Fake-IP机制，从而实现域名智能解析与规则判断。</p>
+</li>
+</ol>
+<p data-start="708" data-end="815">换句话说，Clash不是一个“后台安静运行”的程序，它在运行时对你的<strong data-start="742" data-end="757">网络配置进行了深度接管</strong>。那么，当你“直接退出Clash”时，所有这些更改也随之中断，系统就找不到正确的出口——这就是你“上不了网”的根源。</p>
+<hr data-start="817" data-end="820">
+<h2 data-start="822" data-end="852">二、为什么退出Clash后就无法上网了？常见原因全解析</h2>
+<h3 data-start="854" data-end="869">1. 系统代理没有恢复</h3>
+<p data-start="871" data-end="957">这是最常见的原因。当Clash运行时，它修改了系统的代理设置；但如果你**直接“强制退出”或者“异常关闭”**了Clash，系统的代理设置可能没有恢复为默认状态。这就导致：</p>
+<ul data-start="959" data-end="1031">
+<li data-start="959" data-end="1003">
+<p data-start="961" data-end="1003">浏览器还在试图通过127.0.0.1:7890访问网络，而此时这个端口已经没人监听；</p>
+</li>
+<li data-start="1004" data-end="1031">
+<p data-start="1006" data-end="1031">所有网络请求“发不出去”，从而出现“断网”的现象。</p>
+</li>
+</ul>
+<h3 data-start="1033" data-end="1048">2. DNS配置未恢复</h3>
+<p data-start="1050" data-end="1171">Clash使用了<strong data-start="1058" data-end="1073">Fake-IP DNS</strong>或<strong data-start="1074" data-end="1086">自定义DNS服务</strong>来进行域名解析，它会将系统DNS服务器指向本地（比如127.0.0.1），从而控制流量走向。但如果退出Clash后，DNS仍然是本地地址，而本地服务又已经停止，就会导致：</p>
+<ul data-start="1173" data-end="1209">
+<li data-start="1173" data-end="1182">
+<p data-start="1175" data-end="1182">域名解析失败；</p>
+</li>
+<li data-start="1183" data-end="1209">
+<p data-start="1185" data-end="1209">网页打不开，看似“断网”，其实是“找不到域名”。</p>
+</li>
+</ul>
+<h3 data-start="1211" data-end="1228">3. 网络适配器被异常影响</h3>
+<p data-start="1230" data-end="1288">部分Clash高级设置会启用<strong data-start="1244" data-end="1253">TUN模式</strong>或修改虚拟网络接口，如果退出过程不完整或系统缓存未及时清除，可能导致：</p>
+<ul data-start="1290" data-end="1331">
+<li data-start="1290" data-end="1306">
+<p data-start="1292" data-end="1306">网络适配器无法恢复默认状态；</p>
+</li>
+<li data-start="1307" data-end="1331">
+<p data-start="1309" data-end="1331">系统以为你仍然处于代理模式，从而“半瘫痪”。</p>
+</li>
+</ul>
+<h3 data-start="1333" data-end="1350">4. 防火墙或安全软件干预</h3>
+<p data-start="1352" data-end="1446">某些防火墙（如Windows Defender、360、Bitdefender等）可能会在检测到Clash启动监听端口后，对其施加限制。一旦程序退出，这种“残余策略”可能继续影响网络访问。</p>
+<hr data-start="1448" data-end="1451">
+<h2 data-start="1453" data-end="1479">三、一劳永逸的解决方案：如何让系统“恢复如初”</h2>
+<h3 data-start="1481" data-end="1509">方法一：使用Clash内置的“关闭系统代理”选项</h3>
+<p data-start="1511" data-end="1540">如果你要关闭Clash，请<strong data-start="1524" data-end="1536">不要直接退出程序</strong>，而是：</p>
+<ol data-start="1542" data-end="1594">
+<li data-start="1542" data-end="1556">
+<p data-start="1545" data-end="1556">打开Clash主界面；</p>
+</li>
+<li data-start="1557" data-end="1571">
+<p data-start="1560" data-end="1571">找到“系统代理”按钮；</p>
+</li>
+<li data-start="1572" data-end="1582">
+<p data-start="1575" data-end="1582">点击“关闭”；</p>
+</li>
+<li data-start="1583" data-end="1594">
+<p data-start="1586" data-end="1594">然后再退出程序。</p>
+</li>
+</ol>
+<p data-start="1596" data-end="1633">这种方式可以确保Clash“善后”操作完成，系统代理还原，网络不会受影响。</p>
+<h3 data-start="1635" data-end="1653">方法二：手动恢复系统代理设置</h3>
+<p data-start="1655" data-end="1683">如果你已经退出Clash导致断网，可以手动还原代理设置：</p>
+<h4 data-start="1685" data-end="1700">Windows系统：</h4>
+<ol data-start="1702" data-end="1768">
+<li data-start="1702" data-end="1735">
+<p data-start="1705" data-end="1735">打开“设置” &gt; “网络和Internet” &gt; “代理”；</p>
+</li>
+<li data-start="1736" data-end="1753">
+<p data-start="1739" data-end="1753">关闭“使用代理服务器”开关；</p>
+</li>
+<li data-start="1754" data-end="1768">
+<p data-start="1757" data-end="1768">勾选“自动检测设置”。</p>
+</li>
+</ol>
+<p data-start="1770" data-end="1781">或使用命令行一键重置：</p>
+<pre class="overflow-visible!" data-start="1783" data-end="1820"><div class="contain-inline-size rounded-md border-[0.5px] border-token-border-medium relative bg-token-sidebar-surface-primary"><div class="flex items-center text-token-text-secondary px-4 py-2 text-xs font-sans justify-between h-9 bg-token-sidebar-surface-primary dark:bg-token-main-surface-secondary select-none rounded-t-[5px]">bash</div><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-sidebar-surface-primary text-token-text-secondary dark:bg-token-main-surface-secondary flex items-center rounded-sm px-2 font-sans text-xs"><span class="" data-state="closed"></span></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-bash"><span><span>netsh winhttp reset proxy
+</span></span></code></div></div></pre>
+<h4 data-start="1822" data-end="1835">macOS系统：</h4>
+<p data-start="1837" data-end="1879">打开“系统设置” &gt; “网络” &gt; 当前使用的网络 &gt; “代理”，清除所有填写内容。</p>
+<h3 data-start="1881" data-end="1898">方法三：手动修复DNS设置</h3>
+<p data-start="1900" data-end="1939">无论是Windows还是Mac系统，确保DNS服务器指向有效的公共DNS服务：</p>
+<ul data-start="1941" data-end="2014">
+<li data-start="1941" data-end="1975">
+<p data-start="1943" data-end="1975">Google DNS：<code data-start="1954" data-end="1963">8.8.8.8</code> 和 <code data-start="1966" data-end="1975">8.8.4.4</code></p>
+</li>
+<li data-start="1976" data-end="2014">
+<p data-start="1978" data-end="2014">Cloudflare DNS：<code data-start="1993" data-end="2002">1.1.1.1</code> 和 <code data-start="2005" data-end="2014">1.0.0.1</code></p>
+</li>
+</ul>
+<p data-start="2016" data-end="2037">可以手动进入网络设置修改，也可以用命令行：</p>
+<h4 data-start="2039" data-end="2056">Windows CMD：</h4>
+<pre class="overflow-visible!" data-start="2058" data-end="2118"><div class="contain-inline-size rounded-md border-[0.5px] border-token-border-medium relative bg-token-sidebar-surface-primary"><div class="flex items-center text-token-text-secondary px-4 py-2 text-xs font-sans justify-between h-9 bg-token-sidebar-surface-primary dark:bg-token-main-surface-secondary select-none rounded-t-[5px]">bash</div><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-sidebar-surface-primary text-token-text-secondary dark:bg-token-main-surface-secondary flex items-center rounded-sm px-2 font-sans text-xs"><span class="" data-state="closed"></span></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-bash"><span><span>netsh interface ip </span><span><span class="hljs-built_in">set</span></span><span> dns </span><span><span class="hljs-string">"本地连接"</span></span><span> static 8.8.8.8
+</span></span></code></div></div></pre>
+<h4 data-start="2120" data-end="2140">macOS Terminal：</h4>
+<pre class="overflow-visible!" data-start="2142" data-end="2203"><div class="contain-inline-size rounded-md border-[0.5px] border-token-border-medium relative bg-token-sidebar-surface-primary"><div class="flex items-center text-token-text-secondary px-4 py-2 text-xs font-sans justify-between h-9 bg-token-sidebar-surface-primary dark:bg-token-main-surface-secondary select-none rounded-t-[5px]">bash</div><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-sidebar-surface-primary text-token-text-secondary dark:bg-token-main-surface-secondary flex items-center rounded-sm px-2 font-sans text-xs"><span class="" data-state="closed"></span></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-bash"><span><span>networksetup -setdnsservers Wi-Fi 8.8.8.8 1.1.1.1
+</span></span></code></div></div></pre>
+<h3 data-start="2205" data-end="2220">方法四：重启网络适配器</h3>
+<p data-start="2222" data-end="2240">有时候系统配置缓存过于混乱，可尝试：</p>
+<ul data-start="2242" data-end="2280">
+<li data-start="2242" data-end="2260">
+<p data-start="2244" data-end="2260">禁用 → 启用 当前网络适配器；</p>
+</li>
+<li data-start="2261" data-end="2280">
+<p data-start="2263" data-end="2280">或者重启计算机，触发系统自动修复。</p>
+</li>
+</ul>
+<hr data-start="2282" data-end="2285">
+<h2 data-start="2287" data-end="2313">四、进阶建议：Clash用户应该掌握的网络知识</h2>
+<ol data-start="2315" data-end="2579">
+<li data-start="2315" data-end="2372">
+<p data-start="2318" data-end="2372"><strong data-start="2318" data-end="2328">了解代理机制</strong>：知道什么是HTTP代理、Socks5代理、TUN模式等，有助于判断“问题出在哪一层”；</p>
+</li>
+<li data-start="2373" data-end="2430">
+<p data-start="2376" data-end="2430"><strong data-start="2376" data-end="2388">熟悉配置文件结构</strong>：Clash的配置文件中很多设置（如 DNS、rule、mode）直接影响程序行为；</p>
+</li>
+<li data-start="2431" data-end="2488">
+<p data-start="2434" data-end="2488"><strong data-start="2434" data-end="2468">使用GUI工具如Clash for Windows或Meta</strong>：图形化操作更直观，减少手误和配置混乱；</p>
+</li>
+<li data-start="2489" data-end="2543">
+<p data-start="2492" data-end="2543"><strong data-start="2492" data-end="2516">搭配Proxifier等软件进行连接管理</strong>：对于高级用户，可精确控制哪些程序走代理，哪些走直连；</p>
+</li>
+<li data-start="2544" data-end="2579">
+<p data-start="2547" data-end="2579"><strong data-start="2547" data-end="2560">定期备份和重置配置</strong>：避免不小心更改关键设置导致网络瘫痪。</p>
+</li>
+</ol>
+<hr data-start="2581" data-end="2584">
+<h2 data-start="2586" data-end="2602">五、常见问题答疑（FAQ）</h2>
+<p data-start="2604" data-end="2674"><strong data-start="2604" data-end="2633">Q1：退出Clash后上不了网，是不是电脑中毒了？</strong><br data-start="2633" data-end="2636">
+A：不是。99%的情况是系统代理和DNS没有恢复，属于设置未清理干净的问题。</p>
+<p data-start="2676" data-end="2746"><strong data-start="2676" data-end="2701">Q2：Clash退出后能不能自动恢复代理？</strong><br data-start="2701" data-end="2704">
+A：部分Clash GUI工具支持“退出自动清除代理”的设置，请在设置中开启该功能。</p>
+<p data-start="2748" data-end="2826"><strong data-start="2748" data-end="2775">Q3：使用TUN模式是不是更容易出现网络问题？</strong><br data-start="2775" data-end="2778">
+A：是的，TUN模式更底层、修改更广泛，建议熟练用户使用，且在退出前务必点击“关闭TUN”选项。</p>
+<p data-start="2828" data-end="2898"><strong data-start="2828" data-end="2865">Q4：退出Clash后网页打不开但能PING通，是不是DNS问题？</strong><br data-start="2865" data-end="2868">
+A：很可能是DNS解析失败，尝试更换为公共DNS或手动指定。</p>
+<p data-start="2900" data-end="2998"><strong data-start="2900" data-end="2931">Q5：我不想每次手动恢复设置，有没有“一键恢复工具”？</strong><br data-start="2931" data-end="2934">
+A：可以考虑制作批处理脚本或使用网络恢复工具（如netsh一键修复包），也可用Clash for Windows自带的清理选项。</p>
+<hr data-start="3000" data-end="3003">
+<h2 data-start="3005" data-end="3012">精彩点评</h2>
+<blockquote data-start="3014" data-end="3206">
+<p data-start="3016" data-end="3206"><strong data-start="3016" data-end="3039">“Clash强则强矣，退出亦需谨慎。”</strong><br data-start="3039" data-end="3042">
+Clash的强大源于它对系统网络的精细操控，而问题也恰恰来自于这种“深度介入”。当它在前台工作时一切正常，但当你不按规矩关闭时，它遗留下的“接管遗产”反而成了陷阱。懂得如何驾驭它，不只是科学上网的能力，更是对底层网络机制的尊重。技术的价值不仅在于“能用”，更在于“用得安心”。愿每一位读者在翻墙之路上，不止是冲浪者，更是掌舵人。</p>
+</blockquote>
+<hr data-start="3208" data-end="3211">
+<p data-start="3213" data-end="3282" data-is-last-node="" data-is-only-node="">如果你正在使用Clash，或者打算入门，希望这篇文章能为你提供完整的技术支撑和思维方向。科学上网不只是连接的艺术，更是理解网络结构的过程。</p></div>
+<div class="clearfix"></div>
+<div class="col-md-12 mt-5">
+        <p>上一个：<a href="/news/article-189963.htm">科学上网一键下载全攻略：从入门到精通的终极指南</a></p>
+        <p>下一个：<a href="/news/article-190781.htm">Quantumult规则导入全攻略：精通自定义网络管理的关键技巧</a></p>
+    </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-181119.htm" title="突破网络边界：命令行下的科学上网全攻略">突破网络边界：命令行下的科学上网全攻略</a></li>
+                        <li class="py-2"><a href="/news/article-180331.htm" title="掌握网络自由：Clash代理绕过终极配置指南">掌握网络自由：Clash代理绕过终极配置指南</a></li>
+                        <li class="py-2"><a href="/news/article-174453.htm" title="Outline与V2Ray结合使用详解：如何实现完美的科学上网体验">Outline与V2Ray结合使用详解：如何实现完美的科学上网体验</a></li>
+                        <li class="py-2"><a href="/news/article-191992.htm" title="Surfboard免费配置下载全攻略：从入门到精通的安全上网指南">Surfboard免费配置下载全攻略：从入门到精通的安全上网指南</a></li>
+                        <li class="py-2"><a href="/news/article-188755.htm" title="免费v2ray资源全解析与实用指南：轻松搭建你的网络自由之路">免费v2ray资源全解析与实用指南：轻松搭建你的网络自由之路</a></li>
+                        <li class="py-2"><a href="/news/article-175616.htm" title="深入剖析Clash RCE漏洞：从原理到防御的全方位指南">深入剖析Clash RCE漏洞：从原理到防御的全方位指南</a></li>
+                        <li class="py-2"><a href="/news/article-182729.htm" title="穿越迷雾：当Clash遇上网络困境的全面解决指南">穿越迷雾：当Clash遇上网络困境的全面解决指南</a></li>
+                        <li class="py-2"><a href="/news/article-191182.htm" title="全面解析Clash模式选择：如何根据需求精准配置你的网络代理">全面解析Clash模式选择：如何根据需求精准配置你的网络代理</a></li>
+                        <li class="py-2"><a href="/news/article-185233.htm" title="全面解析Clash与靠谱机场：从入门到精通的上网自由指南">全面解析Clash与靠谱机场：从入门到精通的上网自由指南</a></li>
+                        <li class="py-2"><a href="/news/article-187945.htm" title="跨越信息壁垒：学生科学上网的安全指南与实用技巧">跨越信息壁垒：学生科学上网的安全指南与实用技巧</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">22</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WHY CHOOSE US -->
+                <!-- FOOTER START -->
+        <footer class="bg-primary pt-sm-40 pt-80 pb-24">
+            <div class="container-fluid">
+                <div class="hr-line mb-24 bg-light-gray"></div>
+                <p class="bottom-bar light-white text-center">
+                                        <p>本站内容仅供学习与技术研究用途，无意传播或倡导任何违反法律法规的行为。在此声明：用户须自行了解所在地法律法规，合法合规使用；因使用不当产生的法律责任，与本站及作者无关；请在使用前仔细阅读本声明，继续使用即视为同意以上条款。</p>
+                    <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                                        <a href="/">V2ray Free免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        <!-- Back To Top Start -->
+        <button id="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-turn-up"></i></button>
+        <!-- Mobile Menu Start -->
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+                <div class="logo-box">
+                    <a href="" aria-label="logo image"><img src="/assets/website/img/v2ray_free/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-nav__container"></div>
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:example@company.com">example@company.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <a href="tel:+12345678">+123 (4567) -890</a>
+                    </li>
+                </ul>
+                <div class="mobile-nav__social">
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu End -->
+        <!-- Jquery Js -->
+        <script src="/assets/website/js/frontend/v2ray_free/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/jquery-3.6.3.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/slick.min.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/smooth-scrollbar.js"></script>
+        <script src="/assets/website/js/frontend/v2ray_free/app.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+    <!-- Main Wrapper End -->
+</body>
+
+</html>
