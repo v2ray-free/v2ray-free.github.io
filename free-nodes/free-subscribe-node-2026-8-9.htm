@@ -310,27 +310,13 @@ A：Shadowsocks、VMess、VLESS等都可以搭配KCP，视服务端支持情况�
 <div class="clearfix"></div>
 <div class="col-md-12 mt-5">
         <p>上一个：<a href="/free-nodes/2026-8-8-node-share.htm">V2ray Free节点订阅每天更新21.7M/S免费节点订阅链接地址分享</a></p>
+        <p>下一个：<a href="/free-nodes/2026-8-10-free-clash.htm">V2ray Free节点订阅每天更新19.2M/S免费节点订阅链接地址分享</a></p>
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 在新版 iOS 上无法连接怎么办？</h5></div>
+    <div class="panel-heading"><h5>Trojan 是否需要证书？</h5></div>
     <div class="panel-body">
-        苹果系统更新后，Potatso Lite 可能需要重新授权 VPN 权限。请删除旧的 VPN 配置，重新安装并导入节点。若仍无法使用，可尝试更换网络模式或等待开发者更新兼容版本。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Matsuri 节点延迟排序如何提高访问速度？</h5></div>
-    <div class="panel-body">
-        Matsuri 定期测速节点延迟，结合策略组自动选择延迟最低节点处理流量。用户无需手动切换节点即可保持高速访问，提高网页浏览、视频播放和游戏体验的稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Hysteria2 多路复用如何提升短连接性能？</h5></div>
-    <div class="panel-body">
-        多路复用允许多个短连接共享同一通道，减少握手延迟和资源消耗。适合高频短连接场景，如游戏和即时通讯，可提高吞吐量和连接稳定性，优化整体网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Surfboard 能否同步 iCloud 配置？</h5></div>
-    <div class="panel-body">
-        可以。Surfboard 支持 iCloud 同步功能，用户可在不同苹果设备上共享同一配置文件。这样即使更换手机或重装系统，也能自动恢复节点与分流设置。<hr />    </div>
+        是的，Trojan 必须使用有效的 TLS 证书才能运行。推荐使用 Let's Encrypt 免费证书。若证书过期或配置错误，客户端将无法建立加密连接，导致无法访问外部网络。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Netch 的透明代理适合哪些应用场景？</h5></div>
@@ -338,19 +324,19 @@ A：Shadowsocks、VMess、VLESS等都可以搭配KCP，视服务端支持情况�
         透明代理通过 TUN 或 WinDivert 拦截系统 IP 层流量，无需配置每个应用。适合全局科学上网、在线游戏或对局域网设备统一代理的场景。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekoray 支持 Trojan 吗？</h5></div>
+    <div class="panel-heading"><h5>Hysteria2 多路复用如何提升短连接性能？</h5></div>
     <div class="panel-body">
-        支持。Nekoray 基于 sing-box 核心，能兼容 Trojan、Vmess、Vless、Hysteria2 等多种协议。用户可在同一界面中管理和切换不同类型节点，非常方便。<hr />    </div>
+        多路复用允许多个短连接共享同一通道，减少握手延迟和资源消耗。适合高频短连接场景，如游戏和即时通讯，可提高吞吐量和连接稳定性，优化整体网络体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 如何实现分流规则？</h5></div>
+    <div class="panel-heading"><h5>如何在手机上减少代理应用对电量的消耗？</h5></div>
     <div class="panel-body">
-        V2Ray 使用 routing 模块实现分流，可根据目标域名、IP、端口或协议类型决定流量走向。用户可自定义多个 outbound，并通过规则实现国内直连、国外代理等智能路由功能。<hr />    </div>
+        关闭不必要的后台代理连接，减少实时测速或心跳频率，启用省电模式并限制流量统计与日志记录；对于常用站点设置直连策略，避免所有流量都走代理带来的持续网络负荷。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan 是否需要证书？</h5></div>
+    <div class="panel-heading"><h5>Potatso Lite 在新版 iOS 上无法连接怎么办？</h5></div>
     <div class="panel-body">
-        是的，Trojan 必须使用有效的 TLS 证书才能运行。推荐使用 Let's Encrypt 免费证书。若证书过期或配置错误，客户端将无法建立加密连接，导致无法访问外部网络。<hr />    </div>
+        苹果系统更新后，Potatso Lite 可能需要重新授权 VPN 权限。请删除旧的 VPN 配置，重新安装并导入节点。若仍无法使用，可尝试更换网络模式或等待开发者更新兼容版本。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Hiddify Next 如何为不同用户设置流量限制？</h5></div>
@@ -358,9 +344,24 @@ A：Shadowsocks、VMess、VLESS等都可以搭配KCP，视服务端支持情况�
         管理员可为每个用户设置独立带宽限制和流量配额。超过限制时，可自动降速或阻止访问，确保服务器资源合理分配，避免单用户占用过多带宽，提升整体网络效率和公平性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>如何在手机上减少代理应用对电量的消耗？</h5></div>
+    <div class="panel-heading"><h5>Surfboard 能否同步 iCloud 配置？</h5></div>
     <div class="panel-body">
-        关闭不必要的后台代理连接，减少实时测速或心跳频率，启用省电模式并限制流量统计与日志记录；对于常用站点设置直连策略，避免所有流量都走代理带来的持续网络负荷。    </div>
+        可以。Surfboard 支持 iCloud 同步功能，用户可在不同苹果设备上共享同一配置文件。这样即使更换手机或重装系统，也能自动恢复节点与分流设置。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 如何实现分流规则？</h5></div>
+    <div class="panel-body">
+        V2Ray 使用 routing 模块实现分流，可根据目标域名、IP、端口或协议类型决定流量走向。用户可自定义多个 outbound，并通过规则实现国内直连、国外代理等智能路由功能。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Matsuri 节点延迟排序如何提高访问速度？</h5></div>
+    <div class="panel-body">
+        Matsuri 定期测速节点延迟，结合策略组自动选择延迟最低节点处理流量。用户无需手动切换节点即可保持高速访问，提高网页浏览、视频播放和游戏体验的稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Nekoray 支持 Trojan 吗？</h5></div>
+    <div class="panel-body">
+        支持。Nekoray 基于 sing-box 核心，能兼容 Trojan、Vmess、Vless、Hysteria2 等多种协议。用户可在同一界面中管理和切换不同类型节点，非常方便。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -408,16 +409,16 @@ A：Shadowsocks、VMess、VLESS等都可以搭配KCP，视服务端支持情况�
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-7-8-clash-v2ray-ss-ssr.htm" title="V2ray Free节点订阅每天更新18.5M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新18.5M/S免费节点订阅链接地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-4-free-clash.htm" title="V2ray Free节点订阅每天更新22.6M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新22.6M/S免费节点订阅链接地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-6-11-shadowrocket-node.htm" title="V2ray Free节点订阅每天更新18.3M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新18.3M/S免费节点订阅链接地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-6-20-free-node-subscribe.htm" title="V2ray Free节点订阅每天更新18.2M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新18.2M/S免费节点订阅链接地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-6-27-free-subscribe-node.htm" title="V2ray Free节点订阅每天更新22.6M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新22.6M/S免费节点订阅链接地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-13-free-subscribe-node.htm" title="V2ray Free节点订阅每天更新20.5M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新20.5M/S免费节点订阅链接地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-6-clash-v2ray-ss-ssr.htm" title="V2ray Free节点订阅每天更新19.8M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新19.8M/S免费节点订阅链接地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-5-shadowrocket-node.htm" title="V2ray Free节点订阅每天更新20.7M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新20.7M/S免费节点订阅链接地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-11-free-clash-subscribe.htm" title="V2ray Free节点订阅每天更新20.4M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新20.4M/S免费节点订阅链接地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-23-free-subscribe-node.htm" title="V2ray Free节点订阅每天更新18.4M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新18.4M/S免费节点订阅链接地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/shadowrocket-node-2026-8-13.htm" title="V2ray Free节点订阅每天更新18.1M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新18.1M/S免费节点订阅链接地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-8-node-share.htm" title="V2ray Free节点订阅每天更新21.7M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新21.7M/S免费节点订阅链接地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-7-22-clash-node.htm" title="V2ray Free节点订阅每天更新20.8M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新20.8M/S免费节点订阅链接地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-7-26-node-share.htm" title="V2ray Free节点订阅每天更新21.6M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新21.6M/S免费节点订阅链接地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-14-clash-v2ray-ss-ssr.htm" title="V2ray Free节点订阅每天更新19.6M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新19.6M/S免费节点订阅链接地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-16-node-share.htm" title="V2ray Free节点订阅每天更新21.6M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新21.6M/S免费节点订阅链接地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-8-9.htm" title="V2ray Free节点订阅每天更新19.7M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新19.7M/S免费节点订阅链接地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-7-19-node-share-links.htm" title="V2ray Free节点订阅每天更新19.4M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新19.4M/S免费节点订阅链接地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/shadowrocket-node-2026-8-3.htm" title="V2ray Free节点订阅每天更新18.5M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新18.5M/S免费节点订阅链接地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/shadowrocket-node-2026-8-7.htm" title="V2ray Free节点订阅每天更新18.6M/S免费节点订阅链接地址分享">V2ray Free节点订阅每天更新18.6M/S免费节点订阅链接地址分享</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -429,13 +430,10 @@ A：Shadowsocks、VMess、VLESS等都可以搭配KCP，视服务端支持情况�
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
+                <h4><span class="badge" style="float: right;">16</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2026-07/" title="2026-07 归档">2026-07</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2026-06/" title="2026-06 归档">2026-06</a></h4>
+                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2026-07/" title="2026-07 归档">2026-07</a></h4>
             </li>
                     </ul>
     </div>
